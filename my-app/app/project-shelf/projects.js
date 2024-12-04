@@ -186,7 +186,24 @@ const projectsData = {
         { id: 29, title: "Luminous Pursuit", description: "Not Available", students: "Benjamin Joseph, George John, Krishnaprasad CP, Sonu T Shaji", supervisor: "Prof. Ashly Thomas", tags: ["Gaming"] },
         { id: 30, title: "DeepReality", description: "Not Available", students: "Harikrishnan Ashok, Mareena Roy, P S Arjun, V S Nikhil Maheswar", supervisor: "Prof. Athirasree Das", tags: ["Computer Vision", "AR/VR"] },
         { id: 31, title: "TRACE", description: "Not Available", students: "Athul Soman, Joseph George, Thomson Stanes, Vimal Suresh", supervisor: "Prof. Dyni Thomas", tags: ["Sustainability"] },
-        { id: 32, title: "Smart Dustbin", description: "Not Available", students: "Nihal Vijoy, Rahul Babu, Shalon Mary Michael, Sona Joseph", supervisor: "Prof. Jibin Philip", tags: ["IoT", "Sustainability"] }
+        { id: 32, title: "Smart Dustbin", description: "Not Available", students: "Nihal Vijoy, Rahul Babu, Shalon Mary Michael, Sona Joseph", supervisor: "Prof. Jibin Philip", tags: ["IoT", "Sustainability"] },
+        { id: 33, title: "ProBo", description: "Not Available", students: "Abin K Jaimon, Aravind Binu, Arun Kumar K Jose, Treesa Joseph", supervisor: "Prof. Bino Thomas", tags: ["Product"] },
+        { id: 34, title: "Game-Dev", description: "Not Available", students: "Aimil Bij Joseph, Alen Emmanuel, Allen Alex Alaney, Pranav P", supervisor: "Prof. Mereen Thomas", tags: ["Application"] },
+        { id: 35, title: "Haze Buster", description: "Vehicle license plate recognition for fog-haze environments", students: "Aishwarya Sebastian, Amrutha Prakash, Ann Maria Sabu, Mubeena S", supervisor: "Prof. Gayathri R Krishna", tags: ["Application"] },
+        { id: 36, title: "Third Eye", description: "Connecting the dots of the unseen world", students: "Akhil Sanker S, Alphy George, Irene Molly Varughese, Rinta Maria Raju", supervisor: "Prof. Thushara Sukumar", tags: ["Product"] },
+        { id: 37, title: "EnviroGuard", description: "Not Available", students: "Alan Joy, Allwina Anna Soy Jose, Anitta Siby, Savio Shaji", supervisor: "Prof. Kishore Sebastian", tags: ["Product"] },
+        { id: 38, title: "Culinary Hub", description: "Not Available", students: "Alenta Joseph, Juval James, Vishnu A.V", supervisor: "Prof. Syamamol T", tags: ["Application"] },
+        { id: 39, title: "AI-Driven Video Prompt Analysis", description: "Not Available", students: "Allen Saji, Ashik David Roy, Nithin V. James, Reenphy George", supervisor: "Prof. Smitha Jacob", tags: ["Application"] },
+        { id: 40, title: "FarmSage", description: "Not Available", students: "Amala Maria Kuruvilla, Anitha P Benny, Manjusree Raveendran, Raina Raj", supervisor: "Prof. Mereen Thomas", tags: ["Product"] },
+        { id: 41, title: "TalkSync", description: "A Real Time Speech Translation Platform", students: "Anandu Unnikrishnan, Harinand S, Jithin Jerome, Sreelakshmi S", supervisor: "Prof. Maria Yesudas", tags: ["Application"] },
+        { id: 42, title: "Ecodefenders", description: "Not Available", students: "Anita Augustine, Annu Rajesh, Gautham S, Ria Siby", supervisor: "Prof. Thushara Sukumar", tags: ["Product"] },
+        { id: 43, title: "D-SIGN", description: "Speech to Sign Translator", students: "Krishnaveni M, Anna Jose, Bincy Benny, Sandra Maria Jose", supervisor: "Prof. Vimal Babu P", tags: ["Application"] },
+        { id: 44, title: "CogniCare", description: "Not Available", students: "Ashish Rajesh, Delna K Jose, Fahad Salim, Gautham Krishna N", supervisor: "Prof. Angitha George", tags: ["Application"] },
+        { id: 45, title: "Luminous Pursuit", description: "Not Available", students: "Benjamin Joseph, George John, Krishnaprasad CP, Sonu T Shaji", supervisor: "Prof. Ashly Thomas", tags: ["Product"] },
+        { id: 46, title: "DeepReality", description: "Not Available", students: "Harikrishnan Ashok, Mareena Roy, P S Arjun, V S Nikhil Maheswar", supervisor: "Prof. Athirasree Das", tags: ["Application"] },
+        { id: 47, title: "TRACE", description: "Not Available", students: "Athul Soman, Joseph George, Thomson Stanes, Vimal Suresh", supervisor: "Prof. Dyni Thomas", tags: ["Application"] },
+        { id: 48, title: "Smart Dustbin", description: "Not Available", students: "Nihal Vijoy, Rahul Babu, Shalon Mary Michael, Sona Joseph", supervisor: "Prof. Jibin Philip", tags: ["Product"] }
+        
     ],
     "2024": [
         { id: 5, title: "Curently", description: "A Household electricty consumption monitoring solution", students: "Kiran Babu,Indrajith S Nair,Sidharth Manikuttan,Anit Thomas", supervisor: "Prof. Jikku Thomas", tags: ["IoT", "App Development", "FireBase", "React Native"] },
@@ -205,13 +222,8 @@ const projectsData = {
         { id: 18, title: "SmartHire", description: "A Resume based shortlisting software for companies", students: "Shifaz Abdul Kareem,Sarun Siby,Tobin Thomas,Abin Mathew Siby", supervisor: "Prof.Thushara Sukumar", tags: ["Web", "HTML", "CSS"] },
         { id: 19, title: "WorkEase", description: "Not Available", students: "Aayush.G,Devamanas S.S,Dona Sosa Joe", supervisor: "Prof.Dona Mary Cherian", tags: ["HTML", "CSS"] },
         { id: 20, title: "On-spot Mechanic", description: "A platform to bring mechanic services to users upon emergency situations based on their gps location.", students: "Sanjid S,Edwin Rajesh,Ajay Cyriac,Jithmon P Cherian", supervisor: "Prof.Jibin Philip", tags: ["Flutter", "Google Maps services", "Firebase"] },
-        { id: 21, title: "Foodie Buddy", description: "A Recipe App", students: "Niketh A,Abin Varghese,Mathew Raino", supervisor: "Prof.Smitha Jacob", tags: ["Flutter", "Firebase"] },
+        { id: 21, title: "Foodie Buddy", description: "A Recipe App", students: "Niketh A,Abin Varghese,Mathew Raino", supervisor: "Prof.Smitha Jacob", tags: ["Flutter", "Firebase"] }
         
-       { id: 22, title: "Servelink", description: "Empowering Communities through Volunteering", students: "Navaneeth Krishna,Naveen Alex,Nevin M Noby,Sreelakshmi Biju", supervisor: "Prof.Gayathri Krishna", tags: ["ReactJs", "NodeJs","MinIO","MongoDB"] },
-       { id: 23, title: "Adcolumn", description: "This website allows users to book slots in newspapers for advertising purposes", students: "Abin Mathew Sunny,Allen K Philip,Athul Sabu,Aravind Prakash", supervisor: "Prof.Athirasree Das", tags: ["Html/css","Nodejs","MongoDB","Stripe"] },
-       { id: 24, title: "Flexilink", description: " It offers the ultimate freedom and flexibility for fitness enthusiasts", students: "Abhiram S,Albin Shaju,Anish V Mathew,Alen P Aji,", supervisor: "Prof.Athirasree Das", tags: ["Html/Css","MongoDB","Stripe","Ajax"] }
-       
-
 
     ]
 };
