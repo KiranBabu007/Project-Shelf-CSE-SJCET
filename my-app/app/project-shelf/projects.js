@@ -510,6 +510,7 @@ const projectsData = {
           {
             "id": 11,
             "title": "Asra- Cloud Computing Based Framework For Blood Services",
+            "description": "A robust cloud computing platform designed to optimize and manage blood donation and transfusion services.",
             "students": "Adharsh Raju, Albert Kurian, Basil Joseph Benny",
             "supervisor": "Prof. (Dr.) Joby P P",
             "tags": ["Cloud Computing", "Blood Services", "Framework"]
@@ -517,6 +518,7 @@ const projectsData = {
           {
             "id": 12,
             "title": "Vulnerability Scanner",
+            "description": "A cybersecurity tool designed to detect and report vulnerabilities in computer systems and networks.",
             "students": "Binny George, Jenu Maria Scaria, Jobin B",
             "supervisor": "Prof. (Dr.) Praseetha V. M",
             "tags": ["Cybersecurity", "Vulnerability", "Scanner"]
@@ -524,6 +526,7 @@ const projectsData = {
           {
             "id": 13,
             "title": "Automatic Image Detection And Censoring",
+            "description": "An automated system for identifying and censoring sensitive content in images.",
             "students": "Adithye Joseph, Ajay Chacko Thomas, Jobin Jose",
             "supervisor": "Prof. Divya Sunny",
             "tags": ["Image Detection", "Censorship", "Automation"]
@@ -531,6 +534,7 @@ const projectsData = {
           {
             "id": 14,
             "title": "Malayalam Speech To Text Conversion",
+            "description": "A natural language processing system that converts spoken Malayalam into written text.",
             "students": "Abhishek M P, Ajay P Mathews, Anandhu Sasikuttan, Ashish James",
             "supervisor": "Prof. Kishore Sebastian",
             "tags": ["Speech Recognition", "Malayalam", "Text Conversion"]
@@ -538,6 +542,7 @@ const projectsData = {
           {
             "id": 15,
             "title": "Homomorphic Encryption Based Online Voting System",
+            "description": "A secure online voting platform leveraging homomorphic encryption for confidentiality and accuracy.",
             "students": "Alen Manoj",
             "supervisor": "Dr. Joby P P",
             "tags": ["Homomorphic Encryption", "Online Voting", "Security"]
@@ -545,6 +550,7 @@ const projectsData = {
           {
             "id": 16,
             "title": "Detection Of Helmetless Riders Using Faster R-Cnn",
+            "description": "A traffic monitoring system using Faster R-CNN to detect motorcyclists riding without helmets.",
             "students": "Meenu R, Sinta Raju, Smrithi P Paul, Swathy Sajeev",
             "supervisor": "Prof. Alphonsa Johny",
             "tags": ["Helmet Detection", "Faster R-CNN", "Safety"]
@@ -552,6 +558,7 @@ const projectsData = {
           {
             "id": 17,
             "title": "A Device For Communication With Deaf-Blind People",
+            "description": "An assistive technology device enabling communication for individuals with both hearing and visual impairments.",
             "students": "Joyal James, Kevin M Jeggy, Ramjith Ramadas, Sonu Martin",
             "supervisor": "Prof. Jikku Thomas",
             "tags": ["Deaf-Blind Communication", "Assistive Technology"]
@@ -559,6 +566,7 @@ const projectsData = {
           {
             "id": 18,
             "title": "Mechy- Maintenance Of Car Engine Using Augmented Reality",
+            "description": "An AR-based application to guide users in maintaining and repairing car engines.",
             "students": "Maju Joseph, Nikhil Josy, Ron George Valiyaveettil, Vishnudas V",
             "supervisor": "Prof. Smitha Jacob",
             "tags": ["Car Maintenance", "Augmented Reality", "Technology"]
@@ -566,13 +574,15 @@ const projectsData = {
           {
             "id": 19,
             "title": "E-Lending System",
+            "description": "An online platform for secure and efficient lending and borrowing transactions.",
             "students": "Vineeth K",
             "supervisor": "Prof. Smitha Jacob",
             "tags": ["E-Lending", "System", "Online Platform"]
           },
           {
             "id": 20,
-            "title": "Omnis agro: agriculture for everyone",
+            "title": "Omnis Agro: Agriculture For Everyone",
+            "description": "A smart agriculture platform designed to enhance productivity and accessibility for farmers.",
             "students": "Rahal Bency Paul, Roshen Reji George, Sachin Sajikumar, Sreelakshmi R",
             "supervisor": "Prof. Prince Abraham",
             "tags": ["Agriculture", "Technology", "Farming"]
@@ -580,6 +590,7 @@ const projectsData = {
           {
             "id": 21,
             "title": "SIGNOS: A Solution For Unhearing",
+            "description": "A communication tool for hearing-impaired individuals, utilizing sign language recognition.",
             "students": "Rahul Ajith, Sebin Skariah, Slomo A Thomas, Visakh S Nair",
             "supervisor": "Prof. Sarju S",
             "tags": ["Sign Language", "Hearing Impaired", "Communication"]
@@ -587,6 +598,7 @@ const projectsData = {
           {
             "id": 22,
             "title": "Automated HR",
+            "description": "An HR management system automating repetitive tasks and streamlining processes.",
             "students": "Maria Rose Chacko, Megha Philip, Merin Mary Saju, Nimmy George",
             "supervisor": "Prof. Prince V Jose",
             "tags": ["HR", "Automation", "Human Resources"]
@@ -594,6 +606,7 @@ const projectsData = {
           {
             "id": 23,
             "title": "Melanoma Detection Using Deep Learning",
+            "description": "A medical AI system for early detection of melanoma using deep learning techniques.",
             "students": "Jovel Jose, Melvin Mathew, Reenu Tresa Manuel, Syam Philip",
             "supervisor": "Prof. Alphonsa Johny",
             "tags": ["Melanoma", "Deep Learning", "Medical Technology"]
@@ -601,6 +614,7 @@ const projectsData = {
           {
             "id": 24,
             "title": "Medidocs",
+            "description": "A digital solution for efficient management and storage of medical records.",
             "students": "Reon Saji, Robin Thomas, Mohammed Shabin Moidu, Praveen K S",
             "supervisor": "Prof. Sarju S",
             "tags": ["Medical Documentation", "Health Tech"]
@@ -608,6 +622,7 @@ const projectsData = {
           {
             "id": 25,
             "title": "Home Automation System Using Malayalam Language",
+            "description": "A smart home system controlled through voice commands in Malayalam.",
             "students": "Mathew Santhosh, Nayan Thara Prakash, Sneha Raj M P, Gokul G",
             "supervisor": "Prof. Gemini George",
             "tags": ["Home Automation", "Malayalam", "Technology"]
@@ -615,13 +630,15 @@ const projectsData = {
           {
             "id": 26,
             "title": "Web Hosting Using Docker Containers",
+            "description": "A scalable and efficient web hosting solution utilizing Docker container technology.",
             "students": "Minto Sunny, Sen Shaji, Sheen Sabu, Udith Uthaman",
             "supervisor": "Prof. Gemini George",
             "tags": ["Web Hosting", "Docker Containers", "Technology"]
           },
           {
             "id": 27,
-            "title": "A Smart Music Player using Facial Recognition",
+            "title": "A Smart Music Player Using Facial Recognition",
+            "description": "An AI-powered music player that curates playlists based on the user's facial expressions.",
             "students": "Shain Tom Mathew, Riya Issac, Stephy Theres Mathew, Asma Mehnas Muthalib",
             "supervisor": "Prof. Divya Sunny",
             "tags": ["Music Player", "Facial Recognition", "AI"]
@@ -629,13 +646,15 @@ const projectsData = {
           {
             "id": 28,
             "title": "Artificial Intelligence Based Depression Recognition System",
+            "description": "An AI-based system designed to detect signs of depression through behavioral analysis.",
             "students": "Nissy Alex, Lija Joy, Sherin Thomas, Teenu Sunny",
             "supervisor": "Prof. Angitha George",
             "tags": ["AI", "Depression Recognition", "Mental Health"]
           },
           {
             "id": 29,
-            "title": "Non Invasive Anaemic Detection - detectIR",
+            "title": "Non-Invasive Anemic Detection - DetectIR",
+            "description": "A health tech system for detecting anemia using non-invasive infrared technology.",
             "students": "Nesnu Elizabeth Kurian, Reshma Sara Joe, Sonita Ann Koshy, Vishnupriya V Gopal",
             "supervisor": "Prof. Mereen Thomas",
             "tags": ["Anemia Detection", "Non-invasive", "Health Tech"]
@@ -643,6 +662,7 @@ const projectsData = {
           {
             "id": 30,
             "title": "Online Toll Payment App",
+            "description": "A mobile application for seamless toll payment, reducing wait times and improving convenience.",
             "students": "Justin Varghese, Sijin John, Nimith Thomas",
             "supervisor": "Prof. Sinu Maria Kurian",
             "tags": ["Toll Payment", "App Development", "Technology"]
@@ -650,6 +670,7 @@ const projectsData = {
           {
             "id": 31,
             "title": "Certificate Management System Using Blockchain",
+            "description": "A secure platform for managing and verifying certificates using blockchain technology.",
             "students": "Mili Rafi",
             "supervisor": "Prof. Ashly Thomas",
             "tags": ["Blockchain", "Certificate Management", "Security"]
