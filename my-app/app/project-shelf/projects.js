@@ -206,7 +206,7 @@ const projectsData = {
         
     ],
     "2024": [
-        { id: 5, title: "Curently", description: "A Household electricty consumption monitoring solution", students: "Kiran Babu,Indrajith S Nair,Sidharth Manikuttan,Anit Thomas", supervisor: "Prof. Jikku Thomas", tags: ["IoT", "App Development", "FireBase", "React Native"] },
+        { id: 5, title: "Curently", description: "A Household electricity consumption monitoring solution", students: "Kiran Babu,Indrajith S Nair,Sidharth Manikuttan,Anit Thomas", supervisor: "Prof. Jikku Thomas", tags: ["IoT", "App Development", "FireBase", "React Native"] },
         { id: 6, title: "EduNet", description: "Professional Networking and Event Engagement App for Students and Alumni", students: "Kennith Joseph, Amiya Hidayathulla,Melby Mariam Chandy,Akshay CA", supervisor: "Prof. Smitha Jacob", tags: ["Flutter", "App Development", "REST API"] },
         { id: 7, title: "LegalEase AI", description: "LegalEase is a web application that provides users with accessible legal guidance, information on specific laws, and connections to specialized legal experts.", students: "Agnel Brigit Shaji,Akash Benny,Rohan Joshy,Sereena Mariam Saji", supervisor: "Dr.Praseetha V.M", tags: ["Dialogflow", "HTML", "CSS", "JavaScript", "Firebase"] },
         { id: 8, title: "SecureWin", description: "A blockchain-based lottery system enchancing transparency and security in Kerala.", students: "Hridya Mathew,Jebin Tom,Vinny Elz Vincent,Tini Treesa Joseph", supervisor: "Prof.Angitha George", tags: ["Blockchain", "Flutter", "Firebase", "HTML", "CSS", "JavaScript", "Twilio"] },
