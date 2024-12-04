@@ -1,6 +1,266 @@
 const projectsData = {
+    
 
-    "2023": [
+    "2022-2023": [
+        {
+            "id": 1,
+            "title": "Animal Intrusion Detection System Using YOLO Algorithm",
+            "description": "Not available",
+            "students": "Bibin Mathew, Aibin Abraham",
+            "supervisor": "Prof. Jaya John",
+            "tags": ["YOLO", "Animal Detection", "Machine Learning"]
+        },
+        {
+            "id": 2,
+            "title": "Heart Monitoring System using IOT",
+            "description": "Not available",
+            "students": "Aswin Suseel, Devika Suresh Kumar, Isha Sameer",
+            "supervisor": "Prof. Dona Mary Cherian",
+            "tags": ["IOT", "Heart Monitoring", "Machine Learning"]
+        },
+        {
+            "id": 3,
+            "title": "Auxilia: Assistive Learning Tool for children with Down Syndrome",
+            "description": "Not available",
+            "students": "Anna Thomas",
+            "supervisor": "Prof. Ashly Thomas",
+            "tags": ["Assistive Learning", "Down Syndrome", "Machine Learning"]
+        },
+        {
+            "id": 4,
+            "title": "SJCET Arena",
+            "description": "Not available",
+            "students": "Akash K, Georgin Jose, Joel James",
+            "supervisor": "Prof. Thushara Sukumar",
+            "tags": ["Event Management", "IOT", "Cloud Computing"]
+        },
+        {
+            "id": 5,
+            "title": "ARVidya: Gamified AR Learning earning App",
+            "description": "Not available",
+            "students": "Aiswarya Raju, Akash Manuel, Joel Joby",
+            "supervisor": "Prof. Smitha Jacob",
+            "tags": ["AR", "Gamification", "Education"]
+        },
+        {
+            "id": 6,
+            "title": "A Personalisable Super-App Solution to Support Multiple Applications.",
+            "description": "Not available",
+            "students": "Aravind Manoj, Davis Emmanuel, Ann Susan George",
+            "supervisor": "Prof. Smitha Jacob",
+            "tags": ["Super-App", "Multi-Application", "App Development"]
+        },
+        {
+            "id": 7,
+            "title": "School Bus Security and Management System",
+            "description": "Not available",
+            "students": "Akhil Shaji, Athulkrishna M J, Joel Biju",
+            "supervisor": "Prof. Bino Thomas",
+            "tags": ["Security", "School Bus", "IOT"]
+        },
+        {
+            "id": 8,
+            "title": "Amigo Application with Health Band",
+            "description": "Not available",
+            "students": "Anna Jose, Anit Devesiya Kuttiyaka, Albin Scaria Sabu",
+            "supervisor": "Prof. Maria Yesudas",
+            "tags": ["Health Band", "App Development", "IOT"]
+        },
+        {
+            "id": 9,
+            "title": "Lane and Curve Detection using Image Processing",
+            "description": "Not available",
+            "students": "Amitha Fathima, Anitta George, Aromal Mohan Kunnam",
+            "supervisor": "Dr.Sruthy",
+            "tags": ["Image Processing", "Lane Detection", "Curve Detection"]
+        },
+        {
+            "id": 10,
+            "title": "FINGSPELL - SPEECH TO ISL TRANSLATOR",
+            "description": "Not available",
+            "students": "Alen Babu, Amal Joe Paulo, Jestin O Saji",
+            "supervisor": "Prof. Kishore Sebastian",
+            "tags": ["Speech to Text", "Language Translation", "AI"]
+        },
+        {
+            "id": 11,
+            "title": "Analysis of Brain Tumor Detection using VGG-16 and DenseNet",
+            "description": "Not available",
+            "students": "Diya Paramesh G, Elza Mary Thomas, Gayathri V",
+            "supervisor": "Prof. Anu V Kottath",
+            "tags": ["Brain Tumor", "Image Processing", "Deep Learning"]
+        },
+        {
+            "id": 12,
+            "title": "Image Forgery Detection",
+            "description": "Not available",
+            "students": "Adams Mathew, Akhil J Medackal, Nikhil J Medackal",
+            "supervisor": "Prof. Dyni Thomas",
+            "tags": ["Image Forgery", "Image Processing", "Deep Learning"]
+        },
+        {
+            "id": 13,
+            "title": "Detection of Alzheimer's Disease and Assistance",
+            "description": "Not available",
+            "students": "Jissin K Jose, Haritha H Kurup, Devananda A",
+            "supervisor": "Prof. Kishore Sebastian",
+            "tags": ["Alzheimer's Disease", "Assistance", "Machine Learning"]
+        },
+        {
+            "id": 14,
+            "title": "Offline Communication Application (Mobify)",
+            "description": "Not available",
+            "students": "Freddy Francis, Jerin T Varghese, Abin S Varghese",
+            "supervisor": "Prof. Dyni Thomas",
+            "tags": ["Offline Communication", "App Development", "IOT"]
+        },
+        {
+            "id": 15,
+            "title": "Malware Classification Framework based on Deep Learning",
+            "description": "Not available",
+            "students": "Abeera Biju, Aleena T James, Diya Joji",
+            "supervisor": "Prof. Anu V Kottath",
+            "tags": ["Malware Detection", "Deep Learning", "Machine Learning"]
+        },
+        {
+            "id": 16,
+            "title": "Vaccine Tracking System using IoT and Blockchain Technology",
+            "description": "Not available",
+            "students": "Athira S, Jerickson George, Sidharth Ganesh",
+            "supervisor": "Prof. Bino Thomas",
+            "tags": ["Vaccine Tracking", "IoT", "Blockchain"]
+        },
+        {
+            "id": 17,
+            "title": "Two Factor Authentication System",
+            "description": "Not available",
+            "students": "Francies Sunny",
+            "supervisor": "Prof. Athirasree Das",
+            "tags": ["Two Factor Authentication", "Security", "App Development"]
+        },
+        {
+            "id": 18,
+            "title": "Synkit: The collaborative software toolkit",
+            "description": "Not available",
+            "students": "Varghese Martin, Varun K V, Vishnu Nair P",
+            "supervisor": "Prof. Mereen Thomas",
+            "tags": ["Collaborative Software", "Machine Learning", "App Development"]
+        },
+        {
+            "id": 19,
+            "title": "INED: Stock prediction using Machine Learning",
+            "description": "Not available",
+            "students": "M Devi Aswin Shanker, Nithin Mani, Rithin Soney",
+            "supervisor": "Dr. Praseetha V M",
+            "tags": ["Machine Learning", "Stock Prediction", "Data Analysis"]
+        },
+        {
+            "id": 20,
+            "title": "MARC: Motion Controlled Robotic Claw",
+            "description": "Not available",
+            "students": "Tom C Antony, Tinsa Sojan",
+            "supervisor": "Prof. Angitha George",
+            "tags": ["Robotics", "Motion Control", "Machine Learning"]
+        },
+        {
+            "id": 21,
+            "title": "DDoS Attack Detection and Mitigation",
+            "description": "Not available",
+            "students": "Lisha Chacko, Jone Abraham, Anu Jose",
+            "supervisor": "Dr. Sruthy",
+            "tags": ["DDoS Attack", "Network Security", "Machine Learning"]
+        },
+        {
+            "id": 22,
+            "title": "Smart Bike-safety enhanced motor vehicle",
+            "description": "Not available",
+            "students": "Roshan Mathew Thomas, Toney G Jolly, Tony Raju Kuzhinjalil",
+            "supervisor": "Prof. Jibin Philip",
+            "tags": ["Smart Bike", "Bicycle Safety", "IOT"]
+        },
+        {
+            "id": 23,
+            "title": "Skin Cancer Detection using CNN",
+            "description": "Not available",
+            "students": "Merin Alex, Roshan Varghese, Saniya Sebastian",
+            "supervisor": "Prof. Jibin Philip",
+            "tags": ["Skin Cancer", "CNN", "Machine Learning"]
+        },
+        {
+            "id": 24,
+            "title": "Mining Online Product Reviews using NLP",
+            "description": "Not available",
+            "students": "Justine J Iby Varghese, Martin T V, Raghu Suresndran",
+            "supervisor": "Prof. Mereen Thomas",
+            "tags": ["NLP", "Product Reviews", "Machine Learning"]
+        },
+        {
+            "id": 25,
+            "title": "HashFunds: A decentralized Fundraising application using blockchain",
+            "description": "Not available",
+            "students": "Shalom Abraham, Rahul Rajeev, Terin Mathew",
+            "supervisor": "Prof. Angitha George",
+            "tags": ["Blockchain", "Decentralized Fundraising", "App Development"]
+        },
+        {
+            "id": 26,
+            "title": "Secure File Storage in Cloud using Hybrid Encryption",
+            "description": "Not available",
+            "students": "Rosa Mariam John, Rinu Maria Jose, Lekshmi S Nair",
+            "supervisor": "Dr. Joby P P",
+            "tags": ["File Storage", "Cloud Computing", "Hybrid Encryption"]
+        },
+        {
+            "id": 27,
+            "title": "DRO: A Tool for Designing Robot",
+            "description": "Not available",
+            "students": "Riya Roy, Sandhra Shaji, Therease Siby",
+            "supervisor": "Prof. Divya Sunny",
+            "tags": ["Robot Design", "Robotics", "Machine Learning"]
+        },
+        {
+            "id": 28,
+            "title": "DriveGo: A decentralised application for peer to peer transportation using blockchain",
+            "description": "Not available",
+            "students": "Kajal Sebastian, Karthik Krishna, Merin Thomas",
+            "supervisor": "Prof. Maria Yesudas",
+            "tags": ["Blockchain", "Decentralized Transportation", "App Development"]
+        },
+        {
+            "id": 29,
+            "title": "Fleet Management System",
+            "description": "Not available",
+            "students": "Jojimon George, Mathew Anil, Milan M Philip",
+            "supervisor": "Prof. Alinen Nellary",
+            "tags": ["Fleet Management", "Transportation", "Machine Learning"]
+        },
+        {
+            "id": 30,
+            "title": "AIS - Video Surveillance Using Artificial Intelligence for Old Aged",
+            "description": "Not available",
+            "students": "Niveditha P M, Sona Elizebeth Shaji, Vishnupriya R",
+            "supervisor": "Prof. Ashly Thomas",
+            "tags": ["Video Surveillance", "Artificial Intelligence", "Old Aged Care"]
+        },
+        {
+            "id": 31,
+            "title": "SpecAssist : Smart glasses with real-time speech recognition and transcription.",
+            "description": "Not available",
+            "students": "Noel Jacob, Rajat Mathew",
+            "supervisor": "Prof. Divya Sunny",
+            "tags": ["Smart Glasses", "Speech Recognition", "Transcription"]
+        },
+        {
+            "id": 32,
+            "title": "Smart Basket",
+            "description": "Not available",
+            "students": "Kevin George, Léojin Thomas, Nicholas Soman",
+            "supervisor": "Prof. Jikku Thomas",
+            "tags": ["Smart Basket", "E-commerce", "Machine Learning"]
+        }
+    ],
+
+    "2023-2024": [
         {
             id: 1,
             title: "Smart Aquaculture",
