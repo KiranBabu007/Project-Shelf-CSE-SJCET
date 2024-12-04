@@ -2,678 +2,678 @@ const projectsData = {
 
             "2017-2018": [
               {
-                "id": 1,
-                "title": "Smart Trolleye",
-                "description": "An intelligent trolley system designed to enhance shopping convenience and automate billing.",
-                "students": "Amala James, Anju Abraham, Jayasree Santhosh",
-                "supervisor": "Prof. Kishore Sebastian",
-                "tags": ["IoT", "Automation", "Retail", "Smart Systems"]
+                id: 1,
+                title: "Smart Trolleye",
+                description: "An intelligent trolley system designed to enhance shopping convenience and automate billing.",
+                students: "Amala James, Anju Abraham, Jayasree Santhosh",
+                supervisor: "Prof. Kishore Sebastian",
+                tags: ["IoT", "Automation", "Retail", "Smart Systems"]
               },
               {
-                "id": 2,
-                "title": "Gait Recognition",
-                "description": "A biometric system using gait patterns for identifying individuals.",
-                "students": "Celeyamma Gregory, Diya Anna Joys, Greeni Anna George",
-                "supervisor": "Prof. Smitha Jacob",
-                "tags": ["Biometrics", "AI", "Image Processing", "Security"]
+                id: 2,
+                title: "Gait Recognition",
+                description: "A biometric system using gait patterns for identifying individuals.",
+                students: "Celeyamma Gregory, Diya Anna Joys, Greeni Anna George",
+                supervisor: "Prof. Smitha Jacob",
+                tags: ["Biometrics", "AI", "Image Processing", "Security"]
               },
               {
-                "id": 3,
-                "title": "Language Emulator",
-                "description": "An application for learning and simulating multiple languages through interactive modules.",
-                "students": "Anjali Anna Jacob, Anjana Shaji, Ashly Panoose",
-                "supervisor": "Prof. Kishore Sebastian",
-                "tags": ["Language Learning", "AI", "Mobile App", "Education"]
+                id: 3,
+                title: "Language Emulator",
+                description: "An application for learning and simulating multiple languages through interactive modules.",
+                students: "Anjali Anna Jacob, Anjana Shaji, Ashly Panoose",
+                supervisor: "Prof. Kishore Sebastian",
+                tags: ["Language Learning", "AI", "Mobile App", "Education"]
               },
               {
-                "id": 4,
-                "title": "Android Controlled Multipurpose Wheelchair for the Elderly & Handicapped",
-                "description": "A wheelchair controlled via Android devices to assist the elderly and handicapped.",
-                "students": "Anju Joseph, Flona Siby, Jesily Jose",
-                "supervisor": "Prof. Sinu Maria Kurian",
-                "tags": ["Healthcare", "Assistive Technology", "IoT", "Android"]
+                id: 4,
+                title: "Android Controlled Multipurpose Wheelchair for the Elderly & Handicapped",
+                description: "A wheelchair controlled via Android devices to assist the elderly and handicapped.",
+                students: "Anju Joseph, Flona Siby, Jesily Jose",
+                supervisor: "Prof. Sinu Maria Kurian",
+                tags: ["Healthcare", "Assistive Technology", "IoT", "Android"]
               },
               {
-                "id": 5,
-                "title": "Automated and Intelligent",
-                "description": "An intelligent system designed for automation in various operational workflows.",
-                "students": "Greshma Rachel Shaji, Gremy Johnson, Bittu Elsa George",
-                "supervisor": "Prof. Kishore Sebastian",
-                "tags": ["AI", "Automation", "IoT", "Smart Systems"]
+                id: 5,
+                title: "Automated and Intelligent",
+                description: "An intelligent system designed for automation in various operational workflows.",
+                students: "Greshma Rachel Shaji, Gremy Johnson, Bittu Elsa George",
+                supervisor: "Prof. Kishore Sebastian",
+                tags: ["AI", "Automation", "IoT", "Smart Systems"]
               },
               {
-                "id": 6,
-                "title": "FACT",
-                "description": "An educational platform focusing on advanced learning techniques and collaboration.",
-                "students": "Alisha Sebastian Kulathassery, Anjali Scaria, Ashy Dony",
-                "supervisor": "Prof. Jubil T Sunny",
-                "tags": ["Education", "Collaboration", "Technology", "AI"]
+                id: 6,
+                title: "FACT",
+                description: "An educational platform focusing on advanced learning techniques and collaboration.",
+                students: "Alisha Sebastian Kulathassery, Anjali Scaria, Ashy Dony",
+                supervisor: "Prof. Jubil T Sunny",
+                tags: ["Education", "Collaboration", "Technology", "AI"]
               },
               {
-                "id": 7,
-                "title": "Electroswayer",
-                "description": "An innovative device designed for energy generation and management.",
-                "students": "Alan Kuriakose, Akhil Saji, Jismon Lukose",
-                "supervisor": "Prof. Smitha Jacob",
-                "tags": ["Energy", "Innovation", "Technology", "IoT"]
+                id: 7,
+                title: "Electroswayer",
+                description: "An innovative device designed for energy generation and management.",
+                students: "Alan Kuriakose, Akhil Saji, Jismon Lukose",
+                supervisor: "Prof. Smitha Jacob",
+                tags: ["Energy", "Innovation", "Technology", "IoT"]
               },
               {
-                "id": 8,
-                "title": "Emotion Based Music Player",
-                "description": "A music player that adapts to the user's emotions using facial recognition.",
-                "students": "Jerin Joshy, Jino Saji, Kiran Kumar",
-                "supervisor": "Prof. Kishore Sebastian",
-                "tags": ["AI", "Emotion Recognition", "Music", "User Experience"]
+                id: 8,
+                title: "Emotion Based Music Player",
+                description: "A music player that adapts to the user's emotions using facial recognition.",
+                students: "Jerin Joshy, Jino Saji, Kiran Kumar",
+                supervisor: "Prof. Kishore Sebastian",
+                tags: ["AI", "Emotion Recognition", "Music", "User Experience"]
               },
               {
-                "id": 9,
-                "title": "Penetration Testing Tool",
-                "description": "A cybersecurity tool designed for performing penetration testing and vulnerability analysis.",
-                "students": "Anil Charles, Dominic Emmanuel",
-                "supervisor": "Prof. Sinu Maria Kurian",
-                "tags": ["Cybersecurity", "Penetration Testing", "Ethical Hacking", "Tools"]
+                id: 9,
+                title: "Penetration Testing Tool",
+                description: "A cybersecurity tool designed for performing penetration testing and vulnerability analysis.",
+                students: "Anil Charles, Dominic Emmanuel",
+                supervisor: "Prof. Sinu Maria Kurian",
+                tags: ["Cybersecurity", "Penetration Testing", "Ethical Hacking", "Tools"]
               },
               {
-                "id": 10,
-                "title": "Digital Assistant",
-                "description": "An AI-powered digital assistant to aid in daily tasks and improve productivity.",
-                "students": "Archana Babu, Bhagya Roy, Josin Saji Abraham",
-                "supervisor": "Prof. Angitha George",
-                "tags": ["AI", "Productivity", "Digital Assistant", "Automation"]
+                id: 10,
+                title: "Digital Assistant",
+                description: "An AI-powered digital assistant to aid in daily tasks and improve productivity.",
+                students: "Archana Babu, Bhagya Roy, Josin Saji Abraham",
+                supervisor: "Prof. Angitha George",
+                tags: ["AI", "Productivity", "Digital Assistant", "Automation"]
               },
               {
-                "id": 11,
-                "title": "Lashvagan Trace",
-                "description": "A tracking system designed for logistics and supply chain management.",
-                "students": "Abin Abraham, Albin P S, Denil Ulahannan, John Philip",
-                "supervisor": "Prof. Kishore Sebastian",
-                "tags": ["Tracking", "Logistics", "IoT", "Supply Chain"]
+                id: 11,
+                title: "Lashvagan Trace",
+                description: "A tracking system designed for logistics and supply chain management.",
+                students: "Abin Abraham, Albin P S, Denil Ulahannan, John Philip",
+                supervisor: "Prof. Kishore Sebastian",
+                tags: ["Tracking", "Logistics", "IoT", "Supply Chain"]
               },
               {
-                "id": 12,
-                "title": "Fuel Friend",
-                "description": "An application designed to optimize fuel usage and provide real-time tracking.",
-                "students": "Anusha Babu, Jain Joseph, Jubil Gea Joy",
-                "supervisor": "Prof. Ashly Thomas",
-                "tags": ["IoT", "Energy Efficiency", "Tracking", "Smart Systems"]
+                id: 12,
+                title: "Fuel Friend",
+                description: "An application designed to optimize fuel usage and provide real-time tracking.",
+                students: "Anusha Babu, Jain Joseph, Jubil Gea Joy",
+                supervisor: "Prof. Ashly Thomas",
+                tags: ["IoT", "Energy Efficiency", "Tracking", "Smart Systems"]
               },
               {
-                "id": 13,
-                "title": "Line Follower",
-                "description": "An automated robot designed to follow pre-defined lines for navigation.",
-                "students": "Anju V John, Ann Maria Jaison, Ann Maria Joseph",
-                "supervisor": "Prof. Kishore Sebastian",
-                "tags": ["Robotics", "Automation", "IoT", "Navigation"]
+                id: 13,
+                title: "Line Follower",
+                description: "An automated robot designed to follow pre-defined lines for navigation.",
+                students: "Anju V John, Ann Maria Jaison, Ann Maria Joseph",
+                supervisor: "Prof. Kishore Sebastian",
+                tags: ["Robotics", "Automation", "IoT", "Navigation"]
               },
               {
-                "id": 14,
-                "title": "Tracking Based Driver Drowsiness Monitoring and Warning System",
-                "description": "A real-time system to monitor driver drowsiness and provide warnings.",
-                "students": "Alina Elizabeth Sathish, Angel P Joshy, Greshma Rachel Shaji",
-                "supervisor": "Prof. Kishore Sebastian",
-                "tags": ["Road Safety", "IoT", "AI", "Driver Monitoring"]
+                id: 14,
+                title: "Tracking Based Driver Drowsiness Monitoring and Warning System",
+                description: "A real-time system to monitor driver drowsiness and provide warnings.",
+                students: "Alina Elizabeth Sathish, Angel P Joshy, Greshma Rachel Shaji",
+                supervisor: "Prof. Kishore Sebastian",
+                tags: ["Road Safety", "IoT", "AI", "Driver Monitoring"]
               },
               {
-                "id": 15,
-                "title": "Smart Fool Device",
-                "description": "An intelligent system designed to prevent deceptive practices using AI.",
-                "students": "Akhil Jose Britto, Bimal S Kiran, Jerin John",
-                "supervisor": "Prof. Kishore Sebastian",
-                "tags": ["AI", "Security", "Smart Systems", "Prevention"]
+                id: 15,
+                title: "Smart Fool Device",
+                description: "An intelligent system designed to prevent deceptive practices using AI.",
+                students: "Akhil Jose Britto, Bimal S Kiran, Jerin John",
+                supervisor: "Prof. Kishore Sebastian",
+                tags: ["AI", "Security", "Smart Systems", "Prevention"]
               },
               {
-                "id": 16,
-                "title": "IoT Theft Detection Using Raspberry Pi and Image Processing",
-                "description": "A theft detection system using Raspberry Pi and advanced image processing techniques.",
-                "students": "Priya Alex, Rosmi Thomas, Thomaskutty Antony",
-                "supervisor": "Prof. Alphonsa Johny",
-                "tags": ["IoT", "Image Processing", "Security", "Raspberry Pi"]
+                id: 16,
+                title: "IoT Theft Detection Using Raspberry Pi and Image Processing",
+                description: "A theft detection system using Raspberry Pi and advanced image processing techniques.",
+                students: "Priya Alex, Rosmi Thomas, Thomaskutty Antony",
+                supervisor: "Prof. Alphonsa Johny",
+                tags: ["IoT", "Image Processing", "Security", "Raspberry Pi"]
               },{
-                "id": 17,
-                "title": "SECRETCAM",
-                "description": "A compact security camera system with stealth capabilities for surveillance.",
-                "students": "Sneha T Varghese, Melby K Ann, Neena Kurian",
-                "supervisor": "Prof. Jubil T Sunny",
-                "tags": ["Security", "Surveillance", "IoT", "Cameras"]
+                id: 17,
+                title: "SECRETCAM",
+                description: "A compact security camera system with stealth capabilities for surveillance.",
+                students: "Sneha T Varghese, Melby K Ann, Neena Kurian",
+                supervisor: "Prof. Jubil T Sunny",
+                tags: ["Security", "Surveillance", "IoT", "Cameras"]
               },
               {
-                "id": 18,
-                "title": "DELTA ++",
-                "description": "An advanced system for processing and analyzing big data in industrial contexts.",
-                "students": "Vishnu Soman, Philip Sebastian, Sebin P Siby",
-                "supervisor": "Prof. Jeena Thomas",
-                "tags": ["Big Data", "Analytics", "Industrial Applications", "AI"]
+                id: 18,
+                title: "DELTA ++",
+                description: "An advanced system for processing and analyzing big data in industrial contexts.",
+                students: "Vishnu Soman, Philip Sebastian, Sebin P Siby",
+                supervisor: "Prof. Jeena Thomas",
+                tags: ["Big Data", "Analytics", "Industrial Applications", "AI"]
               },
               {
-                "id": 19,
-                "title": "S.A.M",
-                "description": "A smart assistant module aimed at improving productivity and task management.",
-                "students": "Jino Saji, Kiran Kumar, Jerin John",
-                "supervisor": "Prof. Prince V Jose",
-                "tags": ["AI", "Productivity", "Task Management", "Automation"]
+                id: 19,
+                title: "S.A.M",
+                description: "A smart assistant module aimed at improving productivity and task management.",
+                students: "Jino Saji, Kiran Kumar, Jerin John",
+                supervisor: "Prof. Prince V Jose",
+                tags: ["AI", "Productivity", "Task Management", "Automation"]
               },
               {
-                "id": 20,
-                "title": "AIR GO",
-                "description": "An air quality monitoring system designed for urban environments using IoT.",
-                "students": "John Kavalakkattu, Naveen Antony Jacob, Neethu Naduvathettu",
-                "supervisor": "Prof. Divya Sunny",
-                "tags": ["IoT", "Environmental Monitoring", "Air Quality", "Smart Cities"]
+                id: 20,
+                title: "AIR GO",
+                description: "An air quality monitoring system designed for urban environments using IoT.",
+                students: "John Kavalakkattu, Naveen Antony Jacob, Neethu Naduvathettu",
+                supervisor: "Prof. Divya Sunny",
+                tags: ["IoT", "Environmental Monitoring", "Air Quality", "Smart Cities"]
               },
               {
-                "id": 21,
-                "title": "Smart Band",
-                "description": "A wearable band equipped with sensors to monitor health and activity.",
-                "students": "Akhil Jose Britto, Bimal S Kiran, Jerin Joshy",
-                "supervisor": "Prof. Prince Abraham",
-                "tags": ["Wearables", "Health Monitoring", "IoT", "Fitness"]
+                id: 21,
+                title: "Smart Band",
+                description: "A wearable band equipped with sensors to monitor health and activity.",
+                students: "Akhil Jose Britto, Bimal S Kiran, Jerin Joshy",
+                supervisor: "Prof. Prince Abraham",
+                tags: ["Wearables", "Health Monitoring", "IoT", "Fitness"]
               },
               {
-                "id": 22,
-                "title": "HITCH-ON",
-                "description": "An innovative system to streamline ride-sharing and transportation logistics.",
-                "students": "Alina Elizabeth Sathish, Angel P Joshy, Greeshma Joy",
-                "supervisor": "Prof. Suma R",
-                "tags": ["Ride-Sharing", "Transportation", "IoT", "Logistics"]
+                id: 22,
+                title: "HITCH-ON",
+                description: "An innovative system to streamline ride-sharing and transportation logistics.",
+                students: "Alina Elizabeth Sathish, Angel P Joshy, Greeshma Joy",
+                supervisor: "Prof. Suma R",
+                tags: ["Ride-Sharing", "Transportation", "IoT", "Logistics"]
               },
               {
-                "id": 23,
-                "title": "SEF-PISCATOR: An Aid for Marine Fisherman",
-                "description": "A digital platform aimed at assisting marine fishermen with navigation and resource tracking.",
-                "students": "Sharon Shibu, Shona George, Sobina Joseph",
-                "supervisor": "Prof. Smija Das",
-                "tags": ["Marine Technology", "Navigation", "IoT", "Fishing"]
+                id: 23,
+                title: "SEF-PISCATOR: An Aid for Marine Fisherman",
+                description: "A digital platform aimed at assisting marine fishermen with navigation and resource tracking.",
+                students: "Sharon Shibu, Shona George, Sobina Joseph",
+                supervisor: "Prof. Smija Das",
+                tags: ["Marine Technology", "Navigation", "IoT", "Fishing"]
               },
               {
-                "id": 24,
-                "title": "Rent Hub",
-                "description": "A platform for managing and streamlining the rental process for properties and assets.",
-                "students": "Nevin John, Richy John, Sebin Sunny",
-                "supervisor": "Prof. Prince Abraham",
-                "tags": ["Real Estate", "Automation", "Rental Management", "Smart Systems"]
+                id: 24,
+                title: "Rent Hub",
+                description: "A platform for managing and streamlining the rental process for properties and assets.",
+                students: "Nevin John, Richy John, Sebin Sunny",
+                supervisor: "Prof. Prince Abraham",
+                tags: ["Real Estate", "Automation", "Rental Management", "Smart Systems"]
               },
               {
-                "id": 25,
-                "title": "FIT & MATCH",
-                "description": "A fitness application integrating personalized workout plans and dietary recommendations.",
-                "students": "Mariya M Thomas, Navitha Mathew, Pritta George",
-                "supervisor": "Prof. Sinu Maria Kurian",
-                "tags": ["Fitness", "HealthTech", "Personalization", "Mobile App"]
+                id: 25,
+                title: "FIT & MATCH",
+                description: "A fitness application integrating personalized workout plans and dietary recommendations.",
+                students: "Mariya M Thomas, Navitha Mathew, Pritta George",
+                supervisor: "Prof. Sinu Maria Kurian",
+                tags: ["Fitness", "HealthTech", "Personalization", "Mobile App"]
               },
               {
-                "id": 26,
-                "title": "LEARN IT",
-                "description": "An e-learning platform providing interactive modules and assessments for students.",
-                "students": "Shervin Mathews Sabu, Roshan Scaria, Alex Mathew",
-                "supervisor": "Prof. Ashly Thomas",
-                "tags": ["E-Learning", "Education", "Interactive Tools", "Technology"]
+                id: 26,
+                title: "LEARN IT",
+                description: "An e-learning platform providing interactive modules and assessments for students.",
+                students: "Shervin Mathews Sabu, Roshan Scaria, Alex Mathew",
+                supervisor: "Prof. Ashly Thomas",
+                tags: ["E-Learning", "Education", "Interactive Tools", "Technology"]
               },
               {
-                "id": 27,
-                "title": "NEXUS - A Social Network",
-                "description": "A unique social networking platform focusing on secure and private communication.",
-                "students": "Mathews Sunny, Muthumani V, Nikhil Thomas, Nyjil James",
-                "supervisor": "Prof. Bino Thomas",
-                "tags": ["Social Networking", "Privacy", "Technology", "Communication"]
+                id: 27,
+                title: "NEXUS - A Social Network",
+                description: "A unique social networking platform focusing on secure and private communication.",
+                students: "Mathews Sunny, Muthumani V, Nikhil Thomas, Nyjil James",
+                supervisor: "Prof. Bino Thomas",
+                tags: ["Social Networking", "Privacy", "Technology", "Communication"]
               },
               {
-                "id": 28,
-                "title": "IHMO - Intelligent Homes",
-                "description": "A smart home management system that integrates IoT devices for seamless automation.",
-                "students": "Manu K R, Meekha Merin Jose, Prince Baby, Merin Jose",
-                "supervisor": "Prof. Sarju S",
-                "tags": ["Smart Homes", "IoT", "Automation", "Energy Efficiency"]
+                id: 28,
+                title: "IHMO - Intelligent Homes",
+                description: "A smart home management system that integrates IoT devices for seamless automation.",
+                students: "Manu K R, Meekha Merin Jose, Prince Baby, Merin Jose",
+                supervisor: "Prof. Sarju S",
+                tags: ["Smart Homes", "IoT", "Automation", "Energy Efficiency"]
               },
               {
-                "id": 29,
-                "title": "Justice in a Click",
-                "description": "A legal assistance platform providing real-time solutions for justice seekers.",
-                "students": "Preeti Manoj, Pretty Deena Mathew, Pritika Merryl Prasad",
-                "supervisor": "Prof. Aneena Alex",
-                "tags": ["LegalTech", "Real-Time Assistance", "Justice", "Technology"]
+                id: 29,
+                title: "Justice in a Click",
+                description: "A legal assistance platform providing real-time solutions for justice seekers.",
+                students: "Preeti Manoj, Pretty Deena Mathew, Pritika Merryl Prasad",
+                supervisor: "Prof. Aneena Alex",
+                tags: ["LegalTech", "Real-Time Assistance", "Justice", "Technology"]
               },
               {
-                "id": 30,
-                "title": "Big Data Analytics of Geosocial Media for Planning and Real-Time Decision",
-                "description": "A platform leveraging big data analytics on geosocial media for urban planning and decision-making.",
-                "students": "Steffi Merin Philip",
-                "supervisor": "Prof. Smitha Jacob",
-                "tags": ["Big Data", "Geosocial Media", "Urban Planning", "Analytics"]
+                id: 30,
+                title: "Big Data Analytics of Geosocial Media for Planning and Real-Time Decision",
+                description: "A platform leveraging big data analytics on geosocial media for urban planning and decision-making.",
+                students: "Steffi Merin Philip",
+                supervisor: "Prof. Smitha Jacob",
+                tags: ["Big Data", "Geosocial Media", "Urban Planning", "Analytics"]
               }
             ],
          
         "2018-2019": [
     {
-      "id": 1,
-      "title": "Supervised Machine Learning in Intelligent Character Recognition of Handwritten and Printed Nameplate",
-      "description": "A system leveraging supervised machine learning for the recognition and interpretation of handwritten and printed nameplates.",
-      "students": "Allen Jose, Amal Sunny, Felix Stephen Joseph, Beany Emmanuvel",
-      "supervisor": "Prof. Divya Sunny",
-      "tags": ["Machine Learning", "OCR", "Image Processing", "AI"]
+      id: 1,
+      title: "Supervised Machine Learning in Intelligent Character Recognition of Handwritten and Printed Nameplate",
+      description: "A system leveraging supervised machine learning for the recognition and interpretation of handwritten and printed nameplates.",
+      students: "Allen Jose, Amal Sunny, Felix Stephen Joseph, Beany Emmanuvel",
+      supervisor: "Prof. Divya Sunny",
+      tags: ["Machine Learning", "OCR", "Image Processing", "AI"]
     },
     {
-      "id": 2,
-      "title": "Haemart-Drop of Life",
-      "description": "A blood donation and management application connecting donors and recipients effectively.",
-      "students": "Ashitha Annu Andrews, Akshay Ajith, Agin Sebastian, Christy Sebastian",
-      "supervisor": "Prof. Smitha Jacob",
-      "tags": ["Healthcare", "App Development", "Blood Donation", "IoT"]
+      id: 2,
+      title: "Haemart-Drop of Life",
+      description: "A blood donation and management application connecting donors and recipients effectively.",
+      students: "Ashitha Annu Andrews, Akshay Ajith, Agin Sebastian, Christy Sebastian",
+      supervisor: "Prof. Smitha Jacob",
+      tags: ["Healthcare", "App Development", "Blood Donation", "IoT"]
     },
     {
-      "id": 3,
-      "title": "IP Speaker with SIP and Smart Notification System",
-      "description": "A smart IP speaker system integrating SIP protocols and real-time notifications.",
-      "students": "Deepu Xavi, Jino Antony, Amal Thankachan, Abin John",
-      "supervisor": "Prof. Kishore Sebastian",
-      "tags": ["IoT", "Communication", "SIP", "Smart Systems"]
+      id: 3,
+      title: "IP Speaker with SIP and Smart Notification System",
+      description: "A smart IP speaker system integrating SIP protocols and real-time notifications.",
+      students: "Deepu Xavi, Jino Antony, Amal Thankachan, Abin John",
+      supervisor: "Prof. Kishore Sebastian",
+      tags: ["IoT", "Communication", "SIP", "Smart Systems"]
     },
     {
-      "id": 4,
-      "title": "AD Analysis Using Deep Learning",
-      "description": "A deep learning framework for analyzing advertisements to improve consumer engagement.",
-      "students": "Akshaya Sasikumar, Dona Elizabeth Sebastian, Carolin Thomas",
-      "supervisor": "Prof. Suma R",
-      "tags": ["Deep Learning", "Advertising", "AI", "Data Analysis"]
+      id: 4,
+      title: "AD Analysis Using Deep Learning",
+      description: "A deep learning framework for analyzing advertisements to improve consumer engagement.",
+      students: "Akshaya Sasikumar, Dona Elizabeth Sebastian, Carolin Thomas",
+      supervisor: "Prof. Suma R",
+      tags: ["Deep Learning", "Advertising", "AI", "Data Analysis"]
     },
     {
-      "id": 5,
-      "title": "Sound Mate: A Hearing Aid Application",
-      "description": "A mobile application to assist hearing-impaired individuals by amplifying and filtering sounds.",
-      "students": "Jane Martin, Angel Liza Sabu, Aneena Thomas",
-      "supervisor": "Prof. Mereen Thomas Vadakkel",
-      "tags": ["Healthcare", "Hearing Aid", "Mobile App", "Accessibility"]
+      id: 5,
+      title: "Sound Mate: A Hearing Aid Application",
+      description: "A mobile application to assist hearing-impaired individuals by amplifying and filtering sounds.",
+      students: "Jane Martin, Angel Liza Sabu, Aneena Thomas",
+      supervisor: "Prof. Mereen Thomas Vadakkel",
+      tags: ["Healthcare", "Hearing Aid", "Mobile App", "Accessibility"]
     },
     {
-      "id": 6,
-      "title": "Smart Banking",
-      "description": "An intelligent banking system offering secure and innovative financial services.",
-      "students": "Anju K Cherian, Jiby Maria Jose, Jino R",
-      "supervisor": "Prof. Sarju S",
-      "tags": ["Banking", "FinTech", "AI", "Cybersecurity"]
+      id: 6,
+      title: "Smart Banking",
+      description: "An intelligent banking system offering secure and innovative financial services.",
+      students: "Anju K Cherian, Jiby Maria Jose, Jino R",
+      supervisor: "Prof. Sarju S",
+      tags: ["Banking", "FinTech", "AI", "Cybersecurity"]
     },
     {
-      "id": 7,
-      "title": "Prediction of Diabetes Using Machine Learning",
-      "description": "A predictive system using machine learning to identify the risk of diabetes.",
-      "students": "Anumol Joseph, Irene Johnson, Jensia Thomas",
-      "supervisor": "Prof. Jeena Thomas",
-      "tags": ["Machine Learning", "Healthcare", "Predictive Analytics", "AI"]
+      id: 7,
+      title: "Prediction of Diabetes Using Machine Learning",
+      description: "A predictive system using machine learning to identify the risk of diabetes.",
+      students: "Anumol Joseph, Irene Johnson, Jensia Thomas",
+      supervisor: "Prof. Jeena Thomas",
+      tags: ["Machine Learning", "Healthcare", "Predictive Analytics", "AI"]
     },
     {
-      "id": 8,
-      "title": "Smart Parking System Based on IoT",
-      "description": "An IoT-enabled solution for efficient parking management and monitoring.",
-      "students": "Albin George, Akshay K Joseph, Jino Jacob",
-      "supervisor": "Prof. Bino Thomas",
-      "tags": ["IoT", "Smart Parking", "Automation", "Cloud Computing"]
+      id: 8,
+      title: "Smart Parking System Based on IoT",
+      description: "An IoT-enabled solution for efficient parking management and monitoring.",
+      students: "Albin George, Akshay K Joseph, Jino Jacob",
+      supervisor: "Prof. Bino Thomas",
+      tags: ["IoT", "Smart Parking", "Automation", "Cloud Computing"]
     },
     {
-      "id": 9,
-      "title": "Chord Master",
-      "description": "A music application for learning and mastering guitar chords through interactive features.",
-      "students": "Abhith Chandran, Abhishek Sebastian, Bony B Nalpathanchil, Elwin Augustin",
-      "supervisor": "Prof. Alphonsa Johny",
-      "tags": ["Music", "Learning App", "Guitar", "Interactive Tools"]
+      id: 9,
+      title: "Chord Master",
+      description: "A music application for learning and mastering guitar chords through interactive features.",
+      students: "Abhith Chandran, Abhishek Sebastian, Bony B Nalpathanchil, Elwin Augustin",
+      supervisor: "Prof. Alphonsa Johny",
+      tags: ["Music", "Learning App", "Guitar", "Interactive Tools"]
     },
     {
-      "id": 10,
-      "title": "Smart Waste Management with Deep Learning on IoT",
-      "description": "An IoT-based waste management system enhanced with deep learning for efficient operations.",
-      "students": "Allen James, Alwin Johny, Jobin Joseph, Aswin R",
-      "supervisor": "Prof. Prince V Jose",
-      "tags": ["IoT", "Waste Management", "Deep Learning", "Smart Systems"]
+      id: 10,
+      title: "Smart Waste Management with Deep Learning on IoT",
+      description: "An IoT-based waste management system enhanced with deep learning for efficient operations.",
+      students: "Allen James, Alwin Johny, Jobin Joseph, Aswin R",
+      supervisor: "Prof. Prince V Jose",
+      tags: ["IoT", "Waste Management", "Deep Learning", "Smart Systems"]
     },
     {
-        "id": 11,
-        "title": "WOE – A View Into the Life of an Autistic Child",
-        "description": "An interactive system to help understand and support children with autism through simulations and educational tools.",
-        "students": "Anoop Joel, Joseph Mathai, Jerin Thomas, Irein Joseph",
-        "supervisor": "Prof. Prince Abraham",
-        "tags": ["Healthcare", "Education", "Autism", "Interactive Systems"]
+        id: 11,
+        title: "WOE – A View Into the Life of an Autistic Child",
+        description: "An interactive system to help understand and support children with autism through simulations and educational tools.",
+        students: "Anoop Joel, Joseph Mathai, Jerin Thomas, Irein Joseph",
+        supervisor: "Prof. Prince Abraham",
+        tags: ["Healthcare", "Education", "Autism", "Interactive Systems"]
       },
       {
-        "id": 12,
-        "title": "Academic Analyzer",
-        "description": "A data-driven platform for analyzing academic performance and providing actionable insights.",
-        "students": "Elezabeth Thomas, Ansu Antony, Ashlin James",
-        "supervisor": "Prof. Jikku Thomas",
-        "tags": ["Education", "Data Analytics", "AI", "Performance Monitoring"]
+        id: 12,
+        title: "Academic Analyzer",
+        description: "A data-driven platform for analyzing academic performance and providing actionable insights.",
+        students: "Elezabeth Thomas, Ansu Antony, Ashlin James",
+        supervisor: "Prof. Jikku Thomas",
+        tags: ["Education", "Data Analytics", "AI", "Performance Monitoring"]
       },
       {
-        "id": 13,
-        "title": "CARTER PAL - Vehicle Document Automation App",
-        "description": "A mobile application to manage and automate vehicle document organization and reminders.",
-        "students": "Joseph Sanchin Biju, Vivek B Pillai, Malavika Unni, Pooja Lakshmi",
-        "supervisor": "Dr. Praseetha V M",
-        "tags": ["Automation", "Mobile App", "Transportation", "Document Management"]
+        id: 13,
+        title: "CARTER PAL - Vehicle Document Automation App",
+        description: "A mobile application to manage and automate vehicle document organization and reminders.",
+        students: "Joseph Sanchin Biju, Vivek B Pillai, Malavika Unni, Pooja Lakshmi",
+        supervisor: "Dr. Praseetha V M",
+        tags: ["Automation", "Mobile App", "Transportation", "Document Management"]
       },
       {
-        "id": 14,
-        "title": "Emotion Recognition Using Deep Learning",
-        "description": "A system utilizing deep learning to analyze and recognize human emotions through facial expressions.",
-        "students": "Marly K Mathew, Meera B Nair, Pallavi Lal",
-        "supervisor": "Prof. Alphonsa Johny",
-        "tags": ["Deep Learning", "Emotion Recognition", "AI", "Image Processing"]
+        id: 14,
+        title: "Emotion Recognition Using Deep Learning",
+        description: "A system utilizing deep learning to analyze and recognize human emotions through facial expressions.",
+        students: "Marly K Mathew, Meera B Nair, Pallavi Lal",
+        supervisor: "Prof. Alphonsa Johny",
+        tags: ["Deep Learning", "Emotion Recognition", "AI", "Image Processing"]
       },
       {
-        "id": 15,
-        "title": "Phishing Website Detection Using Machine Learning",
-        "description": "A cybersecurity tool to identify and mitigate phishing websites using machine learning algorithms.",
-        "students": "Karthik Stephen Joseph, Akshay Krishna K G, Simon S Mathew, Mark M Tharakan",
-        "supervisor": "Prof. Mereen Thomas",
-        "tags": ["Cybersecurity", "Machine Learning", "Phishing Detection", "AI"]
+        id: 15,
+        title: "Phishing Website Detection Using Machine Learning",
+        description: "A cybersecurity tool to identify and mitigate phishing websites using machine learning algorithms.",
+        students: "Karthik Stephen Joseph, Akshay Krishna K G, Simon S Mathew, Mark M Tharakan",
+        supervisor: "Prof. Mereen Thomas",
+        tags: ["Cybersecurity", "Machine Learning", "Phishing Detection", "AI"]
       },
       {
-        "id": 16,
-        "title": "Car Lease Using Blockchain",
-        "description": "A blockchain-based platform for secure and transparent car leasing transactions.",
-        "students": "Joyal Babu, Roshan Robin, Saju Mathew, Noel Philip",
-        "supervisor": "Prof. Angitha George",
-        "tags": ["Blockchain", "Car Leasing", "FinTech", "Security"]
+        id: 16,
+        title: "Car Lease Using Blockchain",
+        description: "A blockchain-based platform for secure and transparent car leasing transactions.",
+        students: "Joyal Babu, Roshan Robin, Saju Mathew, Noel Philip",
+        supervisor: "Prof. Angitha George",
+        tags: ["Blockchain", "Car Leasing", "FinTech", "Security"]
       },
       {
-        "id": 17,
-        "title": "Voting Using Blockchain",
-        "description": "A blockchain-enabled voting system ensuring transparency and integrity in elections.",
-        "students": "Roni K James, Prince Thomas, Shyamjith S A, Neetha K Saju",
-        "supervisor": "Prof. Sarju S",
-        "tags": ["Blockchain", "Voting", "Security", "Transparency"]
+        id: 17,
+        title: "Voting Using Blockchain",
+        description: "A blockchain-enabled voting system ensuring transparency and integrity in elections.",
+        students: "Roni K James, Prince Thomas, Shyamjith S A, Neetha K Saju",
+        supervisor: "Prof. Sarju S",
+        tags: ["Blockchain", "Voting", "Security", "Transparency"]
       },
       {
-        "id": 18,
-        "title": "Image Processing Algorithms for Quality Enhancements in MR Images",
-        "description": "A set of algorithms designed to enhance the quality of magnetic resonance (MR) images using image processing techniques.",
-        "students": "Merwin Rommel Augustine, Varghese P I, Roshan Joe, Bibin George",
-        "supervisor": "Prof. Kishore Sebastian",
-        "tags": ["Image Processing", "Medical Imaging", "AI", "Healthcare"]
+        id: 18,
+        title: "Image Processing Algorithms for Quality Enhancements in MR Images",
+        description: "A set of algorithms designed to enhance the quality of magnetic resonance (MR) images using image processing techniques.",
+        students: "Merwin Rommel Augustine, Varghese P I, Roshan Joe, Bibin George",
+        supervisor: "Prof. Kishore Sebastian",
+        tags: ["Image Processing", "Medical Imaging", "AI", "Healthcare"]
       },
       {
-        "id": 19,
-        "title": "LUCE - An Assistant to Blind People",
-        "description": "A smart assistant for visually impaired individuals providing navigation and object detection support.",
-        "students": "Sahil Jose Parakkal, Stephy Jolly, Julia Suzanne Mathew",
-        "supervisor": "Prof. Bino Thomas",
-        "tags": ["Accessibility", "IoT", "AI", "Assistive Technology"]
+        id: 19,
+        title: "LUCE - An Assistant to Blind People",
+        description: "A smart assistant for visually impaired individuals providing navigation and object detection support.",
+        students: "Sahil Jose Parakkal, Stephy Jolly, Julia Suzanne Mathew",
+        supervisor: "Prof. Bino Thomas",
+        tags: ["Accessibility", "IoT", "AI", "Assistive Technology"]
       },
       {
-        "id": 20,
-        "title": "Health Care Ecosystem Using Blockchain",
-        "description": "A blockchain-based platform to manage and secure healthcare data across multiple stakeholders.",
-        "students": "Tezzy Thomas, Vignesh Chandran, Saurav Joy, Mathew Paul",
-        "supervisor": "Prof. Ashly Thomas",
-        "tags": ["Blockchain", "Healthcare", "Data Security", "Ecosystem"]
+        id: 20,
+        title: "Health Care Ecosystem Using Blockchain",
+        description: "A blockchain-based platform to manage and secure healthcare data across multiple stakeholders.",
+        students: "Tezzy Thomas, Vignesh Chandran, Saurav Joy, Mathew Paul",
+        supervisor: "Prof. Ashly Thomas",
+        tags: ["Blockchain", "Healthcare", "Data Security", "Ecosystem"]
       },
       {
-        "id": 21,
-        "title": "ALLY - A Personalized Android Diary Entry App",
-        "description": "An Android application for users to maintain a personalized digital diary with advanced features.",
-        "students": "Josna Jose Kochikunnel, Riya Elizebeth Zavi, Sharon Shilpa Philip, Laveena George",
-        "supervisor": "Prof. Prince V Jose",
-        "tags": ["Mobile App", "Diary App", "Personalization", "Android"]
+        id: 21,
+        title: "ALLY - A Personalized Android Diary Entry App",
+        description: "An Android application for users to maintain a personalized digital diary with advanced features.",
+        students: "Josna Jose Kochikunnel, Riya Elizebeth Zavi, Sharon Shilpa Philip, Laveena George",
+        supervisor: "Prof. Prince V Jose",
+        tags: ["Mobile App", "Diary App", "Personalization", "Android"]
       },
       {
-        "id": 22,
-        "title": "Chat Bot for College Domain",
-        "description": "An AI-powered chatbot designed to assist students and staff with queries related to the college.",
-        "students": "Silja Byju, Shilpa Shiva, Kiran Mathew, Linsu Soni",
-        "supervisor": "Prof. Suma R",
-        "tags": ["Chatbot", "AI", "Education", "Natural Language Processing"]
+        id: 22,
+        title: "Chat Bot for College Domain",
+        description: "An AI-powered chatbot designed to assist students and staff with queries related to the college.",
+        students: "Silja Byju, Shilpa Shiva, Kiran Mathew, Linsu Soni",
+        supervisor: "Prof. Suma R",
+        tags: ["Chatbot", "AI", "Education", "Natural Language Processing"]
       },
       {
-        "id": 23,
-        "title": "Real-time Vehicle Speed Tracking and Alert System",
-        "description": "An IoT-based solution for monitoring and alerting vehicle speed in real-time to enhance road safety.",
-        "students": "Toby Manuel, Melwyn Joseph Punnoose, Tomin Mathew, Nikhil P Paul",
-        "supervisor": "Prof. Prince Abraham",
-        "tags": ["IoT", "Road Safety", "Real-Time Monitoring", "Automation"]
+        id: 23,
+        title: "Real-time Vehicle Speed Tracking and Alert System",
+        description: "An IoT-based solution for monitoring and alerting vehicle speed in real-time to enhance road safety.",
+        students: "Toby Manuel, Melwyn Joseph Punnoose, Tomin Mathew, Nikhil P Paul",
+        supervisor: "Prof. Prince Abraham",
+        tags: ["IoT", "Road Safety", "Real-Time Monitoring", "Automation"]
       },
   ],
         "2019-2020": [
           {
-            "id": 1,
-            "title": "Text To Speech Conversion For Visually Impaired People",
-            "description": "A tool that converts text into speech for visually impaired users.",
-            "students": "Anjaly Siby, Chikku Lawrance, Anisha P. Emmanuel, Jain Mariya Jayan",
-            "supervisor": "Prof. Kishore Sebastian",
-            "tags": ["Accessibility", "Speech Recognition", "Assistive Technology"]
+            id: 1,
+            title: "Text To Speech Conversion For Visually Impaired People",
+            description: "A tool that converts text into speech for visually impaired users.",
+            students: "Anjaly Siby, Chikku Lawrance, Anisha P. Emmanuel, Jain Mariya Jayan",
+            supervisor: "Prof. Kishore Sebastian",
+            tags: ["Accessibility", "Speech Recognition", "Assistive Technology"]
           },
           {
-            "id": 2,
-            "title": "Modeling Of Bitcoin Price Prediction Algorithm Using Deep Learning",
-            "description": "A deep learning model to predict Bitcoin prices.",
-            "students": "Ann Maria Babu, Hari Priya, Jismin K. Jose, Jiss Maria Jijo",
-            "supervisor": "Prof. Prince V Jose",
-            "tags": ["Finance", "Machine Learning", "Cryptocurrency"]
+            id: 2,
+            title: "Modeling Of Bitcoin Price Prediction Algorithm Using Deep Learning",
+            description: "A deep learning model to predict Bitcoin prices.",
+            students: "Ann Maria Babu, Hari Priya, Jismin K. Jose, Jiss Maria Jijo",
+            supervisor: "Prof. Prince V Jose",
+            tags: ["Finance", "Machine Learning", "Cryptocurrency"]
           },
           {
-            "id": 3,
-            "title": "Elements- Voice Activated Image Editing Software",
-            "description": "Image editing software controlled via voice commands.",
-            "students": "Akash Johny, Albin Saji, Benjamin G Nechicattu, Done Maria James",
-            "supervisor": "Prof. Suma R",
-            "tags": ["Image Processing", "Voice Commands", "Software Development"]
+            id: 3,
+            title: "Elements- Voice Activated Image Editing Software",
+            description: "Image editing software controlled via voice commands.",
+            students: "Akash Johny, Albin Saji, Benjamin G Nechicattu, Done Maria James",
+            supervisor: "Prof. Suma R",
+            tags: ["Image Processing", "Voice Commands", "Software Development"]
           },
           {
-            "id": 4,
-            "title": "Indoor Maps",
-            "description": "A navigation system for indoor environments.",
-            "students": "Abhijith Ajith, Albin Mathew Thomas, Jestin Antony, Joel Joseph",
-            "supervisor": "Prof. Suma R",
-            "tags": ["Navigation", "Indoor Mapping", "GIS"]
+            id: 4,
+            title: "Indoor Maps",
+            description: "A navigation system for indoor environments.",
+            students: "Abhijith Ajith, Albin Mathew Thomas, Jestin Antony, Joel Joseph",
+            supervisor: "Prof. Suma R",
+            tags: ["Navigation", "Indoor Mapping", "GIS"]
           },
           {
-            "id": 5,
-            "title": "IoT Based Drowsy Detection And Warning System",
-            "description": "A real-time IoT solution to detect driver drowsiness and issue warnings.",
-            "students": "Aneesha Shaly George, Christy Shaji, Harikrishnan A, Jose Paul",
-            "supervisor": "Prof. Ashly Thomas",
-            "tags": ["IoT", "Driver Safety", "Real-Time Alerts"]
+            id: 5,
+            title: "IoT Based Drowsy Detection And Warning System",
+            description: "A real-time IoT solution to detect driver drowsiness and issue warnings.",
+            students: "Aneesha Shaly George, Christy Shaji, Harikrishnan A, Jose Paul",
+            supervisor: "Prof. Ashly Thomas",
+            tags: ["IoT", "Driver Safety", "Real-Time Alerts"]
           },
           {
-            "id": 6,
-            "title": "Placement Management System – Phase 1",
-            "description": "An automated system for managing placement activities in educational institutions.",
-            "students": "Ajeena Sunny, Aneena Felix, Angelin Saji, Christina Sebastian",
-            "supervisor": "Prof. Praseetha V. M",
-            "tags": ["Management System", "Education", "Automation"]
+            id: 6,
+            title: "Placement Management System – Phase 1",
+            description: "An automated system for managing placement activities in educational institutions.",
+            students: "Ajeena Sunny, Aneena Felix, Angelin Saji, Christina Sebastian",
+            supervisor: "Prof. Praseetha V. M",
+            tags: ["Management System", "Education", "Automation"]
           },
           {
-            "id": 7,
-            "title": "Omnis Agro: Agriculture For Everyone",
-            "description": "A smart farming solution using IoT for optimized agricultural practices.",
-            "students": "Boney George, Francis P. B., Gion Dany, Joseph Hermis",
-            "supervisor": "Prof. Prince Abraham",
-            "tags": ["Agriculture", "IoT", "Smart Farming"]
+            id: 7,
+            title: "Omnis Agro: Agriculture For Everyone",
+            description: "A smart farming solution using IoT for optimized agricultural practices.",
+            students: "Boney George, Francis P. B., Gion Dany, Joseph Hermis",
+            supervisor: "Prof. Prince Abraham",
+            tags: ["Agriculture", "IoT", "Smart Farming"]
           },
           {
-            "id": 8,
-            "title": "Placement Management System - Phase 2",
-            "description": "A continuation of the placement management system with additional features.",
-            "students": "Daibin Raju, Irene Treesa Jose, Jeebu Abraham Aniyankunju, Joel James",
-            "supervisor": "Prof. Mereen Thomas",
-            "tags": ["Education", "Placement", "Software Development"]
+            id: 8,
+            title: "Placement Management System - Phase 2",
+            description: "A continuation of the placement management system with additional features.",
+            students: "Daibin Raju, Irene Treesa Jose, Jeebu Abraham Aniyankunju, Joel James",
+            supervisor: "Prof. Mereen Thomas",
+            tags: ["Education", "Placement", "Software Development"]
           },
           {
-            "id": 9,
-            "title": "Flood Rescue Management And Zone Mapping Using Gis And Advanced Technologies",
-            "students": "Aksa Reji, Alen Mathew, Andrews P George, Christina Tresa Abraham",
-            "supervisor": "Prof. Jikku Thomas",
-            "tags": ["GIS", "Flood Rescue", "Technology"]
+            id: 9,
+            title: "Flood Rescue Management And Zone Mapping Using Gis And Advanced Technologies",
+            students: "Aksa Reji, Alen Mathew, Andrews P George, Christina Tresa Abraham",
+            supervisor: "Prof. Jikku Thomas",
+            tags: ["GIS", "Flood Rescue", "Technology"]
           },
           {
-            "id": 10,
-            "title": "Sign Language Translator For Deaf-Mute",
-            "students": "Alka Augustine, Anit Mathew, Ashna Saji, Elizabeth Jose",
-            "supervisor": "Prof. Angitha George",
-            "tags": ["Sign Language", "Translator", "Technology"]
+            id: 10,
+            title: "Sign Language Translator For Deaf-Mute",
+            students: "Alka Augustine, Anit Mathew, Ashna Saji, Elizabeth Jose",
+            supervisor: "Prof. Angitha George",
+            tags: ["Sign Language", "Translator", "Technology"]
           },
           {
-            "id": 11,
-            "title": "Asra- Cloud Computing Based Framework For Blood Services",
-            "description": "A robust cloud computing platform designed to optimize and manage blood donation and transfusion services.",
-            "students": "Adharsh Raju, Albert Kurian, Basil Joseph Benny",
-            "supervisor": "Prof. (Dr.) Joby P P",
-            "tags": ["Cloud Computing", "Blood Services", "Framework"]
+            id: 11,
+            title: "Asra- Cloud Computing Based Framework For Blood Services",
+            description: "A robust cloud computing platform designed to optimize and manage blood donation and transfusion services.",
+            students: "Adharsh Raju, Albert Kurian, Basil Joseph Benny",
+            supervisor: "Prof. (Dr.) Joby P P",
+            tags: ["Cloud Computing", "Blood Services", "Framework"]
           },
           {
-            "id": 12,
-            "title": "Vulnerability Scanner",
-            "description": "A cybersecurity tool designed to detect and report vulnerabilities in computer systems and networks.",
-            "students": "Binny George, Jenu Maria Scaria, Jobin B",
-            "supervisor": "Prof. (Dr.) Praseetha V. M",
-            "tags": ["Cybersecurity", "Vulnerability", "Scanner"]
+            id: 12,
+            title: "Vulnerability Scanner",
+            description: "A cybersecurity tool designed to detect and report vulnerabilities in computer systems and networks.",
+            students: "Binny George, Jenu Maria Scaria, Jobin B",
+            supervisor: "Prof. (Dr.) Praseetha V. M",
+            tags: ["Cybersecurity", "Vulnerability", "Scanner"]
           },
           {
-            "id": 13,
-            "title": "Automatic Image Detection And Censoring",
-            "description": "An automated system for identifying and censoring sensitive content in images.",
-            "students": "Adithye Joseph, Ajay Chacko Thomas, Jobin Jose",
-            "supervisor": "Prof. Divya Sunny",
-            "tags": ["Image Detection", "Censorship", "Automation"]
+            id: 13,
+            title: "Automatic Image Detection And Censoring",
+            description: "An automated system for identifying and censoring sensitive content in images.",
+            students: "Adithye Joseph, Ajay Chacko Thomas, Jobin Jose",
+            supervisor: "Prof. Divya Sunny",
+            tags: ["Image Detection", "Censorship", "Automation"]
           },
           {
-            "id": 14,
-            "title": "Malayalam Speech To Text Conversion",
-            "description": "A natural language processing system that converts spoken Malayalam into written text.",
-            "students": "Abhishek M P, Ajay P Mathews, Anandhu Sasikuttan, Ashish James",
-            "supervisor": "Prof. Kishore Sebastian",
-            "tags": ["Speech Recognition", "Malayalam", "Text Conversion"]
+            id: 14,
+            title: "Malayalam Speech To Text Conversion",
+            description: "A natural language processing system that converts spoken Malayalam into written text.",
+            students: "Abhishek M P, Ajay P Mathews, Anandhu Sasikuttan, Ashish James",
+            supervisor: "Prof. Kishore Sebastian",
+            tags: ["Speech Recognition", "Malayalam", "Text Conversion"]
           },
           {
-            "id": 15,
-            "title": "Homomorphic Encryption Based Online Voting System",
-            "description": "A secure online voting platform leveraging homomorphic encryption for confidentiality and accuracy.",
-            "students": "Alen Manoj",
-            "supervisor": "Dr. Joby P P",
-            "tags": ["Homomorphic Encryption", "Online Voting", "Security"]
+            id: 15,
+            title: "Homomorphic Encryption Based Online Voting System",
+            description: "A secure online voting platform leveraging homomorphic encryption for confidentiality and accuracy.",
+            students: "Alen Manoj",
+            supervisor: "Dr. Joby P P",
+            tags: ["Homomorphic Encryption", "Online Voting", "Security"]
           },
           {
-            "id": 16,
-            "title": "Detection Of Helmetless Riders Using Faster R-Cnn",
-            "description": "A traffic monitoring system using Faster R-CNN to detect motorcyclists riding without helmets.",
-            "students": "Meenu R, Sinta Raju, Smrithi P Paul, Swathy Sajeev",
-            "supervisor": "Prof. Alphonsa Johny",
-            "tags": ["Helmet Detection", "Faster R-CNN", "Safety"]
+            id: 16,
+            title: "Detection Of Helmetless Riders Using Faster R-Cnn",
+            description: "A traffic monitoring system using Faster R-CNN to detect motorcyclists riding without helmets.",
+            students: "Meenu R, Sinta Raju, Smrithi P Paul, Swathy Sajeev",
+            supervisor: "Prof. Alphonsa Johny",
+            tags: ["Helmet Detection", "Faster R-CNN", "Safety"]
           },
           {
-            "id": 17,
-            "title": "A Device For Communication With Deaf-Blind People",
-            "description": "An assistive technology device enabling communication for individuals with both hearing and visual impairments.",
-            "students": "Joyal James, Kevin M Jeggy, Ramjith Ramadas, Sonu Martin",
-            "supervisor": "Prof. Jikku Thomas",
-            "tags": ["Deaf-Blind Communication", "Assistive Technology"]
+            id: 17,
+            title: "A Device For Communication With Deaf-Blind People",
+            description: "An assistive technology device enabling communication for individuals with both hearing and visual impairments.",
+            students: "Joyal James, Kevin M Jeggy, Ramjith Ramadas, Sonu Martin",
+            supervisor: "Prof. Jikku Thomas",
+            tags: ["Deaf-Blind Communication", "Assistive Technology"]
           },
           {
-            "id": 18,
-            "title": "Mechy- Maintenance Of Car Engine Using Augmented Reality",
-            "description": "An AR-based application to guide users in maintaining and repairing car engines.",
-            "students": "Maju Joseph, Nikhil Josy, Ron George Valiyaveettil, Vishnudas V",
-            "supervisor": "Prof. Smitha Jacob",
-            "tags": ["Car Maintenance", "Augmented Reality", "Technology"]
+            id: 18,
+            title: "Mechy- Maintenance Of Car Engine Using Augmented Reality",
+            description: "An AR-based application to guide users in maintaining and repairing car engines.",
+            students: "Maju Joseph, Nikhil Josy, Ron George Valiyaveettil, Vishnudas V",
+            supervisor: "Prof. Smitha Jacob",
+            tags: ["Car Maintenance", "Augmented Reality", "Technology"]
           },
           {
-            "id": 19,
-            "title": "E-Lending System",
-            "description": "An online platform for secure and efficient lending and borrowing transactions.",
-            "students": "Vineeth K",
-            "supervisor": "Prof. Smitha Jacob",
-            "tags": ["E-Lending", "System", "Online Platform"]
+            id: 19,
+            title: "E-Lending System",
+            description: "An online platform for secure and efficient lending and borrowing transactions.",
+            students: "Vineeth K",
+            supervisor: "Prof. Smitha Jacob",
+            tags: ["E-Lending", "System", "Online Platform"]
           },
           {
-            "id": 20,
-            "title": "Omnis Agro: Agriculture For Everyone",
-            "description": "A smart agriculture platform designed to enhance productivity and accessibility for farmers.",
-            "students": "Rahal Bency Paul, Roshen Reji George, Sachin Sajikumar, Sreelakshmi R",
-            "supervisor": "Prof. Prince Abraham",
-            "tags": ["Agriculture", "Technology", "Farming"]
+            id: 20,
+            title: "Omnis Agro: Agriculture For Everyone",
+            description: "A smart agriculture platform designed to enhance productivity and accessibility for farmers.",
+            students: "Rahal Bency Paul, Roshen Reji George, Sachin Sajikumar, Sreelakshmi R",
+            supervisor: "Prof. Prince Abraham",
+            tags: ["Agriculture", "Technology", "Farming"]
           },
           {
-            "id": 21,
-            "title": "SIGNOS: A Solution For Unhearing",
-            "description": "A communication tool for hearing-impaired individuals, utilizing sign language recognition.",
-            "students": "Rahul Ajith, Sebin Skariah, Slomo A Thomas, Visakh S Nair",
-            "supervisor": "Prof. Sarju S",
-            "tags": ["Sign Language", "Hearing Impaired", "Communication"]
+            id: 21,
+            title: "SIGNOS: A Solution For Unhearing",
+            description: "A communication tool for hearing-impaired individuals, utilizing sign language recognition.",
+            students: "Rahul Ajith, Sebin Skariah, Slomo A Thomas, Visakh S Nair",
+            supervisor: "Prof. Sarju S",
+            tags: ["Sign Language", "Hearing Impaired", "Communication"]
           },
           {
-            "id": 22,
-            "title": "Automated HR",
-            "description": "An HR management system automating repetitive tasks and streamlining processes.",
-            "students": "Maria Rose Chacko, Megha Philip, Merin Mary Saju, Nimmy George",
-            "supervisor": "Prof. Prince V Jose",
-            "tags": ["HR", "Automation", "Human Resources"]
+            id: 22,
+            title: "Automated HR",
+            description: "An HR management system automating repetitive tasks and streamlining processes.",
+            students: "Maria Rose Chacko, Megha Philip, Merin Mary Saju, Nimmy George",
+            supervisor: "Prof. Prince V Jose",
+            tags: ["HR", "Automation", "Human Resources"]
           },
           {
-            "id": 23,
-            "title": "Melanoma Detection Using Deep Learning",
-            "description": "A medical AI system for early detection of melanoma using deep learning techniques.",
-            "students": "Jovel Jose, Melvin Mathew, Reenu Tresa Manuel, Syam Philip",
-            "supervisor": "Prof. Alphonsa Johny",
-            "tags": ["Melanoma", "Deep Learning", "Medical Technology"]
+            id: 23,
+            title: "Melanoma Detection Using Deep Learning",
+            description: "A medical AI system for early detection of melanoma using deep learning techniques.",
+            students: "Jovel Jose, Melvin Mathew, Reenu Tresa Manuel, Syam Philip",
+            supervisor: "Prof. Alphonsa Johny",
+            tags: ["Melanoma", "Deep Learning", "Medical Technology"]
           },
           {
-            "id": 24,
-            "title": "Medidocs",
-            "description": "A digital solution for efficient management and storage of medical records.",
-            "students": "Reon Saji, Robin Thomas, Mohammed Shabin Moidu, Praveen K S",
-            "supervisor": "Prof. Sarju S",
-            "tags": ["Medical Documentation", "Health Tech"]
+            id: 24,
+            title: "Medidocs",
+            description: "A digital solution for efficient management and storage of medical records.",
+            students: "Reon Saji, Robin Thomas, Mohammed Shabin Moidu, Praveen K S",
+            supervisor: "Prof. Sarju S",
+            tags: ["Medical Documentation", "Health Tech"]
           },
           {
-            "id": 25,
-            "title": "Home Automation System Using Malayalam Language",
-            "description": "A smart home system controlled through voice commands in Malayalam.",
-            "students": "Mathew Santhosh, Nayan Thara Prakash, Sneha Raj M P, Gokul G",
-            "supervisor": "Prof. Gemini George",
-            "tags": ["Home Automation", "Malayalam", "Technology"]
+            id: 25,
+            title: "Home Automation System Using Malayalam Language",
+            description: "A smart home system controlled through voice commands in Malayalam.",
+            students: "Mathew Santhosh, Nayan Thara Prakash, Sneha Raj M P, Gokul G",
+            supervisor: "Prof. Gemini George",
+            tags: ["Home Automation", "Malayalam", "Technology"]
           },
           {
-            "id": 26,
-            "title": "Web Hosting Using Docker Containers",
-            "description": "A scalable and efficient web hosting solution utilizing Docker container technology.",
-            "students": "Minto Sunny, Sen Shaji, Sheen Sabu, Udith Uthaman",
-            "supervisor": "Prof. Gemini George",
-            "tags": ["Web Hosting", "Docker Containers", "Technology"]
+            id: 26,
+            title: "Web Hosting Using Docker Containers",
+            description: "A scalable and efficient web hosting solution utilizing Docker container technology.",
+            students: "Minto Sunny, Sen Shaji, Sheen Sabu, Udith Uthaman",
+            supervisor: "Prof. Gemini George",
+            tags: ["Web Hosting", "Docker Containers", "Technology"]
           },
           {
-            "id": 27,
-            "title": "A Smart Music Player Using Facial Recognition",
-            "description": "An AI-powered music player that curates playlists based on the user's facial expressions.",
-            "students": "Shain Tom Mathew, Riya Issac, Stephy Theres Mathew, Asma Mehnas Muthalib",
-            "supervisor": "Prof. Divya Sunny",
-            "tags": ["Music Player", "Facial Recognition", "AI"]
+            id: 27,
+            title: "A Smart Music Player Using Facial Recognition",
+            description: "An AI-powered music player that curates playlists based on the user's facial expressions.",
+            students: "Shain Tom Mathew, Riya Issac, Stephy Theres Mathew, Asma Mehnas Muthalib",
+            supervisor: "Prof. Divya Sunny",
+            tags: ["Music Player", "Facial Recognition", "AI"]
           },
           {
-            "id": 28,
-            "title": "Artificial Intelligence Based Depression Recognition System",
-            "description": "An AI-based system designed to detect signs of depression through behavioral analysis.",
-            "students": "Nissy Alex, Lija Joy, Sherin Thomas, Teenu Sunny",
-            "supervisor": "Prof. Angitha George",
-            "tags": ["AI", "Depression Recognition", "Mental Health"]
+            id: 28,
+            title: "Artificial Intelligence Based Depression Recognition System",
+            description: "An AI-based system designed to detect signs of depression through behavioral analysis.",
+            students: "Nissy Alex, Lija Joy, Sherin Thomas, Teenu Sunny",
+            supervisor: "Prof. Angitha George",
+            tags: ["AI", "Depression Recognition", "Mental Health"]
           },
           {
-            "id": 29,
-            "title": "Non-Invasive Anemic Detection - DetectIR",
-            "description": "A health tech system for detecting anemia using non-invasive infrared technology.",
-            "students": "Nesnu Elizabeth Kurian, Reshma Sara Joe, Sonita Ann Koshy, Vishnupriya V Gopal",
-            "supervisor": "Prof. Mereen Thomas",
-            "tags": ["Anemia Detection", "Non-invasive", "Health Tech"]
+            id: 29,
+            title: "Non-Invasive Anemic Detection - DetectIR",
+            description: "A health tech system for detecting anemia using non-invasive infrared technology.",
+            students: "Nesnu Elizabeth Kurian, Reshma Sara Joe, Sonita Ann Koshy, Vishnupriya V Gopal",
+            supervisor: "Prof. Mereen Thomas",
+            tags: ["Anemia Detection", "Non-invasive", "Health Tech"]
           },
           {
-            "id": 30,
-            "title": "Online Toll Payment App",
-            "description": "A mobile application for seamless toll payment, reducing wait times and improving convenience.",
-            "students": "Justin Varghese, Sijin John, Nimith Thomas",
-            "supervisor": "Prof. Sinu Maria Kurian",
-            "tags": ["Toll Payment", "App Development", "Technology"]
+            id: 30,
+            title: "Online Toll Payment App",
+            description: "A mobile application for seamless toll payment, reducing wait times and improving convenience.",
+            students: "Justin Varghese, Sijin John, Nimith Thomas",
+            supervisor: "Prof. Sinu Maria Kurian",
+            tags: ["Toll Payment", "App Development", "Technology"]
           },
           {
-            "id": 31,
-            "title": "Certificate Management System Using Blockchain",
-            "description": "A secure platform for managing and verifying certificates using blockchain technology.",
-            "students": "Mili Rafi",
-            "supervisor": "Prof. Ashly Thomas",
-            "tags": ["Blockchain", "Certificate Management", "Security"]
+            id: 31,
+            title: "Certificate Management System Using Blockchain",
+            description: "A secure platform for managing and verifying certificates using blockchain technology.",
+            students: "Mili Rafi",
+            supervisor: "Prof. Ashly Thomas",
+            tags: ["Blockchain", "Certificate Management", "Security"]
           }
         ]
       
