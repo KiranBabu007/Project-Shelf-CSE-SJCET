@@ -10,6 +10,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Search, Download } from 'lucide-react'
 import Image from 'next/image'
 import projectsData from "@/app/project-shelf/projects"
+import { Instagram, Github, Linkedin } from 'lucide-react'
 
 const ProjectShelf = () => {
     const [selectedYear, setSelectedYear] = useState<string>("2024");
@@ -40,10 +41,9 @@ const ProjectShelf = () => {
             ].join(","))
         ].join("\n");
 
-        // Create a Blob with the CSV content
         const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
 
-        // Create a download link and trigger the download
+        
         const link = document.createElement("a");
         if (link.download !== undefined) {
             const url = URL.createObjectURL(blob);
@@ -156,7 +156,21 @@ const ProjectShelf = () => {
                             <h3 className="text-md font-sans font-semibold">Computer Science and Engineering Department</h3>
                             <p className='font-sans text-sm'>St Josephs College Of Engineering and Technology,Palai</p>
                         </div>
-
+                        <div className="flex items-center space-x-4">
+                            <h4 className="font-sans text-md font-bold mr-1 ">Connect with me</h4>
+                            <a href="https://github.com/KiranBabu007" target="_blank" rel="noopener noreferrer" 
+                               className="hover:text-orange-500 transition-colors">
+                                <Github size={20} />
+                            </a>
+                            <a href="https://linkedin.com/in/kiran07x" target="_blank" rel="noopener noreferrer"
+                               className="hover:text-orange-500 transition-colors">
+                                <Linkedin size={20} />
+                            </a>
+                            <a href="https://instagram.com/kr_07x" target="_blank" rel="noopener noreferrer"
+                               className="hover:text-orange-500 transition-colors">
+                                <Instagram size={20} />
+                            </a>
+                        </div>
                     </div>
                     <div className="mt-4 text-center font-sans text-sm">
                         <p>&copy; 2024 Kiran Babu. All rights reserved.</p>
