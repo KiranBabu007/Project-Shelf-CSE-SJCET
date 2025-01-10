@@ -105,7 +105,7 @@ const ProjectShelf = () => {
                         <div className="relative w-full sm:w-auto">
                             <Search className="absolute left-2 top-2.5 h-4 w-4 text-orange-500" />
                             <Input
-                                placeholder="Search projects..."
+                                placeholder="Search projects or tags..."
                                 className="pl-8 border-orange-500 w-full"
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
