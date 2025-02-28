@@ -6,6 +6,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import FindMyGuideChat from "@/components/findguide"; // Import the new component
 
 import { Search, Download } from 'lucide-react'
 import Image from 'next/image'
@@ -146,7 +147,6 @@ const ProjectShelf = () => {
                         ))}
                     </TableBody>
                 </Table>
-
             </div>
 
             <footer className="bg-orange-100 text-orange-700 py-3 mt-8">
@@ -177,6 +177,9 @@ const ProjectShelf = () => {
                     </div>
                 </div>
             </footer>
+            
+            {/* Add the Find My Guide component */}
+            <FindMyGuideChat />
         </div>
     );
 };
