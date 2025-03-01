@@ -11,94 +11,193 @@ interface Project {
   year?: string;
 }
 
-// Find similar projects using text similarity
-const findSimilarProjects = (queryText: string, limit: number = 3) => {
-  // Prepare the corpus from all projects
+// Find similar projects using TF-IDF
+const findSimilarProjects = (queryText: string, limit: number = 5) => {
+  // Prepare all projects
   const allProjects = Object.entries(projectsData).flatMap(([year, projects]) => 
     (projects as Project[]).map(project => ({
       ...project,
       year
     }))
   );
-
-  // Preprocess text - lowercase, remove punctuation, split into words
+  
+  // Process text - lowercase, remove punctuation, tokenize
   const preprocessText = (text: string) => {
     return text.toLowerCase()
       .replace(/[^\w\s]/g, '')
       .split(/\s+/)
-      .filter(word => word.length > 2); // Filter out very short words
+      .filter(word => word.length > 2);
   };
   
-  // Extract query keywords
-  const queryWords = new Set(preprocessText(queryText));
+  // Common English stopwords
+  const stopwords = new Set([
+    "the", "and", "for", "with", "that", "this", "not", "are", "you", "your",
+    "from", "have", "has", "had", "was", "were", "will", "can", "project"
+  ]);
   
-  // Calculate similarity scores for each project
-  const scoredProjects = allProjects.map(project => {
-    // Combine relevant text fields
-    const projectText = `${project.title} ${project.description} ${project.tags.join(' ')}`;
-    const projectWords = preprocessText(projectText);
-    
-    // Count matching words
-    let matchCount = 0;
-    projectWords.forEach(word => {
-      if (queryWords.has(word)) {
-        matchCount++;
+  // Calculate term frequencies for a document
+  const calculateTF = (tokens: string[]) => {
+    const tf: Record<string, number> = {};
+    tokens.forEach(token => {
+      if (!stopwords.has(token)) {
+        tf[token] = (tf[token] || 0) + 1;
       }
     });
+    return tf;
+  };
+  
+  // Calculate document frequencies
+  const calculateIDF = (documents: string[][]) => {
+    const idf: Record<string, number> = {};
+    const uniqueTerms = new Set<string>();
     
-    // Simple similarity score - number of matching words divided by query length
-    const similarity = queryWords.size > 0 ? matchCount / queryWords.size : 0;
+    // Count documents containing each term
+    documents.forEach(doc => {
+      const terms = new Set(doc);
+      terms.forEach(term => {
+        if (!stopwords.has(term)) {
+          idf[term] = (idf[term] || 0) + 1;
+          uniqueTerms.add(term);
+        }
+      });
+    });
+    
+    // Calculate IDF
+    const docCount = documents.length;
+    uniqueTerms.forEach(term => {
+      idf[term] = Math.log(docCount / (idf[term] || 1));
+    });
+    
+    return idf;
+  };
+  
+  // Calculate TF-IDF scores
+  const calculateTFIDF = (tf: Record<string, number>, idf: Record<string, number>) => {
+    const tfidf: Record<string, number> = {};
+    Object.keys(tf).forEach(term => {
+      tfidf[term] = tf[term] * (idf[term] || 0);
+    });
+    return tfidf;
+  };
+  
+  // Preprocess all project texts
+  const projectTexts = allProjects.map(project => {
+    // Combine title, description and tags with different weights
+    const combinedText = 
+      `${project.title} ${project.title} ` + // Title twice for more weight
+      `${project.description} ` +
+      `${project.tags.join(' ')} ${project.tags.join(' ')}`; // Tags twice for more weight
+    return preprocessText(combinedText);
+  });
+  
+  // Add query text for processing
+  const queryTokens = preprocessText(queryText);
+  const allTexts = [...projectTexts, queryTokens];
+  
+  // Calculate TF-IDF vectors
+  const idf = calculateIDF(allTexts);
+  const projectVectors = projectTexts.map(text => calculateTFIDF(calculateTF(text), idf));
+  const queryVector = calculateTFIDF(calculateTF(queryTokens), idf);
+  
+  // Calculate cosine similarities
+  const similarities = projectVectors.map((vector, idx) => {
+    // Get all unique terms from both vectors
+    const terms = new Set([...Object.keys(vector), ...Object.keys(queryVector)]);
+    
+    let dotProduct = 0;
+    let normA = 0;
+    let normB = 0;
+    
+    terms.forEach(term => {
+      const a = vector[term] || 0;
+      const b = queryVector[term] || 0;
+      dotProduct += a * b;
+      normA += a * a;
+      normB += b * b;
+    });
+    
+    const similarity = dotProduct / (Math.sqrt(normA) * Math.sqrt(normB) || 1);
     
     return {
-      project,
-      similarity
+      project: allProjects[idx],
+      similarity: isNaN(similarity) ? 0 : similarity
     };
   });
   
-  // Sort by similarity score and return top matches
-  return scoredProjects
+  // Sort and return top matches
+  return similarities
     .sort((a, b) => b.similarity - a.similarity)
     .slice(0, limit)
     .map(item => item.project);
 };
 
-// Generate guide recommendation
+// Rest of your code remains the same
 const recommendGuide = (description: string, similarProjects: Project[]) => {
-  // Count occurrences of each supervisor
-  const supervisorCounts: Record<string, number> = {};
-  similarProjects.forEach(project => {
-    supervisorCounts[project.supervisor] = (supervisorCounts[project.supervisor] || 0) + 1;
+  // Count occurrences of each supervisor with weighting
+  const supervisorScores: Record<string, {count: number, score: number, projects: Project[]}> = {};
+  
+  similarProjects.forEach((project, index) => {
+    // Add weighting based on similarity position (earlier = more similar)
+    const weight = similarProjects.length - index;
+    
+    if (!supervisorScores[project.supervisor]) {
+      supervisorScores[project.supervisor] = {count: 0, score: 0, projects: []};
+    }
+    supervisorScores[project.supervisor].count += 1;
+    supervisorScores[project.supervisor].score += weight;
+    supervisorScores[project.supervisor].projects.push(project);
   });
   
-  // Find most frequent supervisor
+  // Find best supervisor match based on weighted score
   let bestMatch = '';
-  let highestCount = 0;
+  let highestScore = 0;
+  let bestProjects: Project[] = [];
   
-  for (const supervisor in supervisorCounts) {
-    if (supervisorCounts[supervisor] > highestCount) {
-      highestCount = supervisorCounts[supervisor];
+  for (const supervisor in supervisorScores) {
+    if (supervisorScores[supervisor].score > highestScore) {
+      highestScore = supervisorScores[supervisor].score;
       bestMatch = supervisor;
+      bestProjects = supervisorScores[supervisor].projects;
     }
   }
   
-  // Collect projects by the recommended supervisor
-  const projectsWithSupervisor = similarProjects
-    .filter(p => p.supervisor === bestMatch)
-    .map(p => p.title);
-
-  // Get relevant tags from similar projects
-  const relevantTags = new Set<string>();
-  similarProjects.forEach(p => p.tags.forEach(tag => relevantTags.add(tag)));
+  // Extract key themes from the request description
+  const descWords = description.toLowerCase()
+    .replace(/[^\w\s]/g, '')
+    .split(/\s+/)
+    .filter(word => word.length > 3);
   
-  // Create explanation
-  const recommendation = `Based on your project description: "${description.substring(0, 100)}${description.length > 100 ? '...' : ''}", 
-I recommend ${bestMatch} as your project guide.
+  // Organize tags by frequency across relevant projects
+  const tagFrequency: Record<string, number> = {};
+  bestProjects.forEach(project => {
+    project.tags.forEach(tag => {
+      tagFrequency[tag] = (tagFrequency[tag] || 0) + 1;
+    });
+  });
+  
+  // Sort tags by frequency
+  const relevantTags = Object.entries(tagFrequency)
+    .sort((a, b) => b[1] - a[1])
+    .map(([tag]) => tag);
+  
+  // Find most relevant expertise areas based on tags
+  const expertiseAreas = relevantTags.slice(0, 3);
+  
+  // Create a more engaging and informative explanation
+  const recommendation = `Based on your project description about ${
+    descWords.slice(0, 5).join(" ")
+  }..., I recommend **${bestMatch}** as your project guide.
 
-${bestMatch} has supervised similar projects including: ${projectsWithSupervisor.join(', ')}.
+**Why Prof. ${bestMatch.split(' ')[1] || bestMatch}?**
+- Has supervised ${bestProjects.length} similar projects including: ${bestProjects.map(p => `"${p.title}"`).join(', ')}
+- Demonstrates expertise in ${expertiseAreas.join(', ')}
+- Has experience guiding projects with similar technical requirements
 
-These projects involve technologies and concepts such as: ${Array.from(relevantTags).join(', ')}.
+**Key matching technologies:** ${relevantTags.join(', ')}
 
-Their experience with these topics makes them well-suited to guide your project.`;
+**Project alignment:** The technologies and concepts in your project description align closely with ${bestMatch}'s past supervision work, particularly in ${expertiseAreas[0] || 'this area'}.
+
+They would be an excellent mentor for your project based on their demonstrated experience and relevant expertise.`;
   
   return {
     recommendation,
@@ -123,8 +222,8 @@ export async function POST(req: Request) {
       );
     }
 
-    // Find similar projects
-    const similarProjects = findSimilarProjects(description, 3);
+    // Find similar projects using TF-IDF (no async/await needed)
+    const similarProjects = findSimilarProjects(description, 5);
     
     // Get recommendation
     const result = recommendGuide(description, similarProjects);
