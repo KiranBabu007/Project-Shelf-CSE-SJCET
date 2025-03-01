@@ -205,7 +205,9 @@ They would be an excellent mentor for your project based on their demonstrated e
     similarProjects: similarProjects.map(p => ({
       title: p.title,
       supervisor: p.supervisor,
-      tags: p.tags
+      tags: p.tags,
+      students: p.students, // Add this line to include student information
+      year: p.year // Include year information
     }))
   };
 };

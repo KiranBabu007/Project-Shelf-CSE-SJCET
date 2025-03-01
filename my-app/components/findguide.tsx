@@ -7,7 +7,19 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/componen
 import { Bot, X, Search, RotateCcw, Loader2, Sparkles, User, Tag, CheckCircle, Award } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 
-const GuideRecommendationDisplay = ({ recommendation }: { recommendation: string }) => {
+const GuideRecommendationDisplay = ({ 
+  recommendation, 
+  similarProjects 
+}: { 
+  recommendation: string;
+  similarProjects?: Array<{
+    title: string;
+    supervisor: string;
+    students: string;
+    tags: string[];
+    year?: string;
+  }>;
+}) => {
   const guideName = recommendation.match(/recommend\s+\*\*([^*]+)\*\*/i)?.[1] || 
                     recommendation.match(/recommend\s+([^as]+)as/i)?.[1]?.trim() || 
                     "the recommended guide";
@@ -95,6 +107,37 @@ const GuideRecommendationDisplay = ({ recommendation }: { recommendation: string
           </p>
         </div>
       )}
+
+      {/* Team Members Section */}
+      {similarProjects && similarProjects.length > 0 && (
+        <div className="mt-4 p-4 bg-gradient-to-r from-orange-50/80 to-white/50 dark:from-slate-800/60 dark:to-slate-900/30 rounded-lg border border-orange-100 dark:border-slate-700/50">
+          <div className="flex items-center gap-2 mb-3">
+            <User className="h-4 w-4 text-blue-500 dark:text-blue-400" />
+            <h4 className="text-sm font-medium text-gray-800 dark:text-gray-200">Connect with Team Members</h4>
+          </div>
+          
+          <div className="space-y-3 mt-2">
+            {similarProjects.slice(0, 3).map((project, idx) => (
+              <div key={idx} className="p-3 bg-white/70 dark:bg-slate-800/50 rounded-lg border border-orange-100/50 dark:border-slate-700/30">
+                <div className="font-medium text-orange-600 dark:text-orange-400 text-sm">{project.title}</div>
+                {project.year && (
+                  <div className="inline-block bg-orange-100 dark:bg-orange-900/20 text-orange-600 dark:text-orange-300 rounded-full px-2 py-0.5 text-xs mt-1">
+                    {project.year}
+                  </div>
+                )}
+                <div className="text-gray-600 dark:text-gray-400 text-xs mt-1.5 flex items-center gap-1.5">
+                  <User className="h-3 w-3 text-gray-400 dark:text-gray-500" />
+                  <span>{project.students}</span>
+                </div>
+              </div>
+            ))}
+            
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 italic">
+              You can reach out to these students to learn more about their experience working with {guideName.split(' ')[0]}.
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
@@ -103,6 +146,7 @@ const FindMyGuideChat = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [projectDescription, setProjectDescription] = useState("");
   const [guideRecommendation, setGuideRecommendation] = useState<string | null>(null);
+  const [similarProjects, setSimilarProjects] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleFindGuide = async () => {
@@ -125,9 +169,11 @@ const FindMyGuideChat = () => {
 
       const data = await response.json();
       setGuideRecommendation(data.recommendation);
+      setSimilarProjects(data.similarProjects || []);
     } catch (error) {
       console.error("Error:", error);
       setGuideRecommendation("Sorry, I encountered an error while finding a guide. Please try again later.");
+      setSimilarProjects([]);
     } finally {
       setIsLoading(false);
     }
@@ -136,6 +182,7 @@ const FindMyGuideChat = () => {
   const resetForm = () => {
     setProjectDescription("");
     setGuideRecommendation(null);
+    setSimilarProjects([]);
   };
 
   return (
@@ -184,7 +231,7 @@ const FindMyGuideChat = () => {
                     <Sparkles className="h-5 w-5 text-orange-500 dark:text-orange-400" />
                     <h3 className="text-lg font-medium text-orange-600 dark:text-orange-400">Guide Recommendation</h3>
                   </div>
-                  <GuideRecommendationDisplay recommendation={guideRecommendation} />
+                  <GuideRecommendationDisplay recommendation={guideRecommendation} similarProjects={similarProjects} />
                 </div>
               ) : (
                 <div className="space-y-5">
