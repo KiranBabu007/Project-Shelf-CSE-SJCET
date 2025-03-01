@@ -2036,7 +2036,7 @@ const projectsData = {
         "LegalEase is a web application that provides users with accessible legal guidance, information on specific laws, and connections to specialized legal experts.",
       students:
         "Agnel Brigit Shaji,Akash Benny,Rohan Joshy,Sereena Mariam Saji",
-      supervisor: "Dr.Praseetha V.M",
+      supervisor: "Dr. Praseetha V.M",
       tags: ["Dialogflow", "HTML", "CSS", "JavaScript", "Firebase"],
     },
     {
@@ -2045,7 +2045,7 @@ const projectsData = {
       description:
         "A blockchain-based lottery system enchancing transparency and security in Kerala.",
       students: "Hridya Mathew,Jebin Tom,Vinny Elz Vincent,Tini Treesa Joseph",
-      supervisor: "Prof.Angitha George",
+      supervisor: "Prof. Angitha George",
       tags: [
         "Blockchain",
         "Flutter",
@@ -2062,7 +2062,7 @@ const projectsData = {
       description:
         "A online platform for managing medical appointments,allows patients to book appointments, find doctors, and receive notifications, while doctors can manage their schedules and provide patient updates.",
       students: "Abhinand R,Sona Binu,Theres Boby,Theresa Shaji",
-      supervisor: "Prof.Ashly Thomas",
+      supervisor: "Prof. Ashly Thomas",
       tags: ["Flutter", "FireBase", "Google Map API"],
     },
     {
@@ -2071,7 +2071,7 @@ const projectsData = {
       description:
         "MeetMyHelper is a platform for easily finding, booking, and managing caregiving services.",
       students: "Kavya K A,Liya Tony,Maria Joe,Nayana Tony",
-      supervisor: "Prof.Jibin Philip",
+      supervisor: "Prof. Jibin Philip",
       tags: ["React", "Firebase"],
     },
     {
@@ -2079,7 +2079,7 @@ const projectsData = {
       title: "JourneySync",
       description: "Not Available",
       students: "Melvin Devasia,Adithyan B,Alishya Elezabath Tomy,Akhil Sabu",
-      supervisor: "Prof.Dyni Thomas",
+      supervisor: "Prof. Dyni Thomas",
       tags: ["Web", "HTML", "CSS"],
     },
     {
@@ -2087,7 +2087,7 @@ const projectsData = {
       title: "Voltz",
       description: "Not Available",
       students: "Aadithyaa MD,Abel Abraham Philip,Sachin Philip,Thomas K Binu",
-      supervisor: "Prof.Jikku Thomas",
+      supervisor: "Prof. Jikku Thomas",
       tags: ["IoT"],
     },
     {
@@ -2106,7 +2106,7 @@ const projectsData = {
       description:
         "HomeConnect is a platform that helps users easily find and book PGs and hostels, while providing property owners with simple management tools.",
       students: "Shaine Thomas,Rogy Benni,Surya Saji,Linta John",
-      supervisor: "Prof.Angitha George",
+      supervisor: "Prof. Angitha George",
       tags: ["Flutter", "Firebase", "Google Map Services"],
     },
     {
@@ -2115,7 +2115,7 @@ const projectsData = {
       description:
         "Web application that enables a direct marketplace connecting farmers and consumers, eliminating the need for intermediaries. Also  offers personalized crop recommendations based on soil parameters provided by users and provide educational resources based on best cultivation practices.",
       students: "Gopika M,Deepna Maria Jimson,Nandana Venugopal,Rose George",
-      supervisor: "Prof.Thushara Sukumar",
+      supervisor: "Prof. Thushara Sukumar",
       tags: ["JavaScript", "php", "Flask", "MySQL", "ML"],
     },
     {
@@ -2124,7 +2124,7 @@ const projectsData = {
       description:
         "Elite Arena is a comprehensive esports platform designed to streamline the management of tournaments, providing tools for organizing competitions, team creation, and secure payment processing for both organizers and players.",
       students: "Joel Varghese,Noel Roy,Mohammed Aadhil Thahir,Alan Augustine",
-      supervisor: "Prof.Bino Thomas",
+      supervisor: "Prof. Bino Thomas",
       tags: ["HTML", "CSS", "JavaScript", "React", "MongoDB"],
     },
     {
@@ -2132,7 +2132,7 @@ const projectsData = {
       title: "SmartHire",
       description: "A Resume based shortlisting software for companies",
       students: "Shifaz Abdul Kareem,Sarun Siby,Tobin Thomas,Abin Mathew Siby",
-      supervisor: "Prof.Thushara Sukumar",
+      supervisor: "Prof. Thushara Sukumar",
       tags: ["Web", "HTML", "CSS"],
     },
     {
@@ -2140,7 +2140,7 @@ const projectsData = {
       title: "WorkEase",
       description: "Not Available",
       students: "Aayush.G,Devamanas S.S,Dona Sosa Joe",
-      supervisor: "Prof.Dona Mary Cherian",
+      supervisor: "Prof. Dona Mary Cherian",
       tags: ["HTML", "CSS"],
     },
     {
@@ -2149,7 +2149,7 @@ const projectsData = {
       description:
         "A platform to bring mechanic services to users upon emergency situations based on their gps location.",
       students: "Sanjid S,Edwin Rajesh,Ajay Cyriac,Jithmon P Cherian",
-      supervisor: "Prof.Jibin Philip",
+      supervisor: "Prof. Jibin Philip",
       tags: ["Flutter", "Google Maps services", "Firebase"],
     },
     {
@@ -2157,7 +2157,7 @@ const projectsData = {
       title: "Foodie Buddy",
       description: "A Recipe App",
       students: "Niketh A,Abin Varghese,Mathew Raino",
-      supervisor: "Prof.Smitha Jacob",
+      supervisor: "Prof. Smitha Jacob",
       tags: ["Flutter", "Firebase"],
     },
   ],

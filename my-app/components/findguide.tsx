@@ -20,11 +20,38 @@ const GuideRecommendationDisplay = ({
     year?: string;
   }>;
 }) => {
-  const guideName = recommendation.match(/recommend\s+\*\*([^*]+)\*\*/i)?.[1] || 
-                    recommendation.match(/recommend\s+([^as]+)as/i)?.[1]?.trim() || 
-                    "the recommended guide";
+  // Check if this is a "no similar projects found" message
+  const isNoProjectsFound = recommendation.includes("No similar projects found");
+
+  // Only try to extract guide name if we actually found projects
+  const guideName = isNoProjectsFound ? "" : (
+    recommendation.match(/recommend\s+\*\*([^*]+)\*\*/i)?.[1] || 
+    recommendation.match(/recommend\s+([^as]+)as/i)?.[1]?.trim() || 
+    "the recommended guide"
+  );
 
   const hasStructure = recommendation.includes("**Why") || recommendation.includes("**Key matching");
+
+  // Special handling for no projects found case
+  if (isNoProjectsFound) {
+    return (
+      <div className="space-y-4">
+        <div className="flex items-center gap-3 p-4 bg-gray-50 dark:bg-slate-800/60 rounded-xl">
+          <div className="bg-gray-500 dark:bg-gray-600 p-2 rounded-full">
+            <Search className="h-5 w-5 text-white" />
+          </div>
+          <div>
+            <h4 className="font-bold text-gray-700 dark:text-gray-300">No Matching Projects</h4>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Try a different description</p>
+          </div>
+        </div>
+        
+        <div className="p-5 bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 shadow-sm">
+          <p className="text-gray-800 dark:text-gray-200 leading-relaxed">{recommendation}</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!hasStructure) {
     return (
