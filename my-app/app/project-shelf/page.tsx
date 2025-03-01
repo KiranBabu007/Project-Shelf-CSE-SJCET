@@ -6,9 +6,10 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-import FindMyGuideChat from "@/components/findguide"; // Import the new component
+import { ThemeToggle } from "@/components/theme-toggle"
+import FindMyGuideChat from "@/components/findguide"; 
 
-import { Search, Download } from 'lucide-react'
+import { Search, Download, GraduationCap } from 'lucide-react'
 import Image from 'next/image'
 import projectsData from "@/app/project-shelf/projects"
 import { Instagram, Github, Linkedin } from 'lucide-react'
@@ -29,7 +30,6 @@ const ProjectShelf = () => {
     }, [selectedYear, searchTerm]);
 
     const handleDownload = () => {
-       
         const headers = ["Title", "Description", "Students", "Supervisor", "Tags"];
         const csvContent = [
             headers.join(","),
@@ -43,7 +43,6 @@ const ProjectShelf = () => {
         ].join("\n");
 
         const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-
         
         const link = document.createElement("a");
         if (link.download !== undefined) {
@@ -58,10 +57,13 @@ const ProjectShelf = () => {
     };
 
     return (
-        <div className="bg-white min-h-screen flex flex-col">
-            <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-4 sm:p-8">
+        <div className="min-h-screen flex flex-col bg-white dark:bg-slate-950 transition-colors duration-300">
+            <div className="bg-gradient-to-r from-orange-500 to-orange-600 dark:from-orange-700 dark:to-slate-900 text-white p-4 sm:p-8 shadow-lg relative">
+                <div className="absolute top-2 right-4">
+                    <ThemeToggle />
+                </div>
                 <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between">
-                    <div className='bg-white rounded  p-4 sm:p-5 mb-4 sm:mb-0'>
+                    <div className='bg-white rounded p-4 sm:p-5 mb-4 sm:mb-0 shadow-md'>
                         <Image
                             src="/header.png"
                             width={400}
@@ -82,97 +84,106 @@ const ProjectShelf = () => {
             </div>
 
             <div className="container mx-auto px-4 flex-grow">
-                <Card className="my-6 border-orange-500 border-t-4 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <CardHeader>
-                        <CardTitle className="text-orange-500 scroll-m-20 font-sans text-3xl font-bold tracking-tight">Project Showcase</CardTitle>
+                <Card className="my-6 border-orange-500 border-t-4 shadow-lg hover:shadow-xl transition-shadow duration-300 dark:bg-slate-900 dark:border-orange-700">
+                    <CardHeader className="flex flex-row items-center justify-between">
+                        <div className="flex items-center gap-2">
+                            <GraduationCap className="h-6 w-6 text-orange-500 dark:text-orange-400" />
+                            <CardTitle className="text-orange-500 dark:text-orange-400 scroll-m-20 font-sans text-3xl font-bold tracking-tight">Project Showcase</CardTitle>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <p className="text-sm text-gray-500 dark:text-gray-400">{filteredProjects.length} projects found</p>
+                        </div>
                     </CardHeader>
                     <CardContent>
-                        <p className="text-gray-600 leading-7 [&:not(:first-child)]:mt-6">Explore innovative projects from our talented Computer Science and Engineering students, pushing the boundaries of technology and creativity.</p>
+                        <p className="text-gray-600 dark:text-gray-300 leading-7 [&:not(:first-child)]:mt-6">
+                            Explore innovative projects from our talented Computer Science and Engineering students, pushing the boundaries of technology and creativity.
+                        </p>
                     </CardContent>
                 </Card>
 
-                <div className="flex flex-col sm:flex-row justify-between items-center mb-6 space-y-4 sm:space-y-0">
+                <div className="flex flex-col sm:flex-row justify-between items-center mb-6 space-y-4 sm:space-y-0 gap-4">
                     <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-2 w-full sm:w-auto">
                         <Select onValueChange={setSelectedYear} defaultValue={selectedYear}>
-                            <SelectTrigger className="w-full sm:w-[180px] border-orange-500">
+                            <SelectTrigger className="w-full sm:w-[180px] border-orange-500 dark:border-orange-700 dark:bg-slate-800">
                                 <SelectValue placeholder="Select Year" />
                             </SelectTrigger>
-                            <SelectContent>
+                            <SelectContent className="dark:bg-slate-800">
                                 {Object.keys(projectsData).map((year) => (
                                     <SelectItem key={year} value={year}>{year}</SelectItem>
                                 ))}
                             </SelectContent>
                         </Select>
                         <div className="relative w-full sm:w-auto">
-                            <Search className="absolute left-2 top-2.5 h-4 w-4 text-orange-500" />
+                            <Search className="absolute left-2 top-2.5 h-4 w-4 text-orange-500 dark:text-orange-400" />
                             <Input
                                 placeholder="Search projects or tags..."
-                                className="pl-8 border-orange-500 w-full"
+                                className="pl-8 border-orange-500 dark:border-orange-700 w-full dark:bg-slate-800 dark:text-white"
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                             />
                         </div>
                     </div>
-                    <Button onClick={handleDownload} className="bg-orange-500 hover:bg-orange-600 transition-colors duration-300 w-full sm:w-auto">
+                    <Button onClick={handleDownload} className="bg-orange-500 hover:bg-orange-600 dark:bg-orange-600 dark:hover:bg-orange-700 transition-colors duration-300 w-full sm:w-auto">
                         <Download className="mr-2 h-4 w-4" /> Download CSV
                     </Button>
                 </div>
 
-
-                <Table>
-                    <TableHeader>
-                        <TableRow className="bg-orange-100">
-                            <TableHead className="text-orange-700">Title</TableHead>
-                            <TableHead className="text-orange-700 ">Description</TableHead>
-                            <TableHead className="text-orange-700">Students</TableHead>
-                            <TableHead className="text-orange-700 ">Supervisor</TableHead>
-                            <TableHead className="text-orange-700">Tags</TableHead>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                        {filteredProjects.map((project) => (
-                            <TableRow key={project.id} className="hover:bg-orange-50 transition-colors duration-200">
-                                <TableCell className="font-medium text-orange-700">{project.title}</TableCell>
-                                <TableCell>{project.description}</TableCell>
-                                <TableCell>{project.students}</TableCell>
-                                <TableCell>{project.supervisor}</TableCell>
-                                <TableCell>
-                                    <div className="flex flex-wrap">
-                                        {project.tags.map(tag => (
-                                            <span key={tag} className="inline-block bg-orange-200 text-orange-700 rounded-full px-2 py-1 text-xs font-semibold mr-1 mb-1 transition-transform duration-200 hover:scale-105">{tag}</span>
-                                        ))}
-                                    </div>
-                                </TableCell>
+                <div className="rounded-lg border border-orange-200 dark:border-slate-700 overflow-hidden">
+                    <Table>
+                        <TableHeader>
+                            <TableRow className="bg-orange-100 dark:bg-slate-800">
+                                <TableHead className="text-orange-700 dark:text-orange-400">Title</TableHead>
+                                <TableHead className="text-orange-700 dark:text-orange-400">Description</TableHead>
+                                <TableHead className="text-orange-700 dark:text-orange-400">Students</TableHead>
+                                <TableHead className="text-orange-700 dark:text-orange-400">Supervisor</TableHead>
+                                <TableHead className="text-orange-700 dark:text-orange-400">Tags</TableHead>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
+                        </TableHeader>
+                        <TableBody>
+                            {filteredProjects.map((project) => (
+                                <TableRow key={project.id} className="hover:bg-orange-50 dark:hover:bg-slate-800/60 transition-colors duration-200">
+                                    <TableCell className="font-medium text-orange-700 dark:text-orange-400">{project.title}</TableCell>
+                                    <TableCell className="dark:text-gray-300">{project.description}</TableCell>
+                                    <TableCell className="dark:text-gray-300">{project.students}</TableCell>
+                                    <TableCell className="dark:text-gray-300">{project.supervisor}</TableCell>
+                                    <TableCell>
+                                        <div className="flex flex-wrap">
+                                            {project.tags.map(tag => (
+                                                <span key={tag} className="inline-block bg-orange-200 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300 rounded-full px-2 py-1 text-xs font-semibold mr-1 mb-1 transition-transform duration-200 hover:scale-105">{tag}</span>
+                                            ))}
+                                        </div>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </div>
             </div>
 
-            <footer className="bg-orange-100 text-orange-700 py-3 mt-8">
+            <footer className="bg-orange-100 dark:bg-slate-800/50 text-orange-700 dark:text-orange-300 py-6 mt-8 border-t border-orange-200 dark:border-slate-700">
                 <div className="container mx-auto px-4">
                     <div className="flex flex-col md:flex-row justify-between items-center">
                         <div className="mb-4 md:mb-0">
                             <h3 className="text-md font-sans font-semibold">Computer Science and Engineering Department</h3>
-                            <p className='font-sans text-sm'>St Josephs College Of Engineering and Technology,Palai</p>
+                            <p className='font-sans text-sm text-orange-600 dark:text-orange-400/80'>St Josephs College Of Engineering and Technology, Palai</p>
                         </div>
                         <div className="flex items-center space-x-4">
-                            <h4 className="font-sans text-md font-bold mr-1 ">Connect with me</h4>
+                            <h4 className="font-sans text-md font-bold mr-1">Connect with me</h4>
                             <a href="https://github.com/KiranBabu007" target="_blank" rel="noopener noreferrer" 
-                               className="hover:text-orange-500 transition-colors">
+                               className="hover:text-orange-500 dark:hover:text-orange-400 transition-colors p-2 hover:bg-orange-50 dark:hover:bg-slate-700 rounded-full">
                                 <Github size={20} />
                             </a>
                             <a href="https://linkedin.com/in/kiran07x" target="_blank" rel="noopener noreferrer"
-                               className="hover:text-orange-500 transition-colors">
+                               className="hover:text-orange-500 dark:hover:text-orange-400 transition-colors p-2 hover:bg-orange-50 dark:hover:bg-slate-700 rounded-full">
                                 <Linkedin size={20} />
                             </a>
                             <a href="https://instagram.com/kr_07x" target="_blank" rel="noopener noreferrer"
-                               className="hover:text-orange-500 transition-colors">
+                               className="hover:text-orange-500 dark:hover:text-orange-400 transition-colors p-2 hover:bg-orange-50 dark:hover:bg-slate-700 rounded-full">
                                 <Instagram size={20} />
                             </a>
                         </div>
                     </div>
-                    <div className="mt-4 text-center font-sans text-sm">
+                    <div className="mt-4 text-center font-sans text-sm text-orange-600/80 dark:text-orange-400/60">
                         <p>&copy; 2024 Kiran Babu. All rights reserved.</p>
                     </div>
                 </div>

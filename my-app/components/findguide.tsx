@@ -1,211 +1,168 @@
-"use client"
+"use client";
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
-import { X, Bot, Send, Loader2 } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
+import { Bot, X, Search, RotateCcw, Loader2, Sparkles } from "lucide-react";
 
 const FindMyGuideChat = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [chatStep, setChatStep] = useState('initial'); // initial, askProject, result
-  const [projectDescription, setProjectDescription] = useState('');
+  const [projectDescription, setProjectDescription] = useState("");
+  const [guideRecommendation, setGuideRecommendation] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [guideResult, setGuideResult] = useState<any>(null);
-  const chatBodyRef = useRef<HTMLDivElement>(null);
-  
-  // Simulate guide recommendation API call
-  const findGuide = async (description: string) => {
-    setIsLoading(true);
+
+  const handleFindGuide = async () => {
+    if (!projectDescription.trim()) return;
     
+    setIsLoading(true);
+
     try {
-      
-      const response = await fetch('/api/findguide', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ description }),
+      // Send to API endpoint
+      const response = await fetch("/api/findguide", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ description: projectDescription }),
       });
+
+      if (!response.ok) {
+        throw new Error("Failed to get recommendation");
+      }
+
       const data = await response.json();
-      
-      
-      setGuideResult(data);
-      setChatStep('result');
+      setGuideRecommendation(data.recommendation);
     } catch (error) {
-      console.error("Error finding guide:", error);
-      // Handle error
+      console.error("Error:", error);
+      setGuideRecommendation("Sorry, I encountered an error while finding a guide. Please try again later.");
     } finally {
       setIsLoading(false);
     }
   };
-  
-  // Auto-scroll chat to bottom when new messages appear
-  useEffect(() => {
-    if (chatBodyRef.current) {
-      chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
-    }
-  }, [chatStep, guideResult]);
 
-  const handleClose = () => {
-    setIsOpen(false);
-    // Reset after closing
-    setTimeout(() => {
-      setChatStep('initial');
-      setProjectDescription('');
-      setGuideResult(null);
-    }, 300);
-  };
-
-  const handleStartChat = () => {
-    setChatStep('askProject');
-  };
-
-  const handleSubmitProject = () => {
-    if (projectDescription.trim()) {
-      findGuide(projectDescription);
-    }
-  };
-
-  const handleReset = () => {
-    setChatStep('initial');
-    setProjectDescription('');
-    setGuideResult(null);
-  };
-
-  // Render different content based on chat step
-  const renderChatContent = () => {
-    switch (chatStep) {
-      case 'initial':
-        return (
-          <div className="flex flex-col items-center justify-center h-full space-y-4 p-4">
-            <Bot size={48} className="text-orange-500" />
-            <h3 className="font-semibold text-lg text-center">Need help finding a project guide?</h3>
-            <p className="text-gray-600 text-center text-sm">
-              I can help match you with the perfect guide based on your project idea.
-            </p>
-            <Button 
-              onClick={handleStartChat} 
-              className="bg-orange-500 hover:bg-orange-600 transition-colors w-full"
-            >
-              Find My Guide
-            </Button>
-          </div>
-        );
-      
-      case 'askProject':
-        return (
-          <>
-            <div className="overflow-auto flex-1 p-4" ref={chatBodyRef}>
-              <div className="bg-orange-100 rounded-lg p-3 mb-3 max-w-[80%]">
-                <p className="text-orange-800">
-                  Tell me about your project idea. What technologies or concepts are you planning to use?
-                </p>
-              </div>
-            </div>
-            <CardFooter className="border-t p-3 flex gap-2">
-              <Textarea 
-                placeholder="Describe your project idea..."
-                className="resize-none border-orange-300 focus-visible:ring-orange-500"
-                value={projectDescription}
-                onChange={(e) => setProjectDescription(e.target.value)}
-                rows={3}
-              />
-              <Button 
-                onClick={handleSubmitProject} 
-                className="bg-orange-500 hover:bg-orange-600 transition-colors self-end"
-                disabled={isLoading || !projectDescription.trim()}
-              >
-                {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
-              </Button>
-            </CardFooter>
-          </>
-        );
-      
-      case 'result':
-        return (
-          <>
-            <div className="overflow-auto flex-1 p-4" ref={chatBodyRef}>
-              <div className="bg-orange-100 rounded-lg p-3 mb-3 max-w-[80%]">
-                <p className="text-orange-800">
-                  Tell me about your project idea. What technologies or concepts are you planning to use?
-                </p>
-              </div>
-              
-              <div className="bg-gray-100 rounded-lg p-3 mb-3 max-w-[80%] ml-auto">
-                <p className="text-gray-800">{projectDescription}</p>
-              </div>
-              
-              {isLoading ? (
-                <div className="flex justify-center items-center p-4">
-                  <Loader2 className="h-5 w-5 animate-spin text-orange-500" />
-                  <span className="ml-2 text-orange-500">Finding your guide...</span>
-                </div>
-              ) : (
-                <div className="bg-orange-100 rounded-lg p-3 mb-3 max-w-[80%]">
-                  <div className="prose prose-sm max-w-none text-orange-800">
-                  <div dangerouslySetInnerHTML={{ 
-  __html: (guideResult?.recommendation || "No recommendation available.")
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')  // Bold markdown "**text**"
-    .replace(/\n/g, '<br />') // Newline handling
-}} />
-                  </div>
-                </div>
-              )}
-            </div>
-            <CardFooter className="border-t p-3">
-              <Button 
-                onClick={handleReset} 
-                className="bg-orange-500 hover:bg-orange-600 transition-colors w-full"
-              >
-                Find Another Guide
-              </Button>
-            </CardFooter>
-          </>
-        );
-      
-      default:
-        return null;
-    }
+  const resetForm = () => {
+    setProjectDescription("");
+    setGuideRecommendation(null);
   };
 
   return (
     <>
-      {/* Floating button */}
-      <div 
-        className={`fixed bottom-6 right-6 z-50 transition-all duration-300 ${isOpen ? 'scale-0 opacity-0' : 'scale-100 opacity-100'}`}
+      {/* Floating button with pulsing effect */}
+      <Button
+        onClick={() => setIsOpen(true)}
+        className="fixed bottom-4 right-4 rounded-full w-14 h-14 shadow-lg bg-gradient-to-br from-orange-400 to-orange-600 dark:from-orange-500 dark:to-orange-700 text-white p-0 z-50 transition-all hover:scale-105 hover:shadow-xl duration-300"
       >
-        <Button 
-          onClick={() => setIsOpen(true)}
-          className="bg-orange-500 hover:bg-orange-600 h-14 w-14 rounded-full shadow-lg flex items-center justify-center p-0"
-        >
-          <Bot size={24} className="text-white" />
-        </Button>
-      </div>
+        <div className="absolute inset-0 rounded-full bg-orange-500 dark:bg-orange-600 blur-md opacity-30 animate-pulse"></div>
+        <div className="relative flex items-center justify-center z-10">
+          <Bot size={26} strokeWidth={1.75} className="drop-shadow-md" />
+        </div>
+      </Button>
 
-      {/* Chat window */}
-      <div 
-        className={`fixed bottom-6 right-6 z-50 transition-all duration-300 transform ${
-          isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'
-        }`}
-      >
-        <Card className="w-80 sm:w-96 h-96 flex flex-col overflow-hidden shadow-xl border-orange-300">
-          <CardHeader className="bg-orange-500 text-white p-3 flex flex-row items-center justify-between">
-            <CardTitle className="text-lg font-medium flex items-center">
-              <Bot size={20} className="mr-2" />
-              Find My Guide
-            </CardTitle>
-            <Button 
-              onClick={handleClose} 
-              variant="ghost" 
-              className="h-8 w-8 p-0 rounded-full hover:bg-orange-600/20"
-            >
-              <X className="h-4 w-4" />
-            </Button>
-          </CardHeader>
-          <CardContent className="p-0 flex-1 flex flex-col overflow-hidden">
-            {renderChatContent()}
-          </CardContent>
-        </Card>
-      </div>
+      {/* Modal/Card for Find My Guide */}
+      {isOpen && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="absolute inset-0" onClick={() => setIsOpen(false)}></div>
+          <Card className="w-full max-w-md bg-white dark:bg-slate-900 border-0 shadow-2xl animate-in zoom-in-95 duration-300 relative z-10 overflow-hidden">
+            {/* Decorative background elements */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-orange-100 to-transparent dark:from-orange-900/20 rounded-full -translate-y-16 translate-x-16 blur-2xl"></div>
+            <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-orange-100 to-transparent dark:from-orange-900/20 rounded-full translate-y-16 -translate-x-16 blur-2xl"></div>
+            
+            <CardHeader className="bg-gradient-to-r from-orange-50 to-orange-100 dark:from-slate-800 dark:to-slate-800/80 border-b border-orange-200 dark:border-slate-700 flex flex-row items-center justify-between relative">
+              <div className="flex items-center gap-3">
+                <div className="flex items-center justify-center h-9 w-9 rounded-full bg-orange-500 dark:bg-orange-600 text-white">
+                  <Bot className="h-5 w-5" />
+                </div>
+                <div>
+                  <CardTitle className="text-orange-700 dark:text-orange-400">Find My Guide</CardTitle>
+                  <p className="text-xs text-orange-600/70 dark:text-orange-400/70 mt-0.5">Powered by AI project matching</p>
+                </div>
+              </div>
+              <Button
+                onClick={() => setIsOpen(false)}
+                variant="ghost"
+                size="sm"
+                className="h-8 w-8 p-0 rounded-full hover:bg-orange-200/50 dark:hover:bg-slate-700/50"
+              >
+                <X className="h-4 w-4" />
+              </Button>
+            </CardHeader>
+            
+            <CardContent className="pt-6 pb-4 relative z-10">
+              {guideRecommendation ? (
+                <div className="space-y-5 animate-in fade-in duration-500">
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="h-5 w-5 text-orange-500 dark:text-orange-400" />
+                    <h3 className="text-lg font-medium text-orange-600 dark:text-orange-400">Guide Recommendation</h3>
+                  </div>
+                  <div className="p-5 bg-gradient-to-br from-orange-50 to-orange-100/50 dark:from-slate-800 dark:to-slate-800/60 rounded-xl border border-orange-100 dark:border-slate-700 shadow-sm">
+                    <p className="whitespace-pre-wrap text-gray-800 dark:text-gray-200 leading-relaxed">{guideRecommendation}</p>
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-5">
+                  {/* Illustrative element */}
+                  <div className="flex justify-center mb-4">
+                    <div className="w-16 h-16 rounded-full bg-orange-100 dark:bg-orange-900/20 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-full bg-orange-200 dark:bg-orange-800/30 flex items-center justify-center">
+                        <Sparkles className="h-6 w-6 text-orange-500 dark:text-orange-400" />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <h3 className="text-lg font-medium text-center text-gray-800 dark:text-gray-200">
+                    Let's Find Your Perfect Project Guide
+                  </h3>
+                  
+                  <p className="text-gray-600 dark:text-gray-300 text-center text-sm leading-relaxed">
+                    Describe your project idea in detail, including technologies, goals, and any specific requirements. Our AI will match you with the most suitable guide based on their expertise.
+                  </p>
+                  
+                  <div className="relative">
+                    <Textarea
+                      placeholder="E.g., I'm planning to create a mobile app that helps students track their study time and improve productivity using AI..."
+                      className="min-h-[140px] bg-white dark:bg-slate-800 border-orange-200 dark:border-slate-700 focus-visible:ring-orange-500 dark:text-white resize-none shadow-sm"
+                      value={projectDescription}
+                      onChange={(e) => setProjectDescription(e.target.value)}
+                      disabled={isLoading}
+                    />
+                    <div className="absolute bottom-3 right-3 text-xs text-gray-400 dark:text-gray-500">
+                      {projectDescription.length} chars
+                    </div>
+                  </div>
+                </div>
+              )}
+            </CardContent>
+            
+            <CardFooter className="flex justify-end gap-3 border-t border-orange-200 dark:border-slate-700 pt-4 pb-4 bg-gradient-to-b from-transparent to-orange-50 dark:to-slate-800/50 relative z-10">
+              {guideRecommendation ? (
+                <Button 
+                  onClick={resetForm}
+                  className="flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 dark:from-orange-600 dark:to-orange-700 hover:from-orange-600 hover:to-orange-700 dark:hover:from-orange-700 dark:hover:to-orange-800 shadow-md hover:shadow-lg transition-all duration-300"
+                >
+                  <RotateCcw className="h-4 w-4" /> Find Another Guide
+                </Button>
+              ) : (
+                <Button 
+                  onClick={handleFindGuide}
+                  className="flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 dark:from-orange-600 dark:to-orange-700 hover:from-orange-600 hover:to-orange-700 dark:hover:from-orange-700 dark:hover:to-orange-800 shadow-md hover:shadow-lg transition-all duration-300"
+                  disabled={isLoading || !projectDescription.trim()}
+                >
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" /> Finding...
+                    </>
+                  ) : (
+                    <>
+                      <Search className="h-4 w-4" /> Find My Guide
+                    </>
+                  )}
+                </Button>
+              )}
+            </CardFooter>
+          </Card>
+        </div>
+      )}
     </>
   );
 };
