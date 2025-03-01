@@ -124,9 +124,12 @@ const findSimilarProjects = (queryText: string, limit: number = 5) => {
     };
   });
   
-  // Sort and return top matches
+  // Sort by similarity and filter by threshold before returning
+  const SIMILARITY_THRESHOLD = 0.15; // Adjust this value as needed
+  
   return similarities
     .sort((a, b) => b.similarity - a.similarity)
+    .filter(item => item.similarity >= SIMILARITY_THRESHOLD)
     .slice(0, limit)
     .map(item => item.project);
 };
@@ -226,6 +229,15 @@ export async function POST(req: Request) {
 
     // Find similar projects using TF-IDF (no async/await needed)
     const similarProjects = findSimilarProjects(description, 5);
+    
+    // Check if any similar projects were found
+    if (similarProjects.length === 0) {
+      return NextResponse.json({
+        recommendation: "No similar projects found. Please try refining your project description or explore a different project idea.",
+        guidesReferenced: [],
+        similarProjects: []
+      });
+    }
     
     // Get recommendation
     const result = recommendGuide(description, similarProjects);
