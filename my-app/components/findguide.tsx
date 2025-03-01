@@ -19,22 +19,14 @@ const FindMyGuideChat = () => {
     setIsLoading(true);
     
     try {
-      // Replace this with your actual API call to the backend RAG system
-      // const response = await fetch('/api/find-guide', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ description }),
-      // });
-      // const data = await response.json();
       
-      // Simulated response for now (replace with real API call):
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      const data = {
-        recommendation: `I recommend **Dr. Sarah Johnson** as your project guide.
-
-Dr. Johnson has supervised several machine learning projects, including "Sentiment Analysis of Student Feedback" that used NLP techniques similar to what your project requires. Her expertise in ML algorithms and data processing would be valuable for your project goals.`,
-        guidesReferenced: ["Dr. Sarah Johnson", "Dr. Michael Chen"]
-      };
+      const response = await fetch('/api/findguide', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ description }),
+      });
+      const data = await response.json();
+      
       
       setGuideResult(data);
       setChatStep('result');
@@ -150,9 +142,11 @@ Dr. Johnson has supervised several machine learning projects, including "Sentime
               ) : (
                 <div className="bg-orange-100 rounded-lg p-3 mb-3 max-w-[80%]">
                   <div className="prose prose-sm max-w-none text-orange-800">
-                    <div dangerouslySetInnerHTML={{ 
-                      __html: guideResult?.recommendation.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br />') 
-                    }} />
+                  <div dangerouslySetInnerHTML={{ 
+  __html: (guideResult?.recommendation || "No recommendation available.")
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')  // Bold markdown "**text**"
+    .replace(/\n/g, '<br />') // Newline handling
+}} />
                   </div>
                 </div>
               )}
