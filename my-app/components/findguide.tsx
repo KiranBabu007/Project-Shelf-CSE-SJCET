@@ -111,7 +111,7 @@ const FindMyGuideChat = () => {
                   </div>
                   
                   <h3 className="text-lg font-medium text-center text-gray-800 dark:text-gray-200">
-                    Let's Find Your Perfect Project Guide
+                    Letapos&;s Find Your Perfect Project Guide
                   </h3>
                   
                   <p className="text-gray-600 dark:text-gray-300 text-center text-sm leading-relaxed">
