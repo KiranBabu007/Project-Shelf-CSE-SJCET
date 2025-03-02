@@ -105,9 +105,7 @@ const ProjectShelf = () => {
                             <GraduationCap className="h-6 w-6 text-orange-500 dark:text-orange-400" />
                             <CardTitle className="text-orange-500 dark:text-orange-400 scroll-m-20 font-sans text-3xl font-bold tracking-tight">Project Showcase</CardTitle>
                         </div>
-                        <div className="flex items-center gap-2">
-                            <p className="text-sm text-gray-500 dark:text-gray-400">{filteredProjects.length} projects found</p>
-                        </div>
+                        
                     </CardHeader>
                     <CardContent>
                         <p className="text-gray-600 dark:text-gray-300 leading-7 [&:not(:first-child)]:mt-6">
@@ -136,6 +134,9 @@ const ProjectShelf = () => {
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                             />
+                        </div>
+                        <div className="flex items-center ">
+                            <p className="text-sm text-gray-500 dark:text-gray-400 m-2">{filteredProjects.length} projects found</p>
                         </div>
                     </div>
                     <Button onClick={handleDownload} className="bg-orange-500 hover:bg-orange-600 dark:bg-orange-600 dark:hover:bg-orange-700 transition-colors duration-300 w-full sm:w-auto">
