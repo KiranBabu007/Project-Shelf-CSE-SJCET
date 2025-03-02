@@ -9,7 +9,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { ThemeToggle } from "@/components/theme-toggle"
 import FindMyGuideChat from "@/components/findguide"; 
 
-import { Search, Download, GraduationCap } from 'lucide-react'
+import { Search, Download, GraduationCap, User, Tag } from 'lucide-react'
 import Image from 'next/image'
 import projectsData from "@/app/project-shelf/projects"
 import { Instagram, Github, Linkedin } from 'lucide-react'
@@ -168,6 +168,54 @@ const ProjectShelf = () => {
                             ))}
                         </TableBody>
                     </Table>
+                </div>
+            </div>
+
+            <div className="container mx-auto px-4 mt-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <Card className="border-l-4 border-l-orange-400 dark:border-l-orange-500 hover:shadow-lg transition-all">
+                        <CardContent className="pt-6">
+                            <div className="flex items-center gap-4">
+                                <div className="bg-orange-100 dark:bg-orange-900/30 p-3 rounded-full">
+                                    <GraduationCap className="h-6 w-6 text-orange-500 dark:text-orange-400" />
+                                </div>
+                                <div>
+                                    <p className="text-sm text-gray-500 dark:text-gray-400">Projects in {selectedYear}</p>
+                                    <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100">{filteredProjects.length}</h3>
+                                </div>
+                            </div>
+                        </CardContent>
+                    </Card>
+                    <Card className="border-l-4 border-l-blue-400 dark:border-l-blue-500 hover:shadow-lg transition-all">
+                        <CardContent className="pt-6">
+                            <div className="flex items-center gap-4">
+                                <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-full">
+                                    <User className="h-6 w-6 text-blue-500 dark:text-blue-400" />
+                                </div>
+                                <div>
+                                    <p className="text-sm text-gray-500 dark:text-gray-400">Unique Supervisors</p>
+                                    <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
+                                        {new Set(filteredProjects.map(p => p.supervisor)).size}
+                                    </h3>
+                                </div>
+                            </div>
+                        </CardContent>
+                    </Card>
+                    <Card className="border-l-4 border-l-green-400 dark:border-l-green-500 hover:shadow-lg transition-all">
+                        <CardContent className="pt-6">
+                            <div className="flex items-center gap-4">
+                                <div className="bg-green-100 dark:bg-green-900/30 p-3 rounded-full">
+                                    <Tag className="h-6 w-6 text-green-500 dark:text-green-400" />
+                                </div>
+                                <div>
+                                    <p className="text-sm text-gray-500 dark:text-gray-400">Unique Technologies</p>
+                                    <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
+                                        {new Set(filteredProjects.flatMap(p => p.tags)).size}
+                                    </h3>
+                                </div>
+                            </div>
+                        </CardContent>
+                    </Card>
                 </div>
             </div>
 
