@@ -58,27 +58,38 @@ const ProjectShelf = () => {
 
     return (
         <div className="min-h-screen flex flex-col bg-white dark:bg-slate-950 transition-colors duration-300">
-            <div className="bg-gradient-to-r from-orange-500 to-orange-600 dark:from-orange-700 dark:to-slate-900 text-white p-4 sm:p-8 shadow-lg relative">
-                <div className="absolute top-2 right-4">
-                    <ThemeToggle />
-                </div>
-                <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between">
-                    <div className='bg-white rounded p-4 sm:p-5 mb-4 sm:mb-0 shadow-md'>
-                        <Image
-                            src="/header.png"
-                            width={400}
-                            height={400}
-                            alt="College logo"
-                            className="max-w-[180px] sm:max-w-[200px] h-auto"
-                        />
+            <div className="bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 dark:from-orange-700 dark:via-orange-800 dark:to-slate-900 text-white">
+                <div className="container mx-auto px-4 py-6 sm:py-8">
+                    <div className="flex justify-end mb-2">
+                        <ThemeToggle />
                     </div>
-                    <div className="flex flex-col font-sans text-center sm:text-left">
-                        <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mb-2">
-                            Computer Science and Engineering Projects
-                        </h1>
-                        <p className="text-lg sm:text-xl md:text-2xl font-light italic">
-                            Innovating for Tomorrow, Coding for the Future
-                        </p>
+                    <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+                        <div className="bg-white/90 backdrop-blur rounded-md m-4 p-4 sm:p-5 shadow-lg border border-white/20">
+                            <Image
+                                src="/header.png"
+                                width={400}
+                                height={400}
+                                alt="College logo"
+                                className="max-w-[200px] sm:max-w-[250px] h-auto"
+                                priority
+                            />
+                        </div>
+                        <div className="flex flex-col text-center sm:text-left sm:p-4">
+                            <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mb-2 text-white drop-shadow-md">
+                                Computer Science Engineering Projects
+                            </h1>
+                            <p className="text-lg sm:text-xl font-light text-white/90 italic max-w-2xl">
+                                Innovating for Tomorrow, Coding for the Future
+                            </p>
+                            <div className="mt-4 flex flex-wrap justify-center sm:justify-start gap-2">
+                                <span className="bg-white/20 backdrop-blur px-3 py-1 rounded-full text-sm font-medium text-white">
+                                    {Object.values(projectsData).flat().length} Total Projects
+                                </span>
+                                <span className="bg-white/20 backdrop-blur px-3 py-1 rounded-full text-sm font-medium text-white">
+                                    {Object.keys(projectsData).length} Academic Years
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
