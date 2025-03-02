@@ -2,17 +2,21 @@
 
 import React, { useState, useEffect } from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { Github, Linkedin, Instagram, Mail, MapPin, ExternalLink, ChevronRight } from 'lucide-react';
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { ThemeToggle } from "@/components/theme-toggle"
 import FindMyGuideChat from "@/components/findguide"; 
+import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+
 
 import { Search, Download, GraduationCap, User, Tag } from 'lucide-react'
 import Image from 'next/image'
 import projectsData from "@/app/project-shelf/projects"
-import { Instagram, Github, Linkedin } from 'lucide-react'
+
 
 const ProjectShelf = () => {
     const [selectedYear, setSelectedYear] = useState<string>("2024");
@@ -139,35 +143,69 @@ const ProjectShelf = () => {
                     </Button>
                 </div>
 
-                <div className="rounded-lg border border-orange-200 dark:border-slate-700 overflow-hidden">
-                    <Table>
-                        <TableHeader>
-                            <TableRow className="bg-orange-100 dark:bg-slate-800">
-                                <TableHead className="text-orange-700 dark:text-orange-400">Title</TableHead>
-                                <TableHead className="text-orange-700 dark:text-orange-400">Description</TableHead>
-                                <TableHead className="text-orange-700 dark:text-orange-400">Students</TableHead>
-                                <TableHead className="text-orange-700 dark:text-orange-400">Supervisor</TableHead>
-                                <TableHead className="text-orange-700 dark:text-orange-400">Tags</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
+                <div className="container mx-auto px-4 mt-8">
+                    {filteredProjects.length === 0 ? (
+                        <Card className="py-16">
+                            <CardContent className="flex flex-col items-center justify-center text-center">
+                                <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-full mb-4">
+                                    <Search className="h-8 w-8 text-gray-400" />
+                                </div>
+                                <h3 className="text-xl font-medium text-gray-600 dark:text-gray-300">No projects found</h3>
+                                <p className="text-gray-500 dark:text-gray-400 mt-2 max-w-md">
+                                    Try adjusting your search term or selecting a different year
+                                </p>
+                            </CardContent>
+                        </Card>
+                    ) : (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {filteredProjects.map((project) => (
-                                <TableRow key={project.id} className="hover:bg-orange-50 dark:hover:bg-slate-800/60 transition-colors duration-200">
-                                    <TableCell className="font-medium text-orange-700 dark:text-orange-400">{project.title}</TableCell>
-                                    <TableCell className="dark:text-gray-300">{project.description}</TableCell>
-                                    <TableCell className="dark:text-gray-300">{project.students}</TableCell>
-                                    <TableCell className="dark:text-gray-300">{project.supervisor}</TableCell>
-                                    <TableCell>
-                                        <div className="flex flex-wrap">
+                                <Card key={project.id} className="hover:shadow-lg transition-all border-orange-100 dark:border-slate-700 overflow-hidden">
+                                    <CardHeader className="bg-orange-50 dark:bg-slate-800/60 border-b border-orange-100 dark:border-slate-700 pb-3">
+                                        <CardTitle className="text-orange-700 dark:text-orange-400 line-clamp-2">
+                                            {project.title}
+                                        </CardTitle>
+                                    </CardHeader>
+                                    <CardContent className="pt-4">
+                                        <p className="text-gray-600 dark:text-gray-300 line-clamp-3 text-sm mb-4">
+                                            {project.description}
+                                        </p>
+                                        
+                                        <div className="flex items-center gap-2 mb-3">
+                                            <User className="h-4 w-4 text-gray-400" />
+                                            <span className="text-sm text-gray-600 dark:text-gray-300 line-clamp-1">
+                                                {project.students}
+                                            </span>
+                                        </div>
+                                        
+                                        <div className="flex items-center gap-2 mb-4">
+                                            <GraduationCap className="h-4 w-4 text-gray-400" />
+                                            <span className="text-sm text-gray-600 dark:text-gray-300">
+                                                {project.supervisor}
+                                            </span>
+                                        </div>
+                                        
+                                        <div className="flex flex-wrap gap-2">
                                             {project.tags.map(tag => (
-                                                <span key={tag} className="inline-block bg-orange-200 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300 rounded-full px-2 py-1 text-xs font-semibold mr-1 mb-1 transition-transform duration-200 hover:scale-105">{tag}</span>
+                                                <span 
+                                                    key={tag} 
+                                                    className="inline-block bg-orange-100 dark:bg-orange-900/20 text-orange-600 dark:text-orange-300 rounded-full px-2.5 py-1 text-xs font-medium hover:bg-orange-200 dark:hover:bg-orange-800/30 cursor-pointer transition-colors"
+                                                    onClick={() => setSearchTerm(tag)}
+                                                >
+                                                    {tag}
+                                                </span>
                                             ))}
                                         </div>
-                                    </TableCell>
-                                </TableRow>
+                                    </CardContent>
+                                </Card>
                             ))}
-                        </TableBody>
-                    </Table>
+                        </div>
+                    )}
+                    
+                    {filteredProjects.length > 0 && (
+                        <div className="mt-6 text-center text-gray-500 dark:text-gray-400">
+                            Showing {filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'} for {selectedYear}
+                        </div>
+                    )}
                 </div>
             </div>
 
@@ -219,37 +257,81 @@ const ProjectShelf = () => {
                 </div>
             </div>
 
-            <footer className="bg-orange-100 dark:bg-slate-800/50 text-orange-700 dark:text-orange-300 py-6 mt-8 border-t border-orange-200 dark:border-slate-700">
-                <div className="container mx-auto px-4">
-                    <div className="flex flex-col md:flex-row justify-between items-center">
-                        <div className="mb-4 md:mb-0">
-                            <h3 className="text-md font-sans font-semibold">Computer Science and Engineering Department</h3>
-                            <p className='font-sans text-sm text-orange-600 dark:text-orange-400/80'>St Josephs College Of Engineering and Technology, Palai</p>
-                        </div>
-                        <div className="flex items-center space-x-4">
-                            <h4 className="font-sans text-md font-bold mr-1">Connect with me</h4>
-                            <a href="https://github.com/KiranBabu007" target="_blank" rel="noopener noreferrer" 
-                               className="hover:text-orange-500 dark:hover:text-orange-400 transition-colors p-2 hover:bg-orange-50 dark:hover:bg-slate-700 rounded-full">
-                                <Github size={20} />
-                            </a>
-                            <a href="https://linkedin.com/in/kiran07x" target="_blank" rel="noopener noreferrer"
-                               className="hover:text-orange-500 dark:hover:text-orange-400 transition-colors p-2 hover:bg-orange-50 dark:hover:bg-slate-700 rounded-full">
-                                <Linkedin size={20} />
-                            </a>
-                            <a href="https://instagram.com/kr_07x" target="_blank" rel="noopener noreferrer"
-                               className="hover:text-orange-500 dark:hover:text-orange-400 transition-colors p-2 hover:bg-orange-50 dark:hover:bg-slate-700 rounded-full">
-                                <Instagram size={20} />
-                            </a>
-                        </div>
-                    </div>
-                    <div className="mt-4 text-center font-sans text-sm text-orange-600/80 dark:text-orange-400/60">
-                        <p>&copy; 2024 Kiran Babu. All rights reserved.</p>
-                    </div>
-                </div>
-            </footer>
+            <footer className="relative overflow-hidden bg-gradient-to-br from-orange-50 to-orange-100 dark:from-slate-900 dark:to-slate-800 text-orange-800 dark:text-orange-200 py-12 mt-16 border-t border-orange-200 dark:border-slate-700">
+      {/* Subtle decorative elements */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-orange-200/30 dark:bg-orange-500/10 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-orange-300/20 dark:bg-orange-600/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-3xl"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
+          {/* Brand section */}
+          <div className="text-center md:text-left max-w-md">
+            <div className="flex items-center justify-center md:justify-start space-x-3 mb-4">
+              <div className="relative w-10 h-10 rounded-lg bg-gradient-to-tr from-orange-500 to-orange-400 flex items-center justify-center shadow-lg p-8">
+                <span className="text-white font-bold text-xl">SJC</span>
+                <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-white animate-pulse"></span>
+              </div>
+              <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-orange-500 dark:from-orange-400 dark:to-orange-300">
+                St Joseph's College of Engineering and Technology,Palai
+              </h3>
+            </div>
+            
+            <p className="text-orange-700/80 dark:text-orange-300/90 leading-relaxed">
+              Showcasing innovative projects from talented students at St Joseph's College Of Engineering and Technology, Palai
+            </p>
+          </div>
+          
+          {/* Social links */}
+          <div className="flex flex-col items-center md:items-end">
+            <h4 className="font-semibold text-lg mb-4 text-orange-700 dark:text-orange-300">Connect with me</h4>
+            
+            <TooltipProvider>
+              <div className="flex gap-4">
+                {[
+                  { icon: <Github size={20} />, label: 'GitHub', href: 'https://github.com/KiranBabu007' },
+                  { icon: <Linkedin size={20} />, label: 'LinkedIn', href: 'https://linkedin.com/in/kiran07x' },
+                  { icon: <Instagram size={20} />, label: 'Instagram', href: 'https://instagram.com/kr_07x' }
+                ].map((social) => (
+                  <Tooltip key={social.label}>
+                    <TooltipTrigger asChild>
+                      <a 
+                        href={social.href} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="bg-white/90 dark:bg-slate-800/90 p-3 rounded-full hover:scale-110 hover:shadow-md transition-all duration-300 text-orange-500 dark:text-orange-400 border border-transparent hover:border-orange-200 dark:hover:border-orange-800/30"
+                      >
+                        {social.icon}
+                      </a>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{social.label}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                ))}
+              </div>
+            </TooltipProvider>
+          </div>
+        </div>
+        
+        <Separator className="my-6 bg-orange-200/50 dark:bg-slate-700/50" />
+        
+        {/* Copyright section */}
+        <div className="text-center">
+          <p className="text-sm text-orange-600/80 dark:text-orange-400/80">
+            &copy; {new Date().getFullYear()} Kiran Babu. All rights reserved.
+          </p>
+          <p className="text-xs text-orange-500/60 dark:text-orange-400/50 mt-1">
+            Built with Next.js, Tailwind CSS, and Shadcn UI
+          </p>
+        </div>
+      </div>
+    </footer>
             
             {/* Add the Find My Guide component */}
-            <FindMyGuideChat />
+            <div className="fixed bottom-4 right-4 z-50">
+                <div className="absolute -inset-1 bg-gradient-to-r from-orange-400 to-orange-600 dark:from-orange-500 dark:to-orange-700 rounded-full opacity-75 blur-lg animate-pulse"></div>
+                <FindMyGuideChat />
+            </div>
         </div>
     );
 };
