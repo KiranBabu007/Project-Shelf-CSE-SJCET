@@ -273,12 +273,12 @@ const ProjectShelf = () => {
                 <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-white animate-pulse"></span>
               </div>
               <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-orange-500 dark:from-orange-400 dark:to-orange-300">
-                St Joseph's College of Engineering and Technology,Palai
+                St Joseph&apos;s College of Engineering and Technology,Palai
               </h3>
             </div>
             
             <p className="text-orange-700/80 dark:text-orange-300/90 leading-relaxed">
-              Showcasing innovative projects from talented students at St Joseph's College Of Engineering and Technology, Palai
+              Showcasing innovative projects from talented students at St Joseph&apos;s College Of Engineering and Technology, Palai
             </p>
           </div>
           
