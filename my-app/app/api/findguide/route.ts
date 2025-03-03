@@ -125,7 +125,7 @@ const findSimilarProjects = (queryText: string, limit: number = 5) => {
   });
   
   // Sort by similarity and filter by threshold before returning
-  const SIMILARITY_THRESHOLD = 0.22; // Adjust this value as needed
+  const SIMILARITY_THRESHOLD = 0.20; // Adjust this value as needed
   
   return similarities
     .sort((a, b) => b.similarity - a.similarity)
