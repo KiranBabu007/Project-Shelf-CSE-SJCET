@@ -32,7 +32,7 @@ const findSimilarProjects = (queryText: string, limit: number = 5) => {
   // Common English stopwords
   const stopwords = new Set([
     "the", "and", "for", "with", "that", "this", "not", "are", "you", "your",
-    "from", "have", "has", "had", "was", "were", "will", "can", "project"
+    "from", "have", "has", "had", "was", "were", "will", "can", "project","application","I","idea","have"
   ]);
   
   // Calculate term frequencies for a document
@@ -125,7 +125,7 @@ const findSimilarProjects = (queryText: string, limit: number = 5) => {
   });
   
   // Sort by similarity and filter by threshold before returning
-  const SIMILARITY_THRESHOLD = 0.22; // Adjust this value as needed
+  const SIMILARITY_THRESHOLD = 0.30; // Adjust this value as needed
   
   return similarities
     .sort((a, b) => b.similarity - a.similarity)
