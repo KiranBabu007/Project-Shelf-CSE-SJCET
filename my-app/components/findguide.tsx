@@ -238,7 +238,7 @@ const FindMyGuideChat = () => {
                 </div>
                 <div>
                   <CardTitle className="text-orange-700 dark:text-orange-400">Find My Guide</CardTitle>
-                  <p className="text-xs text-orange-600/70 dark:text-orange-400/70 mt-0.5">Powered by AI project matching</p>
+                  <p className="text-xs text-orange-600/70 dark:text-orange-400/70 mt-0.5">Powered by TF-IDF cosine similarity matching</p>
                 </div>
               </div>
               <Button
