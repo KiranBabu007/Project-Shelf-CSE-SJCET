@@ -10,7 +10,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { User, GraduationCap, Tag } from "lucide-react";
-import { type Project } from "@/types"; // or define type here if not global
+import type { Project } from "@/types"; // Or define inline
 
 interface ProjectModalProps {
   open: boolean;
@@ -25,49 +25,56 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ open, onClose, project }) =
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent
         className="
-          bg-white/20 
-          dark:bg-slate-900/30 
-          backdrop-blur-2xl 
-          border 
-          border-white/30 
-          dark:border-slate-700 
-          text-gray-800 
-          dark:text-gray-100 
-          rounded-2xl 
-          max-w-xl 
-          w-full 
-          shadow-2xl
-          p-6
+          max-w-2xl w-full rounded-2xl 
+          border border-white/20 dark:border-slate-800 
+          bg-white/30 dark:bg-slate-900/40 
+          backdrop-blur-xl shadow-2xl 
+          transition-all duration-300
         "
       >
         <DialogHeader>
-          <DialogTitle className="text-2xl font-semibold text-orange-600 dark:text-orange-300">
+          <DialogTitle className="text-2xl font-bold text-gray-800 dark:text-orange-300">
             {project.title}
           </DialogTitle>
-          <DialogDescription className="text-base mt-2">
+          <DialogDescription className="text-base text-gray-700 dark:text-gray-300 mt-2">
             {project.description}
           </DialogDescription>
         </DialogHeader>
 
-        <div className="mt-4 space-y-3 text-sm">
-          <div className="flex items-center gap-2">
-            <User className="h-4 w-4 text-orange-400" />
-            <span><strong>Students:</strong> {project.students}</span>
+        <div className="mt-6 space-y-4 text-sm text-gray-700 dark:text-gray-300">
+          <div className="flex items-start gap-3">
+            <User className="h-4 w-4 mt-1 text-orange-500 dark:text-orange-400" />
+            <div>
+              <span className="block font-medium text-gray-800 dark:text-gray-100">Students</span>
+              <p className="text-gray-600 dark:text-gray-300">{project.students}</p>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <GraduationCap className="h-4 w-4 text-orange-400" />
-            <span><strong>Supervisor:</strong> {project.supervisor}</span>
+
+          <div className="flex items-start gap-3">
+            <GraduationCap className="h-4 w-4 mt-1 text-orange-500 dark:text-orange-400" />
+            <div>
+              <span className="block font-medium text-gray-800 dark:text-gray-100">Supervisor</span>
+              <p className="text-gray-600 dark:text-gray-300">{project.supervisor}</p>
+            </div>
           </div>
-          <div className="flex items-center gap-2 flex-wrap">
-            <Tag className="h-4 w-4 text-orange-400" />
-            {project.tags.map(tag => (
-              <span
-                key={tag}
-                className="bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300 px-3 py-1 rounded-full text-xs font-medium"
-              >
-                {tag}
-              </span>
-            ))}
+
+          <div className="flex items-start gap-3 flex-wrap">
+            <Tag className="h-4 w-4 mt-1 text-orange-500 dark:text-orange-400" />
+            <div className="flex flex-wrap gap-2">
+              {project.tags.map(tag => (
+                <span
+                  key={tag}
+                  className="
+                    bg-orange-100 text-orange-700 
+                    dark:bg-orange-900/40 dark:text-orange-300 
+                    px-3 py-1 rounded-full text-xs font-semibold 
+                    shadow-sm
+                  "
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </DialogContent>
