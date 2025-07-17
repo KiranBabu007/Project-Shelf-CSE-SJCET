@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     title: "CSE Project Shelf | SJCET Palai",
     description:
       "Discover innovative projects from the Department of Computer Science and Engineering at SJCET Palai.",
-    url: "https://your-domain.com", 
+    url: "https://project.sjcet.in/", 
     siteName: "SJCET Palai",
     images: [
       {
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: "CSE Project Shelf | SJCET Palai",
     description:
       "Showcasing final year Computer Science projects from SJCET Palai.",
-    images: ["/og-image.png"],
+    images: ["/favicon.ico"],
   },
 };
 
