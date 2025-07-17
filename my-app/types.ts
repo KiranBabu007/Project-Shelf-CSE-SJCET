@@ -1,7 +1,8 @@
 export interface Project {
-    id: string;
+     id: number;
     title: string;
     description: string;
-    year: string;
-    details: string;
+    students: string;
+    supervisor: string;
+    tags: string[];
 }
