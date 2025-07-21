@@ -26,6 +26,8 @@ import Image from "next/image";
 import projectsData from "@/app/project-shelf/projects";
 import ProjectModal from "@/components/ProjectModal";
 import { Project } from "@/types"; // Ensure this matches your project type definition
+import Joyride, { CallBackProps, STATUS, Step } from "react-joyride";
+import { HelpCircle } from "lucide-react";
 
 const ProjectShelf = () => {
   const [selectedYear, setSelectedYear] = useState<string>("2024");
@@ -33,6 +35,41 @@ const ProjectShelf = () => {
   const [filteredProjects, setFilteredProjects] = useState(projectsData[2024]);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [joyrideRun, setJoyrideRun] = useState(false);
+  const [joyrideStepIndex, setJoyrideStepIndex] = useState(0);
+  const joyrideSteps: Step[] = [
+    {
+      target: "#search-bar",
+      content: "Search for projects or tags here!",
+      disableBeacon: true,
+      placement: "bottom",
+    },
+    {
+      target: "#project-card-0",
+      content: "Click a project card to see more details!",
+      placement: "top",
+    },
+    {
+      target: "#download-btn",
+      content: "Download all filtered projects as a CSV file.",
+      placement: "left",
+    },
+    {
+      target: "#find-guide-fab",
+      content: "Try the Find My Guide bot for help or to experiment with search!",
+      placement: "top",
+    },
+  ];
+
+  const handleJoyrideCallback = (data: CallBackProps) => {
+    const { status, index, type } = data;
+    if (status === "finished" || status === "skipped") {
+      setJoyrideRun(false);
+      setJoyrideStepIndex(0);
+    } else if (type === "step:after") {
+      setJoyrideStepIndex(index + 1);
+    }
+  };
 
   useEffect(() => {
     const filtered = projectsData[
@@ -154,7 +191,7 @@ const ProjectShelf = () => {
                 ))}
               </SelectContent>
             </Select>
-            <div className="relative w-full sm:w-auto">
+            <div className="relative w-full sm:w-auto" id="search-bar">
               <Search className="absolute left-2 top-2.5 h-4 w-4 text-orange-500 dark:text-orange-400" />
               <Input
                 placeholder="Search projects or tags..."
@@ -172,6 +209,7 @@ const ProjectShelf = () => {
           <Button
             onClick={handleDownload}
             className="bg-orange-500 hover:bg-orange-600 dark:bg-orange-600 dark:hover:bg-orange-700 transition-colors duration-300 w-full sm:w-auto"
+            id="download-btn"
           >
             <Download className="mr-2 h-4 w-4" /> Download CSV
           </Button>
@@ -194,11 +232,13 @@ const ProjectShelf = () => {
             </Card>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProjects.map((project) => (
+              {filteredProjects.map((project, idx) => (
                 <Card
                   onClick={() => handleCardClick(project)}
                   key={project.id}
-                  className="hover:shadow-lg transition-all border-orange-100 dark:border-slate-700 overflow-hidden"
+                  className="hover:shadow-lg transition-all border-orange-100 dark:border-slate-700 overflow-hidden cursor-pointer focus:ring-2 focus:ring-orange-400"
+                  id={idx === 0 ? "project-card-0" : undefined}
+                  tabIndex={0}
                 >
                   <CardHeader className="bg-orange-50 dark:bg-slate-800/60 border-b border-orange-100 dark:border-slate-700 pb-3">
                     <CardTitle className="text-orange-700 dark:text-orange-400 line-clamp-2">
@@ -392,11 +432,45 @@ const ProjectShelf = () => {
         </div>
       </footer>
 
-      {/* Add the Find My Guide component */}
-      <div className="fixed bottom-4 right-4 z-50">
-        <div className="absolute -inset-1 bg-gradient-to-r from-orange-400 to-orange-600 dark:from-orange-500 dark:to-orange-700 rounded-full opacity-75 blur-lg animate-pulse"></div>
-        <FindMyGuideChat />
+      <div className="fixed bottom-20 right-5 z-50 flex flex-col items-end gap-3">
+        {/* Info button at the top of the column */}
+        <button
+          aria-label="Show guidance info"
+          className="bg-white border border-orange-300 dark:border-orange-700 rounded-full p-3 shadow-lg hover:scale-110 transition-all focus:outline-none focus:ring-2 focus:ring-orange-400 mb-1"
+          onClick={() => setJoyrideRun(true)}
+          style={{ zIndex: 100 }}
+        >
+          <HelpCircle className="text-orange-500 dark:text-orange-400 w-6 h-6" />
+        </button>
+        <span className="absolute -top-2 right-0 bg-orange-500 text-white text-xs rounded-full px-1.5 py-0.5 animate-pulse" style={{zIndex: 101}}>New</span>
+        {/* Find My Guide chat bot below */}
+        <div className="relative" id="find-guide-bot">
+          <div className="absolute -inset-1 bg-gradient-to-r from-orange-400 to-orange-600 dark:from-orange-500 dark:to-orange-700 rounded-full opacity-75 blur-lg animate-pulse"></div>
+          <FindMyGuideChat />
+        </div>
       </div>
+      <Joyride
+        steps={joyrideSteps}
+        run={joyrideRun}
+        stepIndex={joyrideStepIndex}
+        continuous
+        showSkipButton
+        showProgress
+        disableScrolling
+        styles={{
+          options: {
+            zIndex: 2000,
+            primaryColor: "#ea580c",
+            backgroundColor: "#fff7ed",
+            textColor: "#ea580c",
+            arrowColor: "#fff7ed",
+          },
+          overlay: {
+            backgroundColor: "rgba(30, 41, 59, 0.7)",
+          },
+        }}
+        callback={handleJoyrideCallback}
+      />
       <ProjectModal
         open={modalOpen}
         onClose={() => setModalOpen(false)}

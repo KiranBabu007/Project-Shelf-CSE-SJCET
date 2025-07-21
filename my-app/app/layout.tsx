@@ -36,6 +36,7 @@ export const metadata: Metadata = {
       "Showcasing final year Computer Science projects from SJCET Palai.",
     images: ["/favicon.ico"],
   },
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://project.sjcet.in"),
 };
 
 export default function RootLayout({

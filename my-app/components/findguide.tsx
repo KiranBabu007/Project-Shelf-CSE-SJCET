@@ -217,6 +217,7 @@ const FindMyGuideChat = () => {
       <Button
         onClick={() => setIsOpen(true)}
         className="fixed bottom-4 right-4 rounded-full w-14 h-14 shadow-lg bg-gradient-to-br from-orange-400 to-orange-600 dark:from-orange-500 dark:to-orange-700 text-white p-0 z-50 transition-all hover:scale-105 hover:shadow-xl duration-300"
+        id="find-guide-fab"
       >
         <div className="absolute inset-0 rounded-full bg-orange-500 dark:bg-orange-600 blur-md opacity-30 animate-pulse"></div>
         <div className="relative flex items-center justify-center z-10">
