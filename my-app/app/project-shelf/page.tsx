@@ -21,12 +21,12 @@ import {
   HelpCircle,
   Settings,
   Rocket,
-  GraduationCap,
-  Sparkles,
+  FolderOpen,
 } from "lucide-react";
 import projectsData from "@/app/project-shelf/projects";
 import ProjectModal from "@/components/ProjectModal";
 import FindMyGuideChat from "@/components/findguide";
+import SubmitProjectModal from "@/components/SubmitProjectModal";
 import { Project } from "@/types";
 import Joyride, { CallBackProps, Step } from "react-joyride";
 
@@ -113,14 +113,28 @@ function getCategoryBadgeClass(category: string): string {
   return classes[category] || "badge-default";
 }
 
-const SUBMIT_FORM_URL = "https://forms.gle/YOUR_GOOGLE_FORM_ID";
+const LATEST_YEAR = (() => {
+  const keys = Object.keys(projectsData);
+  return keys[keys.length - 1] || "2024-2025";
+})();
+
+const DEFAULT_YEAR = (() => {
+  const keys = Object.keys(projectsData);
+  for (let i = keys.length - 1; i >= 0; i--) {
+    const yearProjects =
+      projectsData[keys[i] as keyof typeof projectsData];
+    if (yearProjects && yearProjects.length > 0) return keys[i];
+  }
+  return keys[0];
+})();
 
 const ProjectShelf = () => {
-  const [selectedYear, setSelectedYear] = useState<string>("2024-2025");
+  const [selectedYear, setSelectedYear] = useState<string>(DEFAULT_YEAR);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [submitModalOpen, setSubmitModalOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [joyrideRun, setJoyrideRun] = useState(false);
   const [joyrideStepIndex, setJoyrideStepIndex] = useState(0);
@@ -409,71 +423,83 @@ const ProjectShelf = () => {
             </div>
           </div>
 
-          {/* Empty year -- Class of 2026 banner */}
+          {/* Empty year state -- beautiful submission CTA */}
           {isEmptyYear ? (
-            <div className="relative overflow-hidden sketch-card max-w-3xl mx-auto">
-              <div className="absolute top-0 right-0 w-40 h-40 bg-orange-100 rounded-full -translate-y-1/2 translate-x-1/3 opacity-60" />
-              <div className="absolute bottom-0 left-0 w-32 h-32 bg-orange-50 rounded-full translate-y-1/2 -translate-x-1/4 opacity-50" />
+            <div className="sketch-card p-8 sm:p-12 text-center max-w-2xl mx-auto">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-orange-50 border-[1.5px] border-orange-200 mb-6">
+                <FolderOpen className="h-9 w-9 text-orange-400" />
+              </div>
 
-              <div className="relative z-10 p-8 sm:p-10 text-center">
-                <div className="inline-flex items-center gap-2 bg-orange-50 border border-orange-200 rounded-sm px-3 py-1 mb-6">
-                  <Sparkles className="h-3.5 w-3.5 text-orange-500" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-orange-600">
-                    Coming Soon
-                  </span>
-                </div>
+              <h3 className="font-caveat text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
+                No projects yet for {selectedYear}
+              </h3>
+              <p className="text-sm text-gray-500 max-w-md mx-auto leading-relaxed mb-2">
+                This batch hasn&apos;t submitted any projects to the shelf yet.
+                Be the first one to put your work out there!
+              </p>
+              <p className="text-xs text-gray-400 mb-8">
+                Submissions go through a quick review before appearing on the
+                shelf.
+              </p>
 
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-orange-500 mb-5">
-                  <GraduationCap className="h-8 w-8 text-white" />
-                </div>
-
-                <h3 className="font-caveat text-4xl sm:text-5xl font-bold text-gray-900 mb-3">
-                  Class of 2026
-                </h3>
-
-                <p className="text-gray-600 text-sm sm:text-base max-w-md mx-auto leading-relaxed mb-2">
-                  Graduating this year? Your project deserves a spot on the
-                  shelf. Share what you&apos;ve built and inspire the next batch.
-                </p>
-
-                <p className="text-xs text-gray-400 max-w-sm mx-auto mb-8">
-                  Submit your final year project details and we&apos;ll add it
-                  to the collection after a quick review.
-                </p>
-
-                <a
-                  href={SUBMIT_FORM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-sketch-filled inline-flex items-center gap-2 text-sm"
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <button
+                  onClick={() => setSubmitModalOpen(true)}
+                  className="btn-sketch-filled flex items-center gap-2 text-sm"
                 >
                   <Rocket className="h-4 w-4" />
                   Submit Your Project
-                </a>
+                </button>
+                <button
+                  onClick={() => {
+                    const keys = Object.keys(projectsData);
+                    for (let i = keys.length - 1; i >= 0; i--) {
+                      const yp =
+                        projectsData[
+                          keys[i] as keyof typeof projectsData
+                        ];
+                      if (yp && yp.length > 0) {
+                        setSelectedYear(keys[i]);
+                        return;
+                      }
+                    }
+                  }}
+                  className="btn-sketch-outline flex items-center gap-2 text-sm"
+                >
+                  Browse Other Years
+                </button>
+              </div>
 
-                <div className="mt-8 pt-6 border-t border-dashed border-gray-200 grid grid-cols-3 gap-4">
-                  <div className="text-center">
-                    <p className="font-caveat text-2xl font-bold text-gray-900">
-                      01
+              <div className="mt-10 pt-6 border-t border-dashed border-gray-200">
+                <p className="text-[11px] text-gray-400 uppercase tracking-wider font-bold mb-3">
+                  How it works
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
+                  <div className="p-3 rounded-sm bg-gray-50">
+                    <p className="font-caveat text-lg font-bold text-gray-900 mb-1">
+                      1. Fill the form
                     </p>
-                    <p className="text-[10px] text-gray-400 mt-0.5">
-                      Fill in your details
-                    </p>
-                  </div>
-                  <div className="text-center">
-                    <p className="font-caveat text-2xl font-bold text-gray-900">
-                      02
-                    </p>
-                    <p className="text-[10px] text-gray-400 mt-0.5">
-                      We review it
+                    <p className="text-xs text-gray-500 leading-relaxed">
+                      Add your project title, description, team members, and
+                      tech stack.
                     </p>
                   </div>
-                  <div className="text-center">
-                    <p className="font-caveat text-2xl font-bold text-gray-900">
-                      03
+                  <div className="p-3 rounded-sm bg-gray-50">
+                    <p className="font-caveat text-lg font-bold text-gray-900 mb-1">
+                      2. Auto-PR created
                     </p>
-                    <p className="text-[10px] text-gray-400 mt-0.5">
-                      It goes live here
+                    <p className="text-xs text-gray-500 leading-relaxed">
+                      Your submission becomes a pull request on the GitHub repo
+                      for review.
+                    </p>
+                  </div>
+                  <div className="p-3 rounded-sm bg-gray-50">
+                    <p className="font-caveat text-lg font-bold text-gray-900 mb-1">
+                      3. Goes live
+                    </p>
+                    <p className="text-xs text-gray-500 leading-relaxed">
+                      Once merged, your project card appears here for everyone
+                      to see.
                     </p>
                   </div>
                 </div>
@@ -602,14 +628,12 @@ const ProjectShelf = () => {
               build the future together.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href={SUBMIT_FORM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => setSubmitModalOpen(true)}
                 className="btn-sketch-outline bg-white border-white text-gray-900 shadow-[1.5px_1.5px_0px_rgba(0,0,0,0.2)] hover:shadow-[2.5px_2.5px_0px_rgba(0,0,0,0.2)]"
               >
                 Submit Your Project
-              </a>
+              </button>
               <button
                 onClick={() => {
                   const fab = document.getElementById("find-guide-fab");
@@ -685,6 +709,13 @@ const ProjectShelf = () => {
         open={modalOpen}
         onClose={() => setModalOpen(false)}
         project={selectedProject}
+      />
+
+      <SubmitProjectModal
+        open={submitModalOpen}
+        onClose={() => setSubmitModalOpen(false)}
+        defaultYear={selectedYear}
+        availableYears={Object.keys(projectsData)}
       />
     </div>
   );
