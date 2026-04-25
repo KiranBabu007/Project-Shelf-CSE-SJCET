@@ -564,11 +564,18 @@ const ProjectShelf = () => {
                     }}
                   >
                     <div className="flex items-start justify-between mb-3">
-                      <span
-                        className={`${getCategoryBadgeClass(category)} text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-sm`}
-                      >
-                        {getCategoryLabel(category)}
-                      </span>
+                      <div className="flex items-center gap-1.5">
+                        <span
+                          className={`${getCategoryBadgeClass(category)} text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-sm`}
+                        >
+                          {getCategoryLabel(category)}
+                        </span>
+                        {project.projectType === "mini" && (
+                          <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-sm bg-violet-100 text-violet-700 border border-violet-200">
+                            Mini
+                          </span>
+                        )}
+                      </div>
                       <ArrowUpRight className="h-4 w-4 text-gray-300 group-hover:text-orange-500 transition-colors" />
                     </div>
 

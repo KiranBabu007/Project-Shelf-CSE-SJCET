@@ -9,6 +9,7 @@ interface SubmissionPayload {
   tags: string[];
   year: string;
   turnstileToken: string;
+  projectType?: "main" | "mini";
 }
 
 // In-memory rate limit: IP -> last submission timestamp
@@ -70,6 +71,8 @@ function buildProjectEntry(data: SubmissionPayload, nextId: number): string {
   const students = sanitize(data.students);
   const supervisor = sanitize(data.supervisor);
   const tags = data.tags.map((t) => `"${sanitize(t)}"`).join(", ");
+  const typeLine =
+    data.projectType === "mini" ? `\n      projectType: "mini",` : "";
 
   return `    {
       id: ${nextId},
@@ -78,7 +81,7 @@ function buildProjectEntry(data: SubmissionPayload, nextId: number): string {
         "${description}",
       students: "${students}",
       supervisor: "${supervisor}",
-      tags: [${tags}],
+      tags: [${tags}],${typeLine}
     }`;
 }
 
@@ -128,6 +131,7 @@ export async function POST(req: Request) {
       tags: body.tags.map((t: string) => t.trim()).filter(Boolean),
       year: body.year.trim(),
       turnstileToken: body.turnstileToken,
+      ...(body.projectType === "mini" ? { projectType: "mini" as const } : {}),
     };
 
     const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
