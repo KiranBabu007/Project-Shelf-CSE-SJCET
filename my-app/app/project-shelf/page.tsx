@@ -19,7 +19,7 @@ import {
   Users,
   Star,
   HelpCircle,
-  Settings,
+  Cpu,
   Rocket,
   FolderOpen,
 } from "lucide-react";
@@ -243,32 +243,32 @@ const ProjectShelf = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-[#faf8f4]">
       {/* ============ NAVBAR ============ */}
-      <nav className="border-b border-gray-200 bg-white sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-3">
-              <div className="sketch-border flex items-center justify-center w-10 h-10 rounded-full bg-orange-500 text-white font-bold text-lg">
+      <nav className="bg-[#faf8f4] sticky top-0 z-40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+          <div className="flex items-center justify-between">
+            <div className="navbar-sketch-box flex items-center gap-3 bg-white">
+              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-orange-500 border-[1.8px] border-[#222] text-white font-bold text-lg shadow-[1px_1px_0px_#222]">
                 S
               </div>
               <div>
-                <p className="font-bold text-sm text-gray-900 leading-tight">
+                <p className="font-caveat font-bold text-base text-gray-900 leading-tight">
                   SJCET Palai
                 </p>
-                <p className="text-[11px] text-gray-500 uppercase tracking-wider">
+                <p className="text-[10px] text-gray-500 uppercase tracking-[0.15em] font-medium">
                   Dept. of Computer Science
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               {searchOpen && (
                 <div className="relative" id="search-bar">
                   <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-400" />
                   <Input
                     placeholder="Search projects..."
-                    className="pl-8 w-[200px] sm:w-[280px] h-9 text-sm text-gray-900 border-gray-300 rounded-sm"
+                    className="pl-8 w-[180px] sm:w-[260px] h-9 text-sm text-gray-900 border-[1.5px] border-[#222] rounded-[3px] shadow-[1px_1px_0px_#222] bg-white"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     autoFocus
@@ -277,19 +277,19 @@ const ProjectShelf = () => {
               )}
               <button
                 onClick={() => setSearchOpen(!searchOpen)}
-                className="btn-sketch-outline flex items-center gap-2 text-sm h-9 px-4"
+                className="btn-sketch-outline flex items-center gap-2 text-sm h-9 px-3 sm:px-4"
                 id={!searchOpen ? "search-bar" : undefined}
               >
                 <Search className="h-4 w-4" />
-                <span className="hidden sm:inline">Find Project</span>
+                <span className="hidden sm:inline">Find</span>
               </button>
               <button
                 onClick={handleDownload}
-                className="btn-sketch-outline flex items-center gap-2 text-sm h-9 px-4"
+                className="btn-sketch-outline flex items-center gap-2 text-sm h-9 px-3 sm:px-4"
                 id="download-btn"
               >
                 <Download className="h-4 w-4" />
-                <span className="hidden sm:inline">Download Projects</span>
+                <span className="hidden sm:inline">Export</span>
               </button>
             </div>
           </div>
@@ -297,52 +297,71 @@ const ProjectShelf = () => {
       </nav>
 
       {/* ============ HERO SECTION ============ */}
-      <section className="py-12 sm:py-16 lg:py-20 relative overflow-hidden">
+      <section className="py-14 sm:py-20 lg:py-24 relative overflow-hidden bg-[#faf8f4]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            <div className="flex-1">
-              <div className="flex items-start gap-4">
-                <span className="text-orange-500 font-caveat text-5xl sm:text-6xl font-bold leading-none select-none hidden sm:block">
-                  {"</>"}
-                </span>
-                <div>
-                  <h1 className="font-caveat text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 leading-[1.1]">
-                    The Project{" "}
-                    <span className="text-orange-500">Shelf.</span>
-                  </h1>
-                  <p className="mt-4 text-base sm:text-lg text-gray-600 max-w-xl leading-relaxed">
-                    A handcrafted gallery showcasing{" "}
-                    <span className="font-semibold text-gray-900 underline decoration-orange-400 decoration-2 underline-offset-2">
-                      {allProjects.length} innovative ideas
-                    </span>{" "}
-                    and the brilliant minds behind them at SJCET.
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div className="flex flex-col items-center text-center relative">
+            {/* Decorative code brackets icon — top left */}
+            <span
+              className="hidden sm:block absolute -left-2 sm:left-4 lg:left-12 top-0 text-orange-300/70 font-caveat text-6xl sm:text-7xl font-bold leading-none select-none"
+              style={{ transform: "rotate(-8deg)" }}
+              aria-hidden="true"
+            >
+              {"</>"}
+            </span>
 
-            <div className="hidden lg:flex items-center justify-center">
-              <Settings
-                className="w-24 h-24 text-gray-200 animate-[spin_20s_linear_infinite]"
-                strokeWidth={0.8}
-              />
-            </div>
+            {/* Decorative chip/cpu icon — bottom right */}
+            <Cpu
+              className="hidden sm:block absolute -right-2 sm:right-4 lg:right-12 bottom-0 w-16 h-16 sm:w-20 sm:h-20 text-gray-300/60"
+              strokeWidth={0.8}
+              aria-hidden="true"
+              style={{ transform: "rotate(6deg)" }}
+            />
+
+            <h1 className="font-caveat text-5xl sm:text-6xl lg:text-[5rem] font-bold text-gray-800 leading-[1.05] tracking-tight">
+              The Project{" "}
+              <span className="text-orange-500 relative">
+                Shelf.
+                <svg
+                  className="absolute -bottom-1 left-0 w-full"
+                  viewBox="0 0 120 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M2 5.5C20 2 40 7 60 4C80 1 100 6 118 3"
+                    stroke="#f97316"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    opacity="0.5"
+                  />
+                </svg>
+              </span>
+            </h1>
+
+            <p className="mt-5 text-base sm:text-lg text-gray-500 max-w-xl leading-relaxed">
+              A handcrafted gallery showcasing{" "}
+              <span className="font-semibold text-gray-800 bg-yellow-200/60 px-1.5 py-0.5 rounded-sm">
+                {allProjects.length} innovative ideas
+              </span>{" "}
+              and the brilliant minds behind them at SJCET.
+            </p>
           </div>
         </div>
       </section>
 
       {/* ============ STAT CARDS ============ */}
-      <section className="pb-12">
+      <section className="pb-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-            <div className="stat-card-blue p-6">
+            <div className="stat-card-blue p-6" style={{ transform: "rotate(-0.4deg)" }}>
               <div className="flex items-center justify-between mb-3">
                 <p className="text-xs font-bold uppercase tracking-wider text-sky-600">
                   Academic Years
                 </p>
-                <Calendar className="h-5 w-5 text-sky-400" />
+                <Calendar className="h-5 w-5 text-sky-300" />
               </div>
-              <p className="font-caveat text-5xl font-bold text-gray-900">
+              <p className="font-caveat text-5xl font-bold text-gray-800">
                 {String(totalYears).padStart(2, "0")}
               </p>
               <p className="mt-2 text-xs text-gray-500 leading-relaxed">
@@ -351,14 +370,14 @@ const ProjectShelf = () => {
               </p>
             </div>
 
-            <div className="stat-card-green p-6">
+            <div className="stat-card-green p-6" style={{ transform: "rotate(0.3deg)" }}>
               <div className="flex items-center justify-between mb-3">
                 <p className="text-xs font-bold uppercase tracking-wider text-emerald-600">
                   Total Projects
                 </p>
-                <Layers className="h-5 w-5 text-emerald-400" />
+                <Layers className="h-5 w-5 text-emerald-300" />
               </div>
-              <p className="font-caveat text-5xl font-bold text-gray-900">
+              <p className="font-caveat text-5xl font-bold text-gray-800">
                 {allProjects.length}
               </p>
               <p className="mt-2 text-xs text-gray-500 leading-relaxed">
@@ -367,14 +386,14 @@ const ProjectShelf = () => {
               </p>
             </div>
 
-            <div className="stat-card-cream p-6">
+            <div className="stat-card-cream p-6" style={{ transform: "rotate(-0.25deg)" }}>
               <div className="flex items-center justify-between mb-3">
                 <p className="text-xs font-bold uppercase tracking-wider text-amber-600">
                   Technologies
                 </p>
-                <Code2 className="h-5 w-5 text-amber-400" />
+                <Code2 className="h-5 w-5 text-amber-300" />
               </div>
-              <p className="font-caveat text-5xl font-bold text-gray-900">
+              <p className="font-caveat text-5xl font-bold text-gray-800">
                 {totalTech}+
               </p>
               <p className="mt-2 text-xs text-gray-500 leading-relaxed">
@@ -388,13 +407,13 @@ const ProjectShelf = () => {
       {/* ============ PROJECTS GRID ============ */}
       <section className="flex-grow pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4">
-            <h2 className="font-caveat text-3xl sm:text-4xl font-bold text-gray-900 italic">
-              Latest Submissions ({selectedYear})
+          <div className="flex flex-col items-center justify-center mb-10 gap-4">
+            <h2 className="font-caveat text-3xl sm:text-4xl font-bold text-gray-800">
+              Latest Submissions
             </h2>
             <div className="flex items-center gap-3">
               {searchTerm && !isEmptyYear && (
-                <span className="text-sm text-gray-500">
+                <span className="text-xs text-gray-400 bg-gray-100 px-2.5 py-1 rounded-sm border border-gray-200">
                   {filteredProjects.length} found
                 </span>
               )}
@@ -402,10 +421,15 @@ const ProjectShelf = () => {
                 onValueChange={setSelectedYear}
                 defaultValue={selectedYear}
               >
-                <SelectTrigger className="sketch-border bg-white text-sm font-medium h-9 w-[160px] rounded-sm text-gray-900">
-                  <SelectValue placeholder="Select Year" />
+                <SelectTrigger className="bg-white text-sm font-bold h-10 w-[170px] text-gray-900 border-[2px] border-[#222] rounded-[3px] shadow-[2.5px_2.5px_0px_#222] hover:shadow-[3.5px_3.5px_0px_#222] hover:translate-x-[-0.5px] hover:translate-y-[-0.5px] transition-all"
+                  style={{ transform: "rotate(-0.3deg)" }}
+                >
+                  <span className="font-caveat text-base">
+                    Batch{" "}
+                    <SelectValue placeholder="Select Year" />
+                  </span>
                 </SelectTrigger>
-                <SelectContent className="bg-white border border-gray-900 rounded-sm shadow-[2px_2px_0px_#222]">
+                <SelectContent className="bg-white border-[1.8px] border-[#222] rounded-[3px] shadow-[3px_3px_0px_#222]">
                   {Object.keys(projectsData)
                     .slice()
                     .reverse()
@@ -413,7 +437,7 @@ const ProjectShelf = () => {
                       <SelectItem
                         key={year}
                         value={year}
-                        className="text-sm text-gray-900"
+                        className="text-sm text-gray-900 font-medium"
                       >
                         {year}
                       </SelectItem>
@@ -686,10 +710,10 @@ const ProjectShelf = () => {
       </section>
 
       {/* ============ FOOTER ============ */}
-      <footer className="py-10 bg-white">
+      <footer className="py-10 bg-[#faf8f4]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="sketch-border p-6 sm:p-8">
-            <h3 className="font-bold text-lg text-gray-900">
+          <div className="navbar-sketch-box bg-white p-6 sm:p-8" style={{ transform: "rotate(0.15deg)" }}>
+            <h3 className="font-caveat font-bold text-xl text-gray-800">
               CSE Project Shelf
             </h3>
             <p className="text-sm text-gray-500 mt-1">

@@ -67,6 +67,9 @@ const SubmitProjectModal: React.FC<SubmitProjectModalProps> = ({
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState("");
   const [year, setYear] = useState(defaultYear || "");
+  const [projectType, setProjectType] = useState<"main" | "mini" | "">(
+    ""
+  );
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const turnstileRef = useRef<TurnstileInstance | null>(null);
   const [status, setStatus] = useState<
@@ -102,6 +105,7 @@ const SubmitProjectModal: React.FC<SubmitProjectModalProps> = ({
     setTags([]);
     setTagInput("");
     setYear(defaultYear || "");
+    setProjectType("");
     setTurnstileToken(null);
     turnstileRef.current?.reset();
     setStatus("idle");
@@ -143,6 +147,7 @@ const SubmitProjectModal: React.FC<SubmitProjectModalProps> = ({
           tags,
           year,
           turnstileToken,
+          ...(projectType ? { projectType } : {}),
         }),
       });
 
@@ -306,6 +311,35 @@ const SubmitProjectModal: React.FC<SubmitProjectModalProps> = ({
                     ))}
                   </SelectContent>
                 </Select>
+              </div>
+
+              {/* Project Type (optional) */}
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+                  Project Type
+                </label>
+                <div className="flex gap-2">
+                  {(["main", "mini"] as const).map((type) => (
+                    <button
+                      key={type}
+                      type="button"
+                      onClick={() =>
+                        setProjectType(projectType === type ? "" : type)
+                      }
+                      disabled={status === "submitting"}
+                      className={`flex-1 h-9 text-sm font-medium rounded-sm border-[1.5px] transition-all ${
+                        projectType === type
+                          ? "border-gray-900 bg-gray-900 text-white shadow-[1px_1px_0px_#222]"
+                          : "border-gray-300 bg-white text-gray-600 hover:border-gray-400"
+                      }`}
+                    >
+                      {type === "main" ? "Main Project" : "Mini Project"}
+                    </button>
+                  ))}
+                </div>
+                <p className="text-[10px] text-gray-400 mt-1">
+                  Optional — defaults to Main if not selected
+                </p>
               </div>
 
               {/* Tags */}
