@@ -2010,7 +2010,7 @@ const projectsData = {
       tags: ["Product"],
     },
   ],
-  2024: [
+  "2024-2025": [
     {
       id: 5,
       title: "Curently",
@@ -2161,6 +2161,7 @@ const projectsData = {
       tags: ["Flutter", "Firebase"],
     },
   ],
+  "2025-2026": [],
 };
 
 export default projectsData;
