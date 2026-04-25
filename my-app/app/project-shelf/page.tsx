@@ -423,6 +423,36 @@ const ProjectShelf = () => {
             </div>
           </div>
 
+          {/* 2025-2026 Batch Banner */}
+          {selectedYear === "2025-2026" && !isEmptyYear && (
+            <div className="mb-8 relative overflow-hidden sketch-card border-orange-300 bg-gradient-to-r from-orange-50 via-amber-50 to-orange-50 p-6 sm:p-8">
+              <div className="absolute -top-6 -right-6 w-28 h-28 bg-orange-200/30 rounded-full blur-2xl" />
+              <div className="absolute -bottom-4 -left-4 w-20 h-20 bg-amber-200/30 rounded-full blur-xl" />
+              <div className="relative flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+                <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-full bg-orange-100 border-[1.5px] border-orange-300">
+                  <Rocket className="h-7 w-7 text-orange-500" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-caveat text-2xl sm:text-3xl font-bold text-gray-900 leading-tight">
+                    Are you from the 2026 batch?
+                  </h3>
+                  <p className="text-sm text-gray-600 mt-1 max-w-lg leading-relaxed">
+                    Your final-year project deserves a spot on the shelf. Upload
+                    it now and let juniors, recruiters, and faculty see what
+                    you&apos;ve built.
+                  </p>
+                </div>
+                <button
+                  onClick={() => setSubmitModalOpen(true)}
+                  className="btn-sketch-filled flex items-center gap-2 text-sm flex-shrink-0 whitespace-nowrap"
+                >
+                  <Rocket className="h-4 w-4" />
+                  Upload Your Project
+                </button>
+              </div>
+            </div>
+          )}
+
           {/* Empty year state -- beautiful submission CTA */}
           {isEmptyYear ? (
             <div className="sketch-card p-8 sm:p-12 text-center max-w-2xl mx-auto">

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { headers } from "next/headers";
 
 interface SubmissionPayload {
   title: string;
@@ -7,6 +8,36 @@ interface SubmissionPayload {
   supervisor: string;
   tags: string[];
   year: string;
+  turnstileToken: string;
+}
+
+// In-memory rate limit: IP -> last submission timestamp
+const rateLimitMap = new Map<string, number>();
+const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute between submissions
+
+function getClientIp(): string {
+  const hdrs = headers();
+  return (
+    hdrs.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    hdrs.get("x-real-ip") ||
+    "unknown"
+  );
+}
+
+async function verifyTurnstile(token: string): Promise<boolean> {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+  if (!secret) return true; // skip verification if not configured
+
+  const res = await fetch(
+    "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ secret, response: token }),
+    }
+  );
+  const data = await res.json();
+  return data.success === true;
 }
 
 function validateSubmission(data: any): { valid: boolean; error?: string } {
@@ -26,7 +57,11 @@ function validateSubmission(data: any): { valid: boolean; error?: string } {
 }
 
 function sanitize(str: string): string {
-  return str.replace(/[`$\\]/g, "").trim();
+  return str
+    .replace(/\\/g, "\\\\")
+    .replace(/"/g, '\\"')
+    .replace(/[`$]/g, "")
+    .trim();
 }
 
 function buildProjectEntry(data: SubmissionPayload, nextId: number): string {
@@ -56,6 +91,35 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: validation.error }, { status: 400 });
     }
 
+    // Rate limiting
+    const ip = getClientIp();
+    const lastSubmission = rateLimitMap.get(ip);
+    if (lastSubmission && Date.now() - lastSubmission < RATE_LIMIT_WINDOW_MS) {
+      const waitSec = Math.ceil(
+        (RATE_LIMIT_WINDOW_MS - (Date.now() - lastSubmission)) / 1000
+      );
+      return NextResponse.json(
+        { error: `Please wait ${waitSec}s before submitting again.` },
+        { status: 429 }
+      );
+    }
+
+    // Turnstile CAPTCHA verification
+    const turnstileToken = body.turnstileToken;
+    if (!turnstileToken) {
+      return NextResponse.json(
+        { error: "Please complete the CAPTCHA verification." },
+        { status: 400 }
+      );
+    }
+    const turnstileOk = await verifyTurnstile(turnstileToken);
+    if (!turnstileOk) {
+      return NextResponse.json(
+        { error: "CAPTCHA verification failed. Please try again." },
+        { status: 403 }
+      );
+    }
+
     const data: SubmissionPayload = {
       title: body.title.trim(),
       description: body.description.trim(),
@@ -63,6 +127,7 @@ export async function POST(req: Request) {
       supervisor: body.supervisor.trim(),
       tags: body.tags.map((t: string) => t.trim()).filter(Boolean),
       year: body.year.trim(),
+      turnstileToken: body.turnstileToken,
     };
 
     const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
@@ -278,6 +343,8 @@ ${data.description}
     }
 
     const prData = await createPrRes.json();
+
+    rateLimitMap.set(ip, Date.now());
 
     return NextResponse.json({
       success: true,

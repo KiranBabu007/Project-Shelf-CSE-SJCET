@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   Dialog,
   DialogContent,
@@ -24,6 +24,10 @@ import {
   Plus,
   ExternalLink,
 } from "lucide-react";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
+
+const TURNSTILE_SITE_KEY =
+  process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA";
 
 interface SubmitProjectModalProps {
   open: boolean;
@@ -63,6 +67,8 @@ const SubmitProjectModal: React.FC<SubmitProjectModalProps> = ({
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState("");
   const [year, setYear] = useState(defaultYear || "");
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const turnstileRef = useRef<TurnstileInstance | null>(null);
   const [status, setStatus] = useState<
     "idle" | "submitting" | "success" | "error"
   >("idle");
@@ -96,6 +102,8 @@ const SubmitProjectModal: React.FC<SubmitProjectModalProps> = ({
     setTags([]);
     setTagInput("");
     setYear(defaultYear || "");
+    setTurnstileToken(null);
+    turnstileRef.current?.reset();
     setStatus("idle");
     setErrorMsg("");
     setPrUrl("");
@@ -114,7 +122,8 @@ const SubmitProjectModal: React.FC<SubmitProjectModalProps> = ({
     students.trim().length >= 2 &&
     supervisor.trim().length >= 2 &&
     tags.length > 0 &&
-    year.length > 0;
+    year.length > 0 &&
+    !!turnstileToken;
 
   const handleSubmit = async () => {
     if (!isValid) return;
@@ -133,6 +142,7 @@ const SubmitProjectModal: React.FC<SubmitProjectModalProps> = ({
           supervisor: supervisor.trim(),
           tags,
           year,
+          turnstileToken,
         }),
       });
 
@@ -141,6 +151,8 @@ const SubmitProjectModal: React.FC<SubmitProjectModalProps> = ({
       if (!res.ok) {
         setStatus("error");
         setErrorMsg(data.error || "Submission failed. Please try again.");
+        setTurnstileToken(null);
+        turnstileRef.current?.reset();
         return;
       }
 
@@ -363,6 +375,18 @@ const SubmitProjectModal: React.FC<SubmitProjectModalProps> = ({
                     </div>
                   </div>
                 )}
+              </div>
+
+              {/* Turnstile CAPTCHA */}
+              <div className="pt-2">
+                <Turnstile
+                  ref={turnstileRef}
+                  siteKey={TURNSTILE_SITE_KEY}
+                  onSuccess={(token) => setTurnstileToken(token)}
+                  onExpire={() => setTurnstileToken(null)}
+                  onError={() => setTurnstileToken(null)}
+                  options={{ theme: "light", size: "flexible" }}
+                />
               </div>
             </div>
 
