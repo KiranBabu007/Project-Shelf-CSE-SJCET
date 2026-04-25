@@ -2160,6 +2160,15 @@ const projectsData = {
       supervisor: "Prof. Smitha Jacob",
       tags: ["Flutter", "Firebase"],
     },
+    {
+      id: 50,
+      title: "test",
+      description:
+        "asdfasdfasdfasdf",
+      students: "sdfasdfadsf",
+      supervisor: "Kiran,Babu",
+      tags: ["Test", "Firebase", "IoT"],
+    },
   ],
   "2025-2026": [
     {
