@@ -2161,7 +2161,17 @@ const projectsData = {
       tags: ["Flutter", "Firebase"],
     },
   ],
-  "2025-2026": [],
+  "2025-2026": [
+    {
+      id: 49,
+      title: "First Project",
+      description:
+        "This is a sample Project",
+      students: "John,Peter,Bob",
+      supervisor: "Sample Supervisor",
+      tags: ["React", "Firebase"],
+    },
+  ],
 };
 
 export default projectsData;
