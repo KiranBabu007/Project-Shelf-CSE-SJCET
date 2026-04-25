@@ -2009,6 +2009,15 @@ const projectsData = {
       supervisor: "Prof. Jibin Philip",
       tags: ["Product"],
     },
+    {
+      id: 49,
+      title: "Testsadf",
+      description:
+        "Testingsadasd",
+      students: "a,b,c",
+      supervisor: "Jabaa",
+      tags: ["Good", "Tech"],
+    },
   ],
   "2024-2025": [
     {
