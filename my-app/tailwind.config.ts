@@ -7,7 +7,7 @@ const config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+  ],
   prefix: "",
   theme: {
     container: {
@@ -18,6 +18,10 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        caveat: ['var(--font-caveat)', 'Caveat', 'cursive'],
+        sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -52,6 +56,20 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        sketch: {
+          ink: "#222222",
+          border: "#333333",
+          paper: "#FFFFFF",
+          cream: "#FFFDF5",
+        },
+        badge: {
+          iot: { bg: "#FEF2F2", text: "#DC2626", border: "#FCA5A5" },
+          education: { bg: "#ECFDF5", text: "#047857", border: "#6EE7B7" },
+          ai: { bg: "#F5F3FF", text: "#7C3AED", border: "#C4B5FD" },
+          blockchain: { bg: "#FDF2F8", text: "#DB2777", border: "#F9A8D4" },
+          health: { bg: "#F0FDF4", text: "#16A34A", border: "#86EFAC" },
+          services: { bg: "#F5F3FF", text: "#7C3AED", border: "#C4B5FD" },
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -67,10 +85,20 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "sketch-lift": {
+          "0%": { boxShadow: "1.5px 1.5px 0px #222", transform: "translate(0, 0)" },
+          "100%": { boxShadow: "3px 3px 0px #222", transform: "translate(-1px, -1px)" },
+        },
+        "float": {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-4px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "sketch-lift": "sketch-lift 0.2s ease forwards",
+        "float": "float 3s ease-in-out infinite",
       },
     },
   },

@@ -1,23 +1,31 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Caveat } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
-const inter = Inter({ subsets: ["latin"] });
+const caveat = Caveat({
+  subsets: ["latin"],
+  variable: "--font-caveat",
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
-  title: "CSE Project Shelf | SJCET Palai",
+  title: "The Project Shelf | SJCET Palai",
   description:
-    "Explore final year projects by Computer Science & Engineering students at St Joseph's College of Engineering and Technology, Palai.",
+    "A handcrafted gallery showcasing innovative ideas and the brilliant minds behind them at SJCET.",
   icons: {
-    icon: "/favicon.ico", 
+    icon: "/favicon.ico",
   },
   openGraph: {
-    title: "CSE Project Shelf | SJCET Palai",
+    title: "The Project Shelf | SJCET Palai",
     description:
       "Discover innovative projects from the Department of Computer Science and Engineering at SJCET Palai.",
-    url: "https://project.sjcet.in/", 
+    url: "https://project.sjcet.in/",
     siteName: "SJCET Palai",
     images: [
       {
@@ -31,7 +39,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "CSE Project Shelf | SJCET Palai",
+    title: "The Project Shelf | SJCET Palai",
     description:
       "Showcasing final year Computer Science projects from SJCET Palai.",
     images: ["/favicon.ico"],
@@ -46,11 +54,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${caveat.variable} font-sans`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
           disableTransitionOnChange
         >
           {children}
