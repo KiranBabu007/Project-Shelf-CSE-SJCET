@@ -2160,6 +2160,17 @@ const projectsData = {
       supervisor: "Prof. Smitha Jacob",
       tags: ["Flutter", "Firebase"],
     },
+    {
+      id: 50,
+      title: "DentCare",
+      description:
+        "An integrated digital healthcare platform that
+combines oral cancer screening and dental treatment visualizer with patient management functionalities such as appoint-
+ment scheduling, medical record maintenance, and follow-up notifications.",
+      students: "Anita Mary Joseph, Githin Ciril, Gowrikrishhna C, Nikita Ajay",
+      supervisor: "Prof. Thushara Sukumar",
+      tags: ["Node.js", "MongoDB", "Tensorflow", "React native", "OpenCV", "Mediapipe"],
+    },
   ],
   "2025-2026": [
     {
