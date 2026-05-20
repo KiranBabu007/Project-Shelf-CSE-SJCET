@@ -2169,6 +2169,15 @@ const projectsData = {
       supervisor: "Renju Renjith",
       tags: ["React native", "Firebase", "MongoDB", "Node js", "Yolo"],
     },
+    {
+      id: 51,
+      title: "Prevue.AI",
+      description:
+        "PREVUE.AI is an AI-powered mock interview platform with virtual AI avatars, speech and behavior analysis, and intelligent interview feedback.",
+      students: "Amal Joy, Bijal T Benny, Anush S Kumar, Jismi Saju",
+      supervisor: "Prof. Thushara Sukumar",
+      tags: ["React", "Node.js", "MongoDB", "AI", "MERN", "Gemini", "Interview"],
+    },
   ],
   "2025-2026": [
     {
