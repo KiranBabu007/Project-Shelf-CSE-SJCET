@@ -12,9 +12,8 @@ interface SubmissionPayload {
   projectType?: "main" | "mini";
 }
 
-// In-memory rate limit: IP -> last submission timestamp
 const rateLimitMap = new Map<string, number>();
-const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute between submissions
+const RATE_LIMIT_WINDOW_MS = 60_000;
 
 function getClientIp(): string {
   const hdrs = headers();
@@ -27,7 +26,7 @@ function getClientIp(): string {
 
 async function verifyTurnstile(token: string): Promise<boolean> {
   const secret = process.env.TURNSTILE_SECRET_KEY;
-  if (!secret) return true; // skip verification if not configured
+  if (!secret) return true;
 
   const res = await fetch(
     "https://challenges.cloudflare.com/turnstile/v0/siteverify",
@@ -72,18 +71,30 @@ function buildProjectEntry(data: SubmissionPayload, nextId: number): string {
   const supervisor = sanitize(data.supervisor);
   const tags = data.tags.map((t) => `"${sanitize(t)}"`).join(", ");
   const typeLine =
-    data.projectType === "mini" ? `\n      projectType: "mini",` : "";
+    data.projectType === "mini" ? `\n    projectType: "mini" as const,` : "";
 
-  return `    {
-      id: ${nextId},
-      title: "${title}",
-      description:
-        "${description}",
-      students: "${students}",
-      supervisor: "${supervisor}",
-      tags: [${tags}],${typeLine}
-    }`;
+  return `  {
+    id: ${nextId},
+    title: "${title}",
+    description:
+      "${description}",
+    students: "${students}",
+    supervisor: "${supervisor}",
+    tags: [${tags}],${typeLine}
+  }`;
 }
+
+const VALID_YEARS = [
+  "2017-2018",
+  "2018-2019",
+  "2019-2020",
+  "2020-2021",
+  "2021-2022",
+  "2022-2023",
+  "2023-2024",
+  "2024-2025",
+  "2025-2026",
+];
 
 export async function POST(req: Request) {
   try {
@@ -94,7 +105,6 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: validation.error }, { status: 400 });
     }
 
-    // Rate limiting
     const ip = getClientIp();
     const lastSubmission = rateLimitMap.get(ip);
     if (lastSubmission && Date.now() - lastSubmission < RATE_LIMIT_WINDOW_MS) {
@@ -107,7 +117,6 @@ export async function POST(req: Request) {
       );
     }
 
-    // Turnstile CAPTCHA verification
     const turnstileToken = body.turnstileToken;
     if (!turnstileToken) {
       return NextResponse.json(
@@ -134,6 +143,13 @@ export async function POST(req: Request) {
       ...(body.projectType === "mini" ? { projectType: "mini" as const } : {}),
     };
 
+    if (!VALID_YEARS.includes(data.year)) {
+      return NextResponse.json(
+        { error: `Year "${data.year}" is not a valid academic year.` },
+        { status: 400 }
+      );
+    }
+
     const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
     if (!GITHUB_TOKEN) {
       return NextResponse.json(
@@ -144,10 +160,10 @@ export async function POST(req: Request) {
 
     const REPO_OWNER = "KiranBabu007";
     const REPO_NAME = "Project-Shelf-CSE-SJCET";
-    const FILE_PATH = "my-app/app/project-shelf/projects.js";
+    const YEAR_FILE_PATH = `my-app/app/project-shelf/data/${data.year}.ts`;
     const BASE_BRANCH = "main";
 
-    const headers = {
+    const ghHeaders = {
       Authorization: `Bearer ${GITHUB_TOKEN}`,
       Accept: "application/vnd.github+json",
       "Content-Type": "application/json",
@@ -156,17 +172,17 @@ export async function POST(req: Request) {
 
     const apiBase = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`;
 
-    // 1. Get the current file content from the base branch
+    // 1. Fetch the year-specific file (NOT the monolithic file)
     const fileRes = await fetch(
-      `${apiBase}/contents/${FILE_PATH}?ref=${BASE_BRANCH}`,
-      { headers }
+      `${apiBase}/contents/${YEAR_FILE_PATH}?ref=${BASE_BRANCH}`,
+      { headers: ghHeaders }
     );
 
     if (!fileRes.ok) {
       const errText = await fileRes.text();
-      console.error("Failed to fetch file:", errText);
+      console.error("Failed to fetch year file:", errText);
       return NextResponse.json(
-        { error: "Failed to read project data from repository" },
+        { error: `Could not find data file for year "${data.year}".` },
         { status: 500 }
       );
     }
@@ -176,12 +192,7 @@ export async function POST(req: Request) {
       "utf-8"
     );
 
-    // 2. Figure out the next ID for the target year
-    const yearKey = data.year;
-    const yearKeyPattern = yearKey.includes("-")
-      ? `"${yearKey}"`
-      : yearKey;
-
+    // 2. Compute next ID from this year's file only
     let maxId = 0;
     const idRegex = /id:\s*(\d+)/g;
     let idMatch: RegExpExecArray | null;
@@ -193,67 +204,61 @@ export async function POST(req: Request) {
 
     const newEntry = buildProjectEntry(data, nextId);
 
-    // 3. Insert the new project into the correct year array
-    let updatedContent: string;
-
-    // Find the closing bracket of the target year's array
-    const yearRegex = new RegExp(
-      `(${yearKeyPattern.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s*:\\s*\\[)([\\s\\S]*?)(\\])`
-    );
-
-    const yearMatch = currentContent.match(yearRegex);
-
-    if (!yearMatch) {
+    // 3. Insert the new project into the year's array
+    // The file structure is: `const projects: Project[] = [ ...entries ];`
+    // Find the last `}` before the closing `];` and append after it
+    const closingBracketIdx = currentContent.lastIndexOf("];");
+    if (closingBracketIdx === -1) {
       return NextResponse.json(
-        { error: `Year "${yearKey}" not found in project data` },
-        { status: 400 }
+        { error: "Year data file has unexpected format." },
+        { status: 500 }
       );
     }
 
-    const arrayContent = yearMatch[2].trim();
-    if (arrayContent.length === 0) {
-      // Empty array -- insert as first entry
-      updatedContent = currentContent.replace(
-        yearRegex,
-        `$1\n${newEntry},\n  $3`
-      );
-    } else {
-      // Has entries -- append after the last one
-      const lastBraceIndex = currentContent.lastIndexOf(
-        "},",
-        currentContent.indexOf(yearMatch[3], currentContent.indexOf(yearMatch[0]))
-      );
+    // Check if the array is empty (no entries)
+    const arrayStartIdx = currentContent.indexOf("[");
+    const arrayContent = currentContent
+      .substring(arrayStartIdx + 1, closingBracketIdx)
+      .trim();
 
-      if (lastBraceIndex === -1) {
-        // Fallback: append before closing bracket
-        updatedContent = currentContent.replace(
-          yearRegex,
-          `$1$2,\n${newEntry},\n  $3`
-        );
+    let updatedContent: string;
+    if (arrayContent.length === 0) {
+      updatedContent =
+        currentContent.substring(0, closingBracketIdx) +
+        "\n" +
+        newEntry +
+        ",\n" +
+        currentContent.substring(closingBracketIdx);
+    } else {
+      // Find the last closing brace of the last object in the array
+      const lastObjEnd = currentContent.lastIndexOf("}", closingBracketIdx);
+      // Check if there's already a trailing comma
+      const afterLastObj = currentContent
+        .substring(lastObjEnd + 1, closingBracketIdx)
+        .trim();
+      const needsComma = !afterLastObj.startsWith(",");
+
+      const insertAfter = needsComma ? lastObjEnd + 1 : lastObjEnd + 1;
+      const prefix = currentContent.substring(0, insertAfter);
+      const suffix = currentContent.substring(insertAfter);
+
+      if (needsComma) {
+        updatedContent = prefix + ",\n" + newEntry + "," + suffix;
       } else {
-        // Insert after the last entry's closing brace+comma
-        const insertPoint = currentContent.indexOf(
-          "\n",
-          lastBraceIndex
-        );
-        updatedContent =
-          currentContent.slice(0, insertPoint + 1) +
-          newEntry +
-          ",\n" +
-          currentContent.slice(insertPoint + 1);
+        // There's already a comma after the last entry
+        updatedContent = prefix + "\n" + newEntry + "," + suffix;
       }
     }
 
     // 4. Create a new branch
-    const branchName = `project-submission/${data.title
+    const branchName = `project-submission/${data.year}/${data.title
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, "-")
       .slice(0, 40)}-${Date.now()}`;
 
-    // Get the SHA of the base branch
     const refRes = await fetch(
       `${apiBase}/git/ref/heads/${BASE_BRANCH}`,
-      { headers }
+      { headers: ghHeaders }
     );
 
     if (!refRes.ok) {
@@ -266,10 +271,9 @@ export async function POST(req: Request) {
     const refData = await refRes.json();
     const baseSha = refData.object.sha;
 
-    // Create the branch
     const createBranchRes = await fetch(`${apiBase}/git/refs`, {
       method: "POST",
-      headers,
+      headers: ghHeaders,
       body: JSON.stringify({
         ref: `refs/heads/${branchName}`,
         sha: baseSha,
@@ -285,12 +289,12 @@ export async function POST(req: Request) {
       );
     }
 
-    // 5. Update the file on the new branch
+    // 5. Update the year-specific file on the new branch
     const updateFileRes = await fetch(
-      `${apiBase}/contents/${FILE_PATH}`,
+      `${apiBase}/contents/${YEAR_FILE_PATH}`,
       {
         method: "PUT",
-        headers,
+        headers: ghHeaders,
         body: JSON.stringify({
           message: `Add project: ${data.title} (${data.year})\n\nSubmitted by: ${data.students}\nSupervisor: ${data.supervisor}\nTags: ${data.tags.join(", ")}`,
           content: Buffer.from(updatedContent).toString("base64"),
@@ -322,13 +326,14 @@ export async function POST(req: Request) {
 ${data.description}
 
 ---
-*This PR was auto-generated from the Project Shelf submission form.*`;
+*This PR was auto-generated from the Project Shelf submission form.*
+*File modified: \`${YEAR_FILE_PATH}\`*`;
 
     const createPrRes = await fetch(`${apiBase}/pulls`, {
       method: "POST",
-      headers,
+      headers: ghHeaders,
       body: JSON.stringify({
-        title: `[Project Submission] ${data.title}`,
+        title: `[Project Submission] ${data.title} (${data.year})`,
         body: prBody,
         head: branchName,
         base: BASE_BRANCH,
