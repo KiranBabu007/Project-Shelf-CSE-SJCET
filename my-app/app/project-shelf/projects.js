@@ -2178,6 +2178,15 @@ const projectsData = {
       supervisor: "Prof. Thushara Sukumar",
       tags: ["React", "Node.js", "MongoDB", "AI", "MERN", "Gemini", "Interview"],
     },
+    {
+      id: 52,
+      title: "StamFree: AI Powered Speech Therapy Assistant",
+      description:
+        "Stammering significantly impacts a child's social confidence and development, yet traditional therapy exercises are often clinical, repetitive, and expensive. StamFree solves this by transforming speech therapy into an interactive, gamified mobile application powered by advanced Artificial Intelligence. StamFree uses a state-of-the-art deep learning model called WavLM to analyze raw speech directly, accurately identifying specific disfluencies like repetitions, blocks, and prolongations.  StamFree provides a supportive, low-anxiety environment that keeps children motivated to practice consistently.",
+      students: "Adithya P Binu, Devika Rajeev, Doney Siby, Emitta Mathew",
+      supervisor: "Dr. Joby P.P",
+      tags: ["React Native", "Firebase", "AI", "Python (Flask)", "ML"],
+    },
   ],
   "2025-2026": [
     {
