@@ -2169,6 +2169,15 @@ const projectsData = {
       supervisor: "Renju Renjith",
       tags: ["React native", "Firebase", "MongoDB", "Node js", "Yolo"],
     },
+    {
+      id: 51,
+      title: "Neurod- Learning Management Platform for Neuro-divergent learners",
+      description:
+        "An adaptive learning platform for Neuro-divergent learners",
+      students: "Alwin J Thomas, AwinDas R, Alen Siju, Chris Reji Kuriakose",
+      supervisor: "Prof. Sarju S",
+      tags: ["React", "AI", "Nextjs", "Nestjs", "Typescript"],
+    },
   ],
   "2025-2026": [
     {
