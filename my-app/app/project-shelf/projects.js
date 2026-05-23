@@ -2178,6 +2178,17 @@ const projectsData = {
       supervisor: "Prof. Thushara Sukumar",
       tags: ["React", "Node.js", "MongoDB", "AI", "MERN", "Gemini", "Interview"],
     },
+    {
+      id: 52,
+      title: "GestureMate-Malayalam-Sign-Language-Recognition-System",
+      description:
+        "GestureMate is a real-time Malayalam sign language recognition and communication platform designed to bridge the communication gap between deaf and mute individuals and the general public — without the need for a human interpreter. The system recognises hand gestures conforming to the Malayalam Sign Language standard developed by the National Institute for Speech and Hearing (NISH), Trivandrum, converts them into text, and also provides bidirectional voice–text support so that hearing users can communicate naturally with deaf and mute users on the same screen.
+
+project repo - https://github.com/Stephin-Mathew/GestureMate-Malayalam-Sign-Language-Recognition-System",
+      students: "Stephin Mathew , Kevin Biju Kulangara , Jeswin Sabu , Prapanch J",
+      supervisor: "Prof. Vimal Babu P",
+      tags: ["React", "Python", "AI", "next"],
+    },
   ],
   "2025-2026": [
     {
