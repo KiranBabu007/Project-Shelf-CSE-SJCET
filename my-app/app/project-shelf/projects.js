@@ -2178,6 +2178,33 @@ const projectsData = {
       supervisor: "Prof. Thushara Sukumar",
       tags: ["React", "Node.js", "MongoDB", "AI", "MERN", "Gemini", "Interview"],
     },
+    {
+      id: 52,
+      title: "Electra : Blockchain Integrated Secure Voting and Voter Authentication  System",
+      description:
+        "This project presents a secure and transparent digital voting framework that integrates 
+biometric authentication with blockchain technology to ensure electoral integrity. The 
+system addresses key vulnerabilities in traditional and centralized electronic voting 
+systems, including impersonation, duplicate voting, data tampering, and lack of 
+transparency. Voter authentication is performed using fingerprint-based biometric 
+verification to ensure that only eligible individuals can cast a vote. Candidate eligibility 
+is validated through trusted digital databases before ballot generation, ensuring 
+procedural fairness. Each vote is converted into a unique SHA-256 cryptographic hash 
+and recorded immutably on a private blockchain through smart contracts. This 
+decentralized storage mechanism eliminates single points of failure and prevents vote 
+modification or deletion. The system supports automated vote counting directly from 
+blockchain records, enabling fast, accurate, and tamper-proof result declaration. A 
+transparent digital audit trail is maintained for verification and dispute resolution 
+without compromising voter anonymity. Developed using HTML, CSS, and JavaScript 
+for the frontend, Python with Flask for backend services, MongoDB for structured data 
+storage, and Solidity-based smart contracts on a private Ethereum blockchain, the 
+system follows a modular layered architecture. By combining biometrics, cryptography, 
+and decentralized ledger technology, the proposed solution enhances security, trust, 
+efficiency, and accountability in co-operative and institutional elections.",
+      students: "Adithyan Biju , Alan KB , Fahad Rasheed , Jeswin Jose",
+      supervisor: "Prof. Gayathri R Krishna",
+      tags: ["React", "MongoDB", "Python", "flask", "Blockchain"],
+    },
   ],
   "2025-2026": [
     {
