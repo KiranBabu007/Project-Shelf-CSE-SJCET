@@ -15,6 +15,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Rocket,
   Loader2,
@@ -198,7 +200,7 @@ const SubmitProjectModal: React.FC<SubmitProjectModalProps> = ({
             <div className="mt-4">
               <button
                 onClick={handleClose}
-                className="text-sm text-gray-500 hover:text-gray-700 underline underline-offset-2"
+                className="text-sm text-gray-600 hover:text-gray-900 underline underline-offset-2"
               >
                 Close
               </button>
@@ -212,7 +214,7 @@ const SubmitProjectModal: React.FC<SubmitProjectModalProps> = ({
                   <Rocket className="h-5 w-5 text-orange-500" />
                   Submit Your Project
                 </DialogTitle>
-                <DialogDescription className="text-xs text-gray-500 mt-1">
+                <DialogDescription className="text-xs text-gray-600 mt-1">
                   Fill in the details below. Your submission will create a
                   review request.
                 </DialogDescription>
@@ -227,72 +229,64 @@ const SubmitProjectModal: React.FC<SubmitProjectModalProps> = ({
                 </div>
               )}
 
-              {/* Project Title */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
                   Project Title <span className="text-red-500">*</span>
                 </label>
-                <input
+                <Input
                   type="text"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="e.g., SmartAgro"
-                  className="w-full px-3 py-2 text-sm text-gray-900 border-[1.5px] border-gray-300 rounded-sm focus:outline-none focus:border-gray-900 focus:shadow-[1px_1px_0px_#222] transition-shadow placeholder:text-gray-400"
                   disabled={status === "submitting"}
                 />
               </div>
 
-              {/* Description */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
                   Description <span className="text-red-500">*</span>
                 </label>
-                <textarea
+                <Textarea
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   placeholder="Describe your project in a few sentences..."
                   rows={3}
-                  className="w-full px-3 py-2 text-sm text-gray-900 border-[1.5px] border-gray-300 rounded-sm focus:outline-none focus:border-gray-900 focus:shadow-[1px_1px_0px_#222] transition-shadow resize-none placeholder:text-gray-400"
+                  className="resize-none"
                   disabled={status === "submitting"}
                 />
               </div>
 
-              {/* Students */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
                   Team Members <span className="text-red-500">*</span>
                 </label>
-                <input
+                <Input
                   type="text"
                   value={students}
                   onChange={(e) => setStudents(e.target.value)}
                   placeholder="e.g., John Doe, Jane Smith, Alex Johnson"
-                  className="w-full px-3 py-2 text-sm text-gray-900 border-[1.5px] border-gray-300 rounded-sm focus:outline-none focus:border-gray-900 focus:shadow-[1px_1px_0px_#222] transition-shadow placeholder:text-gray-400"
                   disabled={status === "submitting"}
                 />
-                <p className="text-[10px] text-gray-400 mt-1">
+                <p className="text-[11px] text-gray-500 mt-1">
                   Separate names with commas
                 </p>
               </div>
 
-              {/* Supervisor */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
                   Project Supervisor <span className="text-red-500">*</span>
                 </label>
-                <input
+                <Input
                   type="text"
                   value={supervisor}
                   onChange={(e) => setSupervisor(e.target.value)}
                   placeholder="e.g., Prof. Smitha Jacob"
-                  className="w-full px-3 py-2 text-sm text-gray-900 border-[1.5px] border-gray-300 rounded-sm focus:outline-none focus:border-gray-900 focus:shadow-[1px_1px_0px_#222] transition-shadow placeholder:text-gray-400"
                   disabled={status === "submitting"}
                 />
               </div>
 
-              {/* Year */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
                   Academic Year <span className="text-red-500">*</span>
                 </label>
                 <Select
@@ -313,9 +307,8 @@ const SubmitProjectModal: React.FC<SubmitProjectModalProps> = ({
                 </Select>
               </div>
 
-              {/* Project Type (optional) */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
                   Project Type
                 </label>
                 <div className="flex gap-2">
@@ -327,24 +320,23 @@ const SubmitProjectModal: React.FC<SubmitProjectModalProps> = ({
                         setProjectType(projectType === type ? "" : type)
                       }
                       disabled={status === "submitting"}
-                      className={`flex-1 h-9 text-sm font-medium rounded-sm border-[1.5px] transition-all ${
+                      className={`flex-1 h-9 text-sm font-medium rounded-sm border-[1.5px] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 ${
                         projectType === type
                           ? "border-gray-900 bg-gray-900 text-white shadow-[1px_1px_0px_#222]"
-                          : "border-gray-300 bg-white text-gray-600 hover:border-gray-400"
+                          : "border-gray-300 bg-white text-gray-700 hover:border-gray-400"
                       }`}
                     >
                       {type === "main" ? "Main Project" : "Mini Project"}
                     </button>
                   ))}
                 </div>
-                <p className="text-[10px] text-gray-400 mt-1">
+                <p className="text-[11px] text-gray-500 mt-1">
                   Optional — defaults to Main if not selected
                 </p>
               </div>
 
-              {/* Tags */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
                   Technologies / Tags <span className="text-red-500">*</span>
                 </label>
 
@@ -358,8 +350,9 @@ const SubmitProjectModal: React.FC<SubmitProjectModalProps> = ({
                         {tag}
                         <button
                           onClick={() => removeTag(tag)}
-                          className="ml-0.5 text-gray-400 hover:text-gray-700"
+                          className="ml-0.5 text-gray-500 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 rounded-sm"
                           type="button"
+                          aria-label={`Remove ${tag}`}
                         >
                           <X className="h-3 w-3" />
                         </button>
@@ -369,13 +362,13 @@ const SubmitProjectModal: React.FC<SubmitProjectModalProps> = ({
                 )}
 
                 <div className="flex gap-2">
-                  <input
+                  <Input
                     type="text"
                     value={tagInput}
                     onChange={(e) => setTagInput(e.target.value)}
                     onKeyDown={handleTagKeyDown}
                     placeholder="Type a tag and press Enter"
-                    className="flex-1 px-3 py-2 text-sm text-gray-900 border-[1.5px] border-gray-300 rounded-sm focus:outline-none focus:border-gray-900 focus:shadow-[1px_1px_0px_#222] transition-shadow placeholder:text-gray-400"
+                    className="flex-1"
                     disabled={status === "submitting" || tags.length >= 8}
                   />
                   <button
@@ -383,6 +376,7 @@ const SubmitProjectModal: React.FC<SubmitProjectModalProps> = ({
                     disabled={!tagInput.trim() || tags.length >= 8}
                     className="btn-sketch-outline h-9 px-3 disabled:opacity-40"
                     type="button"
+                    aria-label="Add tag"
                   >
                     <Plus className="h-4 w-4" />
                   </button>
@@ -390,7 +384,7 @@ const SubmitProjectModal: React.FC<SubmitProjectModalProps> = ({
 
                 {tags.length < 3 && (
                   <div className="mt-2">
-                    <p className="text-[10px] text-gray-400 mb-1">
+                    <p className="text-[11px] text-gray-500 mb-1">
                       Quick add:
                     </p>
                     <div className="flex flex-wrap gap-1">
@@ -400,7 +394,7 @@ const SubmitProjectModal: React.FC<SubmitProjectModalProps> = ({
                           <button
                             key={tag}
                             onClick={() => addTag(tag)}
-                            className="text-[10px] px-2 py-0.5 rounded-sm border border-gray-200 text-gray-500 hover:border-gray-400 hover:text-gray-700 transition-colors"
+                            className="text-[11px] px-2 py-0.5 rounded-sm border border-gray-200 text-gray-600 hover:border-gray-400 hover:text-gray-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900"
                             type="button"
                           >
                             + {tag}
@@ -411,7 +405,6 @@ const SubmitProjectModal: React.FC<SubmitProjectModalProps> = ({
                 )}
               </div>
 
-              {/* Turnstile CAPTCHA */}
               <div className="pt-2">
                 <Turnstile
                   ref={turnstileRef}
@@ -427,7 +420,7 @@ const SubmitProjectModal: React.FC<SubmitProjectModalProps> = ({
             <div className="border-t border-gray-900 px-6 py-3 flex items-center justify-between bg-gray-50">
               <button
                 onClick={handleClose}
-                className="text-sm text-gray-500 hover:text-gray-700"
+                className="text-sm text-gray-600 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 rounded-sm px-2 py-1"
                 disabled={status === "submitting"}
               >
                 Cancel

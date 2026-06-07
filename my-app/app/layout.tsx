@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   description:
     "A handcrafted gallery showcasing innovative ideas and the brilliant minds behind them at SJCET.",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.svg",
   },
   openGraph: {
     title: "The Project Shelf | SJCET Palai",
@@ -27,22 +27,13 @@ export const metadata: Metadata = {
       "Discover innovative projects from the Department of Computer Science and Engineering at SJCET Palai.",
     url: "https://project.sjcet.in/",
     siteName: "SJCET Palai",
-    images: [
-      {
-        url: "/favicon.ico",
-        width: 1200,
-        height: 630,
-        alt: "SJCET Project Shelf",
-      },
-    ],
     type: "website",
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "The Project Shelf | SJCET Palai",
     description:
       "Showcasing final year Computer Science projects from SJCET Palai.",
-    images: ["/favicon.ico"],
   },
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://project.sjcet.in"),
 };

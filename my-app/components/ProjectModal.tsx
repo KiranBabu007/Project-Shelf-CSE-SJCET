@@ -11,6 +11,27 @@ import {
 import { Users, Star, Hash } from "lucide-react";
 import type { Project } from "@/types";
 
+function toTitleCase(str: string): string {
+  return str
+    .split(",")
+    .map((name) =>
+      name
+        .trim()
+        .split(/\s+/)
+        .map((word) => {
+          if (word.length <= 1) return word.toUpperCase();
+          return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+        })
+        .join(" ")
+    )
+    .join(", ");
+}
+
+function isDescriptionAvailable(desc: string): boolean {
+  const normalized = desc.trim().toLowerCase();
+  return normalized !== "not available" && normalized !== "not available." && normalized.length > 0;
+}
+
 interface ProjectModalProps {
   open: boolean;
   onClose: () => void;
@@ -23,6 +44,8 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
   project,
 }) => {
   if (!project) return null;
+
+  const descAvailable = isDescriptionAvailable(project.description);
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
@@ -42,27 +65,33 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
             <DialogTitle className="font-caveat text-3xl font-bold text-gray-900">
               {project.title}
             </DialogTitle>
-            <DialogDescription className="text-sm text-gray-600 mt-2 leading-relaxed">
-              {project.description}
-            </DialogDescription>
+            {descAvailable ? (
+              <DialogDescription className="text-sm text-gray-600 mt-2 leading-relaxed">
+                {project.description}
+              </DialogDescription>
+            ) : (
+              <DialogDescription className="text-sm text-gray-400 mt-2 leading-relaxed italic">
+                No description provided for this project.
+              </DialogDescription>
+            )}
           </DialogHeader>
         </div>
 
         <div className="px-6 py-5 space-y-5">
           <div className="flex items-start gap-3">
-            <Users className="h-4 w-4 mt-0.5 text-gray-400" />
+            <Users className="h-4 w-4 mt-0.5 text-gray-500" />
             <div>
-              <span className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">
+              <span className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">
                 Students
               </span>
-              <p className="text-sm text-gray-700">{project.students}</p>
+              <p className="text-sm text-gray-700">{toTitleCase(project.students)}</p>
             </div>
           </div>
 
           <div className="flex items-start gap-3">
-            <Star className="h-4 w-4 mt-0.5 text-gray-400" />
+            <Star className="h-4 w-4 mt-0.5 text-gray-500" />
             <div>
-              <span className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">
+              <span className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">
                 Supervisor
               </span>
               <p className="text-sm text-gray-700">{project.supervisor}</p>
@@ -70,9 +99,9 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
           </div>
 
           <div className="flex items-start gap-3">
-            <Hash className="h-4 w-4 mt-0.5 text-gray-400" />
+            <Hash className="h-4 w-4 mt-0.5 text-gray-500" />
             <div>
-              <span className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">
+              <span className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">
                 Technologies
               </span>
               <div className="flex flex-wrap gap-2 mt-1">

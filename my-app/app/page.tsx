@@ -1,9 +1,5 @@
-import ProjectShelf from './project-shelf/page';
+import { redirect } from 'next/navigation';
 
 export default function Home() {
-  return (
-    <main>
-      <ProjectShelf />
-    </main>
-  );
+  redirect('/project-shelf');
 }

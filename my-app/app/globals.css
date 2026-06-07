@@ -25,8 +25,31 @@
     --ring: 24 95% 53%;
     --radius: 0.375rem;
 
-    --font-caveat: var(--font-caveat-var);
-    --font-inter: var(--font-inter-var);
+    --sketch-ink: #222222;
+    --sketch-border-width: 1.5px;
+    --sketch-radius: 3px;
+  }
+
+  .dark {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 93%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 93%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 93%;
+    --primary: 24 95% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 93%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 64%;
+    --accent: 24 95% 53%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 25%;
+    --input: 0 0% 25%;
+    --ring: 24 95% 53%;
   }
 
   * {
@@ -44,17 +67,17 @@
 
 @layer components {
   .sketch-border {
-    border: 1.5px solid #222;
-    border-radius: 2px;
+    border: var(--sketch-border-width) solid var(--sketch-ink);
+    border-radius: var(--sketch-radius);
     box-shadow:
-      1px 1px 0px #222,
-      -0.5px 0.5px 0px #222;
+      1px 1px 0px var(--sketch-ink),
+      -0.5px 0.5px 0px var(--sketch-ink);
   }
 
   .sketch-border-thin {
-    border: 1px solid #333;
-    border-radius: 1px;
-    box-shadow: 0.5px 0.5px 0px #333;
+    border: 1px solid #444;
+    border-radius: 2px;
+    box-shadow: 0.5px 0.5px 0px #444;
   }
 
   .sketch-border-hover {
@@ -63,96 +86,99 @@
 
   .sketch-border-hover:hover {
     box-shadow:
-      2px 2px 0px #222,
-      -0.5px 0.5px 0px #222;
+      2px 2px 0px var(--sketch-ink),
+      -0.5px 0.5px 0px var(--sketch-ink);
     transform: translate(-0.5px, -0.5px);
   }
 
   .sketch-card {
-    border: 1.8px solid #222;
-    border-radius: 4px;
+    border: var(--sketch-border-width) solid var(--sketch-ink);
+    border-radius: var(--sketch-radius);
     background: white;
-    box-shadow:
-      2px 2.5px 0px #222;
+    box-shadow: 2px 2.5px 0px var(--sketch-ink);
     transition: box-shadow 0.2s ease, transform 0.2s ease;
   }
 
   .sketch-card:hover {
-    box-shadow:
-      3.5px 4px 0px #222;
+    box-shadow: 3.5px 4px 0px var(--sketch-ink);
     transform: translate(-1px, -1.5px);
+  }
+
+  .sketch-card:focus-visible {
+    outline: 2px solid #f97316;
+    outline-offset: 2px;
   }
 
   /* Category badge colors */
   .badge-iot {
-    @apply bg-red-50 text-red-600 border border-red-300;
+    @apply bg-red-50 text-red-700 border border-red-300;
   }
   .badge-education {
     @apply bg-emerald-50 text-emerald-700 border border-emerald-300;
   }
   .badge-ai {
-    @apply bg-purple-50 text-purple-600 border border-purple-300;
+    @apply bg-purple-50 text-purple-700 border border-purple-300;
   }
   .badge-blockchain {
-    @apply bg-pink-50 text-pink-600 border border-pink-300;
+    @apply bg-pink-50 text-pink-700 border border-pink-300;
   }
   .badge-health {
-    @apply bg-green-50 text-green-600 border border-green-300;
+    @apply bg-green-50 text-green-700 border border-green-300;
   }
   .badge-services {
-    @apply bg-violet-50 text-violet-600 border border-violet-300;
+    @apply bg-violet-50 text-violet-700 border border-violet-300;
   }
   .badge-ml {
     @apply bg-amber-50 text-amber-700 border border-amber-300;
   }
   .badge-web {
-    @apply bg-blue-50 text-blue-600 border border-blue-300;
+    @apply bg-blue-50 text-blue-700 border border-blue-300;
   }
   .badge-mobile {
-    @apply bg-cyan-50 text-cyan-600 border border-cyan-300;
+    @apply bg-cyan-50 text-cyan-700 border border-cyan-300;
   }
   .badge-default {
-    @apply bg-gray-50 text-gray-600 border border-gray-300;
+    @apply bg-gray-50 text-gray-700 border border-gray-300;
   }
 
-  /* Stat card tints — soft imperfect */
+  /* Stat card tints */
   .stat-card-blue {
     background: linear-gradient(135deg, #edf5fd 0%, #f5f9ff 100%);
-    border: 1.8px solid #222;
-    border-radius: 4px;
-    box-shadow: 2px 2.5px 0px #222;
+    border: var(--sketch-border-width) solid var(--sketch-ink);
+    border-radius: var(--sketch-radius);
+    box-shadow: 2px 2.5px 0px var(--sketch-ink);
     transition: box-shadow 0.2s ease, transform 0.2s ease;
   }
 
   .stat-card-blue:hover {
-    box-shadow: 3px 3.5px 0px #222;
-    transform: rotate(0deg) translate(-0.5px, -0.5px) !important;
+    box-shadow: 3px 3.5px 0px var(--sketch-ink);
+    transform: rotate(0deg) translate(-0.5px, -0.5px);
   }
 
   .stat-card-green {
     background: linear-gradient(135deg, #edfdf3 0%, #f5fff8 100%);
-    border: 1.8px solid #222;
-    border-radius: 4px;
-    box-shadow: 2px 2.5px 0px #222;
+    border: var(--sketch-border-width) solid var(--sketch-ink);
+    border-radius: var(--sketch-radius);
+    box-shadow: 2px 2.5px 0px var(--sketch-ink);
     transition: box-shadow 0.2s ease, transform 0.2s ease;
   }
 
   .stat-card-green:hover {
-    box-shadow: 3px 3.5px 0px #222;
-    transform: rotate(0deg) translate(-0.5px, -0.5px) !important;
+    box-shadow: 3px 3.5px 0px var(--sketch-ink);
+    transform: rotate(0deg) translate(-0.5px, -0.5px);
   }
 
   .stat-card-cream {
     background: linear-gradient(135deg, #fffef3 0%, #fffefa 100%);
-    border: 1.8px solid #222;
-    border-radius: 4px;
-    box-shadow: 2px 2.5px 0px #222;
+    border: var(--sketch-border-width) solid var(--sketch-ink);
+    border-radius: var(--sketch-radius);
+    box-shadow: 2px 2.5px 0px var(--sketch-ink);
     transition: box-shadow 0.2s ease, transform 0.2s ease;
   }
 
   .stat-card-cream:hover {
-    box-shadow: 3px 3.5px 0px #222;
-    transform: rotate(0deg) translate(-0.5px, -0.5px) !important;
+    box-shadow: 3px 3.5px 0px var(--sketch-ink);
+    transform: rotate(0deg) translate(-0.5px, -0.5px);
   }
 
   /* Dashed separator */
@@ -164,25 +190,31 @@
 
   /* Tech tag pills */
   .tech-tag {
-    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded-sm;
-    border: 1px solid #333;
+    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded-sm cursor-pointer;
+    border: 1px solid #444;
     background: white;
-    transition: background-color 0.15s ease;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
   }
 
   .tech-tag:hover {
-    background: #f5f5f5;
+    background: #f0f0f0;
+    border-color: #222;
   }
 
-  /* Sketch button styles — intentionally imperfect */
+  .tech-tag:focus-visible {
+    outline: 2px solid var(--sketch-ink);
+    outline-offset: 1px;
+  }
+
+  /* Sketch button styles */
   .btn-sketch-outline {
     @apply inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium;
-    border: 1.8px solid #222;
-    border-radius: 3px;
+    border: var(--sketch-border-width) solid var(--sketch-ink);
+    border-radius: var(--sketch-radius);
     background: white;
-    color: #222;
+    color: var(--sketch-ink);
     box-shadow:
-      2px 2px 0px #222,
+      2px 2px 0px var(--sketch-ink),
       inset 0 0 0 0.5px rgba(0,0,0,0.03);
     transition: all 0.18s ease;
     transform: rotate(-0.3deg);
@@ -190,20 +222,25 @@
   }
 
   .btn-sketch-outline:hover {
-    box-shadow: 3px 3px 0px #222;
+    box-shadow: 3px 3px 0px var(--sketch-ink);
     transform: rotate(0deg) translate(-1px, -1px);
   }
 
   .btn-sketch-outline:active {
-    box-shadow: 0.5px 0.5px 0px #222;
+    box-shadow: 0.5px 0.5px 0px var(--sketch-ink);
     transform: rotate(0deg) translate(1px, 1px);
+  }
+
+  .btn-sketch-outline:focus-visible {
+    outline: 2px solid var(--sketch-ink);
+    outline-offset: 2px;
   }
 
   .btn-sketch-filled {
     @apply inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium;
-    border: 1.8px solid #222;
-    border-radius: 3px;
-    background: #222;
+    border: var(--sketch-border-width) solid var(--sketch-ink);
+    border-radius: var(--sketch-radius);
+    background: var(--sketch-ink);
     color: white;
     box-shadow: 2px 2px 0px #555;
     transition: all 0.18s ease;
@@ -221,10 +258,15 @@
     transform: rotate(0deg) translate(1px, 1px);
   }
 
+  .btn-sketch-filled:focus-visible {
+    outline: 2px solid var(--sketch-ink);
+    outline-offset: 2px;
+  }
+
   .btn-sketch-orange {
     @apply inline-flex items-center justify-center px-5 py-2 text-sm font-medium;
-    border: 1.8px solid #c2410c;
-    border-radius: 3px;
+    border: var(--sketch-border-width) solid #c2410c;
+    border-radius: var(--sketch-radius);
     background: #f97316;
     color: white;
     box-shadow: 2px 2px 0px #9a3412;
@@ -238,45 +280,34 @@
     transform: rotate(0deg) translate(-1px, -1px);
   }
 
+  .btn-sketch-orange:focus-visible {
+    outline: 2px solid #9a3412;
+    outline-offset: 2px;
+  }
+
   /* Imperfect sketch card — slightly wonky */
   .sketch-card-wonky {
-    border: 1.8px solid #222;
-    border-radius: 4px;
+    border: var(--sketch-border-width) solid var(--sketch-ink);
+    border-radius: var(--sketch-radius);
     background: white;
-    box-shadow: 2px 2.5px 0px #222;
+    box-shadow: 2px 2.5px 0px var(--sketch-ink);
     transition: box-shadow 0.2s ease, transform 0.2s ease;
     transform: rotate(-0.15deg);
   }
 
   .sketch-card-wonky:hover {
-    box-shadow: 3.5px 4px 0px #222;
+    box-shadow: 3.5px 4px 0px var(--sketch-ink);
     transform: rotate(0deg) translate(-1px, -1.5px);
   }
 
   /* Navbar sketch box */
   .navbar-sketch-box {
-    border: 1.8px solid #333;
-    border-radius: 4px;
+    border: var(--sketch-border-width) solid #333;
+    border-radius: var(--sketch-radius);
     box-shadow:
       2px 2px 0px rgba(0,0,0,0.08);
     padding: 0.5rem 1rem;
     transform: rotate(-0.2deg);
-  }
-
-  /* Wavy section edge */
-  .wavy-top {
-    position: relative;
-  }
-
-  .wavy-top::before {
-    content: "";
-    position: absolute;
-    top: -30px;
-    left: 0;
-    right: 0;
-    height: 30px;
-    background: inherit;
-    clip-path: url(#wavyClip);
   }
 }
 
