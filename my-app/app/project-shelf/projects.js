@@ -2178,6 +2178,17 @@ const projectsData = {
       supervisor: "Prof. Thushara Sukumar",
       tags: ["React", "Node.js", "MongoDB", "AI", "MERN", "Gemini", "Interview"],
     },
+    {
+      id: 52,
+      title: "Footage Analysis Toolkit: A System for Semantic Video Retrieval and Structured Forensic Analysis",
+      description:
+        "The project introduces an AI-powered video surveillance assistant that
+allows users to - Ask natural language questions, upload images to search for people or objects, instantly find relevant timestamps and video clips. The goal is to make surveillance faster, smarter, and more accessible
+through intelligent automation. Monitor live surveillance for unusual or suspicious activities in real time.",
+      students: "Adithya Raj, Jibin Gigi, Lidiya Reju, Manu Emmanuel",
+      supervisor: "Prof. Smitha Jacob",
+      tags: ["Python", "Clip", "Faiss", "Electron.js", "MIni conda", "Yolo"],
+    },
   ],
   "2025-2026": [
     {
