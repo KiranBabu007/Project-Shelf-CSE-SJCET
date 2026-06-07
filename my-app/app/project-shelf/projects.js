@@ -2178,6 +2178,42 @@ const projectsData = {
       supervisor: "Prof. Thushara Sukumar",
       tags: ["React", "Node.js", "MongoDB", "AI", "MERN", "Gemini", "Interview"],
     },
+    {
+      id: 52,
+      title: "StockGenie: AI-Driven Stock Market Assistant and Forecasting System",
+      description:
+        "Stock market investing demands constant evaluation
+of extensive financial datasets, accurate recognition of market
+trends, and careful management of investment risks. These
+requirements often create significant challenges for beginner
+investors who may lack analytical expertise and access to
+advanced decision-support tools. While many existing trading
+platforms provide real-time market data, they frequently fail to
+offer intelligent forecasting mechanisms and structured learning
+environments that aid users in understanding market dynamics.
+This paper proposes StockGenie, an AI-driven stock market
+assistance system developed to facilitate informed investment
+decisions through predictive modeling, visual analytics, portfolio
+evaluation, and simulated trading experiences. The system utilizes time-series forecasting approaches, including Autoregressive
+Integrated Moving Average (ARIMA) and Long Short-Term
+Memory (LSTM) neural networks, to examine historical stock
+market data and generate future price predictions. In addition
+to forecasting capabilities, StockGenie incorporates an interactive
+visualization dashboard, a portfolio advisory component for
+risk-aware investment analysis, a virtual trading simulator for
+hands-on practice, and an AI-powered chatbot that provides
+instant guidance and explanations related to market behavior.
+Experimental evaluation using historical stock market datasets
+was conducted to assess forecasting performance. Quantitative
+metrics including Root Mean Square Error (RMSE) and Mean
+Absolute Error (MAE) were used to compare ARIMA and LSTM
+models. The results indicate that the LSTM model achieves
+lower prediction error and improved trend prediction capability
+compared to traditional statistical approaches.",
+      students: "Nagaraj Menon KS, Felix Jobi, Revathy Biju, Shraya S Santhosh",
+      supervisor: "Prof. Anu V Kottath",
+      tags: ["flask", "next.js", "mongoDb", "arima", "lstm"],
+    },
   ],
   "2025-2026": [
     {
