@@ -2,6 +2,28 @@ import { Project } from "@/types";
 
 const projects: Project[] = [
   {
+    id: 26,
+    title: "AgroSight",
+    description: "A solution for smart farming and agricultural monitoring",
+    students: "Nidhun S, Thomas Alphonse Benny, Vaishnavi S, Nidhina Tom",
+    supervisor: "Prof. Nimmy Joshy",
+    tags: [
+      "Agriculture",
+      "IoT"
+    ]
+  },
+  {
+    id: 12,
+    title: "AR Classroom for Teachers and Students",
+    description: "An AR-based classroom experience for education",
+    students: "Christy Varghese, Amal Anto, Hanna Elsa Reni George, Jiya George",
+    supervisor: "Prof. Bino Thomas",
+    tags: [
+      "Augmented Reality",
+      "Education"
+    ]
+  },
+  {
     id: 1,
     title: "Automated Bus Scheduling",
     description: "A solution for automated bus scheduling and optimization",
@@ -13,15 +35,80 @@ const projects: Project[] = [
     ]
   },
   {
-    id: 2,
-    title: "Virus Tracking System",
-    description: "A system to track virus spread and analyze data",
-    students: "Alwin Varghese, Anu Justin, Ashly Sibichan, Augustine S Aykara",
-    supervisor: "Prof. Smitha Jacob",
+    id: 16,
+    title: "Automatic Bus Scheduling and Travel Companion",
+    description: "A system to automate bus scheduling and provide a travel companion service",
+    students: "Kennith Feryl Philips, Smitha John",
+    supervisor: "Prof. Kishore Sebastian",
     tags: [
-      "Health Monitoring",
-      "Data Analysis",
-      "Tracking"
+      "Transportation",
+      "Automation"
+    ]
+  },
+  {
+    id: 28,
+    title: "Building a Decentralized Economy Using Blockchain",
+    description: "A project to create a decentralized economy using blockchain technology",
+    students: "Alwin K Scaria, Shinu Shaju, Teena Tomy",
+    supervisor: "Prof. Prince Abraham",
+    tags: [
+      "Blockchain",
+      "Economy"
+    ]
+  },
+  {
+    id: 19,
+    title: "Digi-Valuate",
+    description: "A digital tool for asset valuation",
+    students: "Mileen Sebastian, Rachel Kunjumon, Samaanta Shaji",
+    supervisor: "Prof. Suma R",
+    tags: [
+      "Asset Management",
+      "Digital Tool"
+    ]
+  },
+  {
+    id: 21,
+    title: "Early Fire Detection",
+    description: "An IoT-based system for early detection of fire hazards",
+    students: "Rithin Jose, Romal Roy, Roop Saji, Rose Maria M T",
+    supervisor: "Prof. Ashly Thomas",
+    tags: [
+      "IoT",
+      "Fire Safety"
+    ]
+  },
+  {
+    id: 15,
+    title: "Game Development",
+    description: "Development of an engaging and interactive game",
+    students: "Clement P Tom, Dona Tom, James Jacob Jose, Joseph Thomas",
+    supervisor: "Prof. Prince Abraham",
+    tags: [
+      "Game Development",
+      "Interactive Media"
+    ]
+  },
+  {
+    id: 23,
+    title: "Game Development Using Spark AR Docile",
+    description: "A game development project using Spark AR",
+    students: "Santhul Joseph, Rony Thomas, Pheleena V Thomas, Natha B",
+    supervisor: "Prof. Prince V Jose",
+    tags: [
+      "Game Development",
+      "Augmented Reality"
+    ]
+  },
+  {
+    id: 5,
+    title: "Handwriting Recognition System Using Deep Learning",
+    description: "A handwriting recognition system leveraging deep learning",
+    students: "Alex Joseph, Athira M Nair, Blessil Bose, Chrissie Aldo",
+    supervisor: "Dr. Praseetha V. M",
+    tags: [
+      "Deep Learning",
+      "Image Processing"
     ]
   },
   {
@@ -36,6 +123,94 @@ const projects: Project[] = [
     ]
   },
   {
+    id: 17,
+    title: "Intelligent Question Answering Using Deep Learning",
+    description: "An intelligent system to answer questions using deep learning techniques",
+    students: "Sebin Byju, Roval Benny, Royal Benny, Richu Joy",
+    supervisor: "Dr. Gemini George",
+    tags: [
+      "Deep Learning",
+      "AI"
+    ]
+  },
+  {
+    id: 25,
+    title: "IoT Assisted Device Controlling System",
+    description: "A system to control devices using IoT technology",
+    students: "Kichu Sebastian, Justine Francis, Stebin Paul, Subin M",
+    supervisor: "Prof. Ashly Thomas",
+    tags: [
+      "IoT",
+      "Automation"
+    ]
+  },
+  {
+    id: 11,
+    title: "LeFarm - One Step Platform for Farmers",
+    description: "A digital platform for farmers to connect and manage activities",
+    students: "Akshara Mariya Josy, Alka Brigit Senson, Amelin Thomas, Aysha Nazarudeen",
+    supervisor: "Prof. Suma R.",
+    tags: [
+      "Agriculture",
+      "App Development"
+    ]
+  },
+  {
+    id: 30,
+    title: "Medi-Cloud",
+    description: "A cloud-based solution for managing medical data",
+    students: "Kiran Xavier, Praveena P Prabhu, Rohann Tom Soney, Sanjay Suresh",
+    supervisor: "Prof. Angitha George",
+    tags: [
+      "Healthcare",
+      "Cloud Computing"
+    ]
+  },
+  {
+    id: 20,
+    title: "Quality Grading of Fruits and Vegetables",
+    description: "A system to assess the quality of fruits and vegetables using AI",
+    students: "Teresa George, Respa R S, Rhea Salih, Shibreeze K Sebastian",
+    supervisor: "Dr. Sruthy S",
+    tags: [
+      "AI",
+      "Agriculture"
+    ]
+  },
+  {
+    id: 18,
+    title: "Raptor",
+    description: "A project focused on advanced robotic systems",
+    students: "Megan Jacob, Sandra Stephen, Santhosh Thomas, Sandeep Salmon",
+    supervisor: "Prof. Jikku Thomas",
+    tags: [
+      "Robotics",
+      "Automation"
+    ]
+  },
+  {
+    id: 22,
+    title: "Ride Sharing Platform",
+    description: "A platform for efficient ride sharing",
+    students: "Leion Sunny, Riya Theresa Abraham, Saranya S, Chrisbin Sunny",
+    supervisor: "Dr. Joby P.P",
+    tags: [
+      "Transportation",
+      "App Development"
+    ]
+  },
+  {
+    id: 14,
+    title: "Securing Healthcare Portal",
+    description: "A portal for securing patient data and healthcare services",
+    students: "Indu Cyriac, Divya Shaji Thomas, Avinash A Panicker",
+    supervisor: "Prof. Akshara Sasidharan",
+    tags: [
+      "Healthcare",
+      "Cybersecurity"
+    ]
+  },
+  {
     id: 4,
     title: "Shared Parking System",
     description: "A system to share and manage parking spaces efficiently",
@@ -44,17 +219,6 @@ const projects: Project[] = [
     tags: [
       "Parking Management",
       "IoT"
-    ]
-  },
-  {
-    id: 5,
-    title: "Handwriting Recognition System Using Deep Learning",
-    description: "A handwriting recognition system leveraging deep learning",
-    students: "Alex Joseph, Athira M Nair, Blessil Bose, Chrissie Aldo",
-    supervisor: "Dr. Praseetha V. M",
-    tags: [
-      "Deep Learning",
-      "Image Processing"
     ]
   },
   {
@@ -70,17 +234,6 @@ const projects: Project[] = [
     ]
   },
   {
-    id: 7,
-    title: "Spot-U",
-    description: "A mobile app for real-time parking spot tracking",
-    students: "Akhil K Anil, David Pious, Joseph Alen Shaji, Ankith Suresh",
-    supervisor: "Prof. Angitha George",
-    tags: [
-      "Parking",
-      "App Development"
-    ]
-  },
-  {
     id: 8,
     title: "SpiderBot",
     description: "A robotic spider for inspection tasks",
@@ -89,6 +242,17 @@ const projects: Project[] = [
     tags: [
       "Robotics",
       "IoT"
+    ]
+  },
+  {
+    id: 7,
+    title: "Spot-U",
+    description: "A mobile app for real-time parking spot tracking",
+    students: "Akhil K Anil, David Pious, Joseph Alen Shaji, Ankith Suresh",
+    supervisor: "Prof. Angitha George",
+    tags: [
+      "Parking",
+      "App Development"
     ]
   },
   {
@@ -103,157 +267,14 @@ const projects: Project[] = [
     ]
   },
   {
-    id: 10,
-    title: "VR Kerala",
-    description: "A virtual reality experience showcasing Kerala",
-    students: "Amal Sebastian",
-    supervisor: "Prof. Sarju S.",
+    id: 29,
+    title: "Third Eye",
+    description: "A smart assistant system for visually impaired individuals",
+    students: "Vimal Jose, Solomon Joyce, Sonu Kuruvilla Babychan, Nibin Sabu Thomas",
+    supervisor: "Prof. Anna N Kurian",
     tags: [
-      "Virtual Reality",
-      "Tourism"
-    ]
-  },
-  {
-    id: 11,
-    title: "LeFarm - One Step Platform for Farmers",
-    description: "A digital platform for farmers to connect and manage activities",
-    students: "Akshara Mariya Josy, Alka Brigit Senson, Amelin Thomas, Aysha Nazarudeen",
-    supervisor: "Prof. Suma R.",
-    tags: [
-      "Agriculture",
-      "App Development"
-    ]
-  },
-  {
-    id: 12,
-    title: "AR Classroom for Teachers and Students",
-    description: "An AR-based classroom experience for education",
-    students: "Christy Varghese, Amal Anto, Hanna Elsa Reni George, Jiya George",
-    supervisor: "Prof. Bino Thomas",
-    tags: [
-      "Augmented Reality",
-      "Education"
-    ]
-  },
-  {
-    id: 13,
-    title: "We4You",
-    description: "A social platform connecting people in need with helpers",
-    students: "Albin Francis, Amala Saji, Aparna Thomas, Dhaya Mathew",
-    supervisor: "Prof. Mereen Thomas",
-    tags: [
-      "Social Platform",
-      "Community Support"
-    ]
-  },
-  {
-    id: 14,
-    title: "Securing Healthcare Portal",
-    description: "A portal for securing patient data and healthcare services",
-    students: "Indu Cyriac, Divya Shaji Thomas, Avinash A Panicker",
-    supervisor: "Prof. Akshara Sasidharan",
-    tags: [
-      "Healthcare",
-      "Cybersecurity"
-    ]
-  },
-  {
-    id: 15,
-    title: "Game Development",
-    description: "Development of an engaging and interactive game",
-    students: "Clement P Tom, Dona Tom, James Jacob Jose, Joseph Thomas",
-    supervisor: "Prof. Prince Abraham",
-    tags: [
-      "Game Development",
-      "Interactive Media"
-    ]
-  },
-  {
-    id: 16,
-    title: "Automatic Bus Scheduling and Travel Companion",
-    description: "A system to automate bus scheduling and provide a travel companion service",
-    students: "Kennith Feryl Philips, Smitha John",
-    supervisor: "Prof. Kishore Sebastian",
-    tags: [
-      "Transportation",
-      "Automation"
-    ]
-  },
-  {
-    id: 17,
-    title: "Intelligent Question Answering Using Deep Learning",
-    description: "An intelligent system to answer questions using deep learning techniques",
-    students: "Sebin Byju, Roval Benny, Royal Benny, Richu Joy",
-    supervisor: "Dr. Gemini George",
-    tags: [
-      "Deep Learning",
+      "Assistive Technology",
       "AI"
-    ]
-  },
-  {
-    id: 18,
-    title: "Raptor",
-    description: "A project focused on advanced robotic systems",
-    students: "Megan Jacob, Sandra Stephen, Santhosh Thomas, Sandeep Salmon",
-    supervisor: "Prof. Jikku Thomas",
-    tags: [
-      "Robotics",
-      "Automation"
-    ]
-  },
-  {
-    id: 19,
-    title: "Digi-Valuate",
-    description: "A digital tool for asset valuation",
-    students: "Mileen Sebastian, Rachel Kunjumon, Samaanta Shaji",
-    supervisor: "Prof. Suma R",
-    tags: [
-      "Asset Management",
-      "Digital Tool"
-    ]
-  },
-  {
-    id: 20,
-    title: "Quality Grading of Fruits and Vegetables",
-    description: "A system to assess the quality of fruits and vegetables using AI",
-    students: "Teresa George, Respa R S, Rhea Salih, Shibreeze K Sebastian",
-    supervisor: "Dr. Sruthy S",
-    tags: [
-      "AI",
-      "Agriculture"
-    ]
-  },
-  {
-    id: 21,
-    title: "Early Fire Detection",
-    description: "An IoT-based system for early detection of fire hazards",
-    students: "Rithin Jose, Romal Roy, Roop Saji, Rose Maria M T",
-    supervisor: "Prof. Ashly Thomas",
-    tags: [
-      "IoT",
-      "Fire Safety"
-    ]
-  },
-  {
-    id: 22,
-    title: "Ride Sharing Platform",
-    description: "A platform for efficient ride sharing",
-    students: "Leion Sunny, Riya Theresa Abraham, Saranya S, Chrisbin Sunny",
-    supervisor: "Dr. Joby P.P",
-    tags: [
-      "Transportation",
-      "App Development"
-    ]
-  },
-  {
-    id: 23,
-    title: "Game Development Using Spark AR Docile",
-    description: "A game development project using Spark AR",
-    students: "Santhul Joseph, Rony Thomas, Pheleena V Thomas, Natha B",
-    supervisor: "Prof. Prince V Jose",
-    tags: [
-      "Game Development",
-      "Augmented Reality"
     ]
   },
   {
@@ -268,25 +289,26 @@ const projects: Project[] = [
     ]
   },
   {
-    id: 25,
-    title: "IoT Assisted Device Controlling System",
-    description: "A system to control devices using IoT technology",
-    students: "Kichu Sebastian, Justine Francis, Stebin Paul, Subin M",
-    supervisor: "Prof. Ashly Thomas",
+    id: 2,
+    title: "Virus Tracking System",
+    description: "A system to track virus spread and analyze data",
+    students: "Alwin Varghese, Anu Justin, Ashly Sibichan, Augustine S Aykara",
+    supervisor: "Prof. Smitha Jacob",
     tags: [
-      "IoT",
-      "Automation"
+      "Health Monitoring",
+      "Data Analysis",
+      "Tracking"
     ]
   },
   {
-    id: 26,
-    title: "AgroSight",
-    description: "A solution for smart farming and agricultural monitoring",
-    students: "Nidhun S, Thomas Alphonse Benny, Vaishnavi S, Nidhina Tom",
-    supervisor: "Prof. Nimmy Joshy",
+    id: 10,
+    title: "VR Kerala",
+    description: "A virtual reality experience showcasing Kerala",
+    students: "Amal Sebastian",
+    supervisor: "Prof. Sarju S.",
     tags: [
-      "Agriculture",
-      "IoT"
+      "Virtual Reality",
+      "Tourism"
     ]
   },
   {
@@ -301,38 +323,16 @@ const projects: Project[] = [
     ]
   },
   {
-    id: 28,
-    title: "Building a Decentralized Economy Using Blockchain",
-    description: "A project to create a decentralized economy using blockchain technology",
-    students: "Alwin K Scaria, Shinu Shaju, Teena Tomy",
-    supervisor: "Prof. Prince Abraham",
+    id: 13,
+    title: "We4You",
+    description: "A social platform connecting people in need with helpers",
+    students: "Albin Francis, Amala Saji, Aparna Thomas, Dhaya Mathew",
+    supervisor: "Prof. Mereen Thomas",
     tags: [
-      "Blockchain",
-      "Economy"
+      "Social Platform",
+      "Community Support"
     ]
   },
-  {
-    id: 29,
-    title: "Third Eye",
-    description: "A smart assistant system for visually impaired individuals",
-    students: "Vimal Jose, Solomon Joyce, Sonu Kuruvilla Babychan, Nibin Sabu Thomas",
-    supervisor: "Prof. Anna N Kurian",
-    tags: [
-      "Assistive Technology",
-      "AI"
-    ]
-  },
-  {
-    id: 30,
-    title: "Medi-Cloud",
-    description: "A cloud-based solution for managing medical data",
-    students: "Kiran Xavier, Praveena P Prabhu, Rohann Tom Soney, Sanjay Suresh",
-    supervisor: "Prof. Angitha George",
-    tags: [
-      "Healthcare",
-      "Cloud Computing"
-    ]
-  }
 ];
 
 export default projects;

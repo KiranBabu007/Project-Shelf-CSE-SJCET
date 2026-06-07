@@ -204,9 +204,9 @@ export async function POST(req: Request) {
 
     const newEntry = buildProjectEntry(data, nextId);
 
-    // 3. Insert the new project into the year's array
-    // The file structure is: `const projects: Project[] = [ ...entries ];`
-    // Find the last `}` before the closing `];` and append after it
+    // 3. Insert the new project at its alphabetically sorted position.
+    // Sorted insertion means two PRs for the same year typically touch
+    // different lines, allowing git's 3-way merge to auto-resolve.
     const closingBracketIdx = currentContent.lastIndexOf("];");
     if (closingBracketIdx === -1) {
       return NextResponse.json(
@@ -215,7 +215,6 @@ export async function POST(req: Request) {
       );
     }
 
-    // Check if the array is empty (no entries)
     const arrayStartIdx = currentContent.indexOf("[");
     const arrayContent = currentContent
       .substring(arrayStartIdx + 1, closingBracketIdx)
@@ -230,23 +229,50 @@ export async function POST(req: Request) {
         ",\n" +
         currentContent.substring(closingBracketIdx);
     } else {
-      // Find the last closing brace of the last object in the array
-      const lastObjEnd = currentContent.lastIndexOf("}", closingBracketIdx);
-      // Check if there's already a trailing comma
-      const afterLastObj = currentContent
-        .substring(lastObjEnd + 1, closingBracketIdx)
-        .trim();
-      const needsComma = !afterLastObj.startsWith(",");
+      // Extract all existing titles with their positions in the file
+      const titleRegex = /title:\s*\n?\s*"([^"]+)"/g;
+      const existingTitles: { title: string; matchIndex: number }[] = [];
+      let titleMatch: RegExpExecArray | null;
+      while ((titleMatch = titleRegex.exec(currentContent)) !== null) {
+        if (titleMatch.index > arrayStartIdx && titleMatch.index < closingBracketIdx) {
+          existingTitles.push({
+            title: titleMatch[1].toLowerCase(),
+            matchIndex: titleMatch.index,
+          });
+        }
+      }
 
-      const insertAfter = needsComma ? lastObjEnd + 1 : lastObjEnd + 1;
-      const prefix = currentContent.substring(0, insertAfter);
-      const suffix = currentContent.substring(insertAfter);
+      const newTitleLower = data.title.toLowerCase();
 
-      if (needsComma) {
-        updatedContent = prefix + ",\n" + newEntry + "," + suffix;
+      // Find the first project whose title sorts after the new one
+      const insertBeforeIdx = existingTitles.findIndex(
+        (t) => t.title.localeCompare(newTitleLower) > 0
+      );
+
+      if (insertBeforeIdx === -1) {
+        // New project sorts last -- append at the end of the array
+        const lastObjEnd = currentContent.lastIndexOf("}", closingBracketIdx);
+        const afterLastObj = currentContent
+          .substring(lastObjEnd + 1, closingBracketIdx)
+          .trim();
+        const needsComma = !afterLastObj.startsWith(",");
+        const prefix = currentContent.substring(0, lastObjEnd + 1);
+        const suffix = currentContent.substring(lastObjEnd + 1);
+        updatedContent = needsComma
+          ? prefix + ",\n" + newEntry + "," + suffix
+          : prefix + "\n" + newEntry + "," + suffix;
       } else {
-        // There's already a comma after the last entry
-        updatedContent = prefix + "\n" + newEntry + "," + suffix;
+        // Find the opening `{` of the project block that should come after
+        const targetTitleIdx = existingTitles[insertBeforeIdx].matchIndex;
+        const blockStart = currentContent.lastIndexOf("{", targetTitleIdx);
+        // Walk back to find the `  {` indentation start (beginning of line)
+        let lineStart = blockStart;
+        while (lineStart > 0 && currentContent[lineStart - 1] !== "\n") {
+          lineStart--;
+        }
+        const prefix = currentContent.substring(0, lineStart);
+        const suffix = currentContent.substring(lineStart);
+        updatedContent = prefix + newEntry + ",\n" + suffix;
       }
     }
 
