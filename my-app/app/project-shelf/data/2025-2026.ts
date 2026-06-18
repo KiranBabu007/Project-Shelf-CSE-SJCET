@@ -2,6 +2,15 @@ import { Project } from "@/types";
 
 const projects: Project[] = [
   {
+    id: 10,
+    title: "PostJourney",
+    description:
+      "PostJourney is a healthcare recovery platform designed to support patients after hospital discharge by combining AI-assisted exercise monitoring, service booking, IoT based health monitoring, Doctor Consultation facility and rehabilitation support  to help patients recover safely and effectively at home.",
+    students: "Agnus Jose, Alene Elsa Jose, Baina Elsa Biju, Maria Rose Alex",
+    supervisor: "Prof. Sinu Maria Kurian",
+    tags: ["React Native", "Node.js", "Express.js", "MongoDB", "WebRTC", "MediaPipe", "JWT", "Tailwind CSS"],
+  },
+  {
     id: 1,
     title: "Prevue.AI",
     description: "PREVUE.AI is an AI-powered mock interview platform with virtual AI avatars, speech and behavior analysis, and intelligent interview feedback.",
